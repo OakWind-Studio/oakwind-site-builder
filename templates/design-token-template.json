@@ -1,0 +1,49 @@
+{
+  "_comment": "OakWind Style DNA → Tailwind Design Token Template. Replace values based on the selected DNA code.",
+  "colors": {
+    "bg-primary": "var(--color-bg-primary)",
+    "bg-secondary": "var(--color-bg-secondary)",
+    "accent-1": "var(--color-accent-1)",
+    "accent-2": "var(--color-accent-2)",
+    "text-primary": "var(--color-text-primary)",
+    "text-secondary": "var(--color-text-secondary)"
+  },
+  "fontFamily": {
+    "display": "var(--font-display)",
+    "body": "var(--font-body)"
+  },
+  "container": {
+    "maxWidth": "var(--container-max, 1200px)"
+  },
+  "spacing": {
+    "section": "var(--section-padding, 5rem)",
+    "header": "var(--header-height, 64px)"
+  },
+  "borderRadius": {
+    "brand": "var(--border-radius, 0.5rem)"
+  },
+  "cssVariableTemplate": ":root {\n  /* Color Approach (Dimension 2) */\n  --color-bg-primary: #FFFFFF;\n  --color-bg-secondary: #F5F5F5;\n  --color-accent-1: #2563EB;\n  --color-accent-2: #F97316;\n  --color-text-primary: #111827;\n  --color-text-secondary: #6B7280;\n\n  /* Typography (Dimension 3) */\n  --font-display: 'Playfair Display', serif;\n  --font-body: 'Source Sans 3', sans-serif;\n\n  /* Layout (Dimensions 1, 6) */\n  --container-max: 1200px;\n  --section-padding: 5rem;\n  --header-height: 64px;\n  --border-radius: 0.5rem;\n}",
+  "tailwindConfigExtension": {
+    "theme": {
+      "extend": {
+        "colors": {
+          "brand": {
+            "bg": "var(--color-bg-primary)",
+            "bg-alt": "var(--color-bg-secondary)",
+            "accent": "var(--color-accent-1)",
+            "accent-2": "var(--color-accent-2)",
+            "text": "var(--color-text-primary)",
+            "text-muted": "var(--color-text-secondary)"
+          }
+        },
+        "fontFamily": {
+          "display": ["var(--font-display)", "serif"],
+          "body": ["var(--font-body)", "sans-serif"]
+        },
+        "maxWidth": {
+          "container": "var(--container-max)"
+        }
+      }
+    }
+  }
+}

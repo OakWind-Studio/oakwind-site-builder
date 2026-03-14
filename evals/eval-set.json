@@ -1,0 +1,77 @@
+{
+  "skill_name": "oakwind-site-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build a mockup for Maria's Taqueria at 2100 W Berry St, Fort Worth TX 76110. They've been open 12 years, 4.7 stars on Google with 340 reviews. Family-owned by Maria and Carlos Gutierrez. Known for street tacos, birria, and fresh-made tortillas. Open 7am-10pm daily. Phone: (817) 555-0142.",
+      "expected_output": "A vibrant, festive taqueria website with food-forward hero, warm color palette, script/handwritten display font, menu section with prices, Google rating in first viewport, click-to-call phone appearing 3+ times, and OakWind footer.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "build a site for Big Tex BBQ at 901 N Main St, Fort Worth TX. 4.8 stars, 520 reviews. Pit-smoked since 1998. Owner: Jimmy Ray Dawson. Brisket, ribs, pulled pork, sausage links. Thurs-Sun 11am-sold out. Phone (817) 555-0278",
+      "expected_output": "A dark/smoky BBQ joint website with slab-serif or heavy condensed type, full-screen meat hero, charcoal/red/amber palette, hours prominently shown, 'sold out' messaging as a trust signal, reviews with dish-specific quotes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Build a mockup for Precision Auto Care at 4500 Camp Bowie Blvd, Fort Worth TX. ASE certified, NAPA AutoCare center, family-owned by Mike & David Chen since 2005. 4.6 stars, 185 reviews. Full service: brakes, oil changes, transmission, AC, tires, diagnostics. M-F 7:30-6, Sat 8-2. (817) 555-0391.",
+      "expected_output": "A professional auto repair website with blue/grey/red palette, industrial or bold sans typography, split hero with shop photo, ASE/NAPA badges in trust strip, organized service list, transparent and honest copy tone, phone number impossible to miss.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "create a website for Westside Collision & Tire, they're at 6200 Jacksboro Hwy Fort Worth. Been around since 1989, owner Ray Martinez. 4.4 stars 95 reviews. Collision repair, paintless dent, tires, alignments, state inspections. mon-fri 8-5:30. phone 817-555-0483",
+      "expected_output": "An auto repair site visually distinct from eval #3 — different color approach, hero pattern, and typography. Heritage/trust narrative ('Since 1989'). Service-specific sections. At least 4 Style DNA dimensions differ from a typical auto repair build.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Build a mockup for Glow Aesthetics Med Spa at 2800 W 7th St, Fort Worth TX 76107. Dr. Sarah Kim, MD (board-certified dermatologist). Botox, fillers, laser treatments, chemical peels, microneedling, body contouring. 4.9 stars, 275 reviews. 'Where science meets beauty.' Tue-Sat 9-6. (817) 555-0619.",
+      "expected_output": "An elegant med spa website with soft/soothing palette (blush, sage, or lavender), serif display font, provider credentials prominently displayed, before/after gallery section, persistent Book Now CTA, HIPAA note on forms, luxury-yet-medical aesthetic balance.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Build a site for The Law Office of James R. Thornton at 801 Cherry St Suite 1400, Fort Worth TX 76102. Personal injury and criminal defense. 30 years experience, former prosecutor. Board certified in criminal law by Texas Board of Legal Specialization. $50M+ in verdicts and settlements. 4.8 stars, 130 reviews. Available 24/7. (817) 555-0755.",
+      "expected_output": "An authoritative attorney website with deep blue/navy or charcoal palette, elegant serif headlines, text-centric or split hero, credentials and case results prominent, 'Confidential Consultation' CTA language, ABA-compliant disclaimer on case results, serious and expensive-looking design.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "build a mockup for DFW Power Wash at Fort Worth TX. Owner: Brandon Reeves, licensed and insured, 3 years in business but 4.9 stars with 210 reviews. Driveways, house washing, deck restoration, roof soft wash, commercial. Same-day available. Free estimates. (817) 555-0834",
+      "expected_output": "A clean, bright pressure washing website with blue/white palette, bold sans typography, before/after comparison sliders as hero feature, service-specific transformation photos, 'Licensed & Insured' badge, 'Free Estimate' CTA, service area section.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Build a mockup for Obsidian Auto Detail at 3300 Hulen St, Fort Worth TX. Ceramic Pro certified installer. Paint correction, ceramic coating, PPF (XPEL), interior deep clean, mobile detailing. Owner: Alejandro Vega, 7 years experience, 4.8 stars, 165 reviews. 'Obsessive attention to every surface.' By appointment. (817) 555-0921.",
+      "expected_output": "A dark, premium auto detailing website with black/charcoal backgrounds, metallic accents, condensed uppercase type, dramatic car photography hero, service package pricing tiers, before/after slider, certification badges (Ceramic Pro, XPEL), Book Now CTA.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "I need a demo site for a prospect — it's a family law attorney, Rachel Dominguez, at 500 Throckmorton St Fort Worth. 15 years experience. Divorce, child custody, adoption, prenuptial agreements. 4.7 stars, 88 reviews. Compassionate and experienced. Consultations available. (817) 555-0567.",
+      "expected_output": "An attorney site visually distinct from eval #6 — warmer, more empathetic design appropriate for family law. Earth tones acceptable. Different hero pattern and typography from the personal injury attorney. Still authoritative but approachable.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Build a mockup for Kumo Sushi Bar at 1541 Merrimac Cir, Fort Worth TX 76107. Chef-owned by Kenji Tanaka, trained in Tokyo. Omakase, nigiri, sashimi, specialty rolls. 4.8 stars, 320 reviews. Minimalist, zen atmosphere. Tue-Sun 5pm-10pm. Reservations recommended. (817) 555-0213.",
+      "expected_output": "A minimal, refined sushi restaurant site distinct from the taqueria and BBQ builds. Black/white/red/gold palette, elegant serif or minimal sans typography, clean negative space, food photography as hero, menu with clean layout, reservation CTA. Japanese-influenced restraint in every design choice.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "hey can you whip up a quick mockup for my buddy's barber shop? Kingpin Cuts at 4200 E Lancaster Ave Fort Worth. Owner DeShawn Harris, been cutting for 15 years. Fades, lineups, beard trims, hot towel shaves. Walk-ins welcome, also does appointments. 4.7 stars. (817) 555-0388",
+      "expected_output": "A barbershop website (no exact niche file — adapt from closest patterns). Bold, masculine aesthetic. Dark or high-contrast palette. Condensed/bold type. Services with prices. Walk-in friendly messaging. Instagram-style gallery of cuts. Owner personality front and center.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "Build a prospect site for GreenScape Lawn & Landscape, 8900 White Settlement Rd, Fort Worth. Commercial and residential. Mowing, landscaping design, irrigation, tree trimming, seasonal cleanup. Owner: Tom Ramirez, 20 years. Licensed, insured, BBB accredited. 4.6 stars 150 reviews. (817) 555-0744.",
+      "expected_output": "A landscaping website (no exact niche file — adapt from pressure washing / home services patterns). Green/earth palette. Before/after transformations. Service area emphasis. BBB badge. Seasonal services highlighted. Clean, professional, nature-inspired design.",
+      "files": []
+    }
+  ]
+}
