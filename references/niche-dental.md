@@ -104,16 +104,21 @@ The core challenge: project **wellness-brand elegance** while maintaining **clin
 - Doctor in professional attire (white coat optional) looking warm and approachable
 - Avoid: extreme close-ups of dental instruments, stock photos of people pointing at their teeth, dark/moody clinical shots, obviously fake stock smiles
 
-### Photography Placeholders
+### Photography — Finding Real Images
 
-For demos and builds before the practice provides their own images:
-- **Hero:** `https://picsum.photos/seed/dental-smile-bright/1600/900`
-- **Doctor portrait:** `https://picsum.photos/seed/dentist-portrait/600/800`
-- **Office interior:** `https://picsum.photos/seed/modern-dental-office/800/600`
-- **Treatment room:** `https://picsum.photos/seed/dental-spa-room/800/600`
-- **Patient smiling:** `https://picsum.photos/seed/confident-smile/800/600`
-- **Technology:** `https://picsum.photos/seed/dental-technology/800/600`
-- Minimum 6 images per dental site
+Follow the Image Discovery Pipeline in SKILL.md. For dental practices specifically:
+
+1. **Scrape their current website first** — most dental sites have a smile gallery, team photos, and office tour images. These are gold.
+2. **Check their social media** — dental practices frequently post before/after smile transformations on Instagram and Facebook. Search for their business name on these platforms.
+3. **Google Business Profile** — often has interior photos, team photos, and patient-uploaded images.
+
+**For gaps (no usable real photos found), search for niche-relevant stock:**
+- Search: `"unsplash.com" dental office modern bright` for office interiors
+- Search: `"unsplash.com" dentist professional portrait` for doctor photos
+- Search: `"pexels.com" woman smiling teeth confidence` for patient-style photos
+- Search: `"unsplash.com" modern medical office interior clean` for treatment rooms
+
+Never use random picsum for dental sites — a random landscape photo on a dental site looks broken and unprofessional. Every image must either be from the actual practice or clearly depict something dental/medical/wellness related. Minimum 6 images per dental site.
 
 ---
 

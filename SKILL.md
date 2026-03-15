@@ -44,6 +44,32 @@ Gather real business data before writing any code. Sources in priority order:
 
 Collect and organize: name, address, phone, hours, services (with prices if available), 3+ reviews with attribution, differentiators, certifications, owner/team names, years in business.
 
+#### Business Personality Profile
+
+Every business has a personality, and the website should reflect it — not impose a generic "professional" look on everyone. During research, assess these four personality axes and write your assessment as a comment at the top of App.jsx alongside the DNA code. This profile drives design decisions throughout the build and is the primary mechanism that keeps 10 restaurant sites from looking the same.
+
+| Axis | Spectrum | What to look for |
+|------|----------|-----------------|
+| **Energy** | Calm ←→ Energetic | Quiet, boutique feel vs. loud, bustling, high-volume. A fine-dining restaurant is calm; a taqueria is energetic. |
+| **Formality** | Casual ←→ Formal | "Hey y'all" vs. "We welcome you." A barbershop is casual; a law firm is formal. Look at how they write on social media, their signage, their existing site copy. |
+| **Boldness** | Subtle ←→ Bold | Understated and refined vs. in-your-face and confident. A med spa is subtle; a pressure washing company is bold. |
+| **Era** | Traditional ←→ Modern | Old-school values vs. cutting-edge tech-forward. A family auto repair is traditional; a ceramic coating studio is modern. |
+
+**How personality maps to design:**
+
+| Personality trait | Design expression |
+|-------------------|-------------------|
+| Calm + Formal | Generous whitespace, serif type, muted palette, slow animations, editorial feel |
+| Calm + Casual | Warm colors, rounded shapes, handwritten accents, inviting imagery |
+| Energetic + Formal | Sharp contrasts, strong grid, dynamic motion, confident type, premium materials |
+| Energetic + Casual | Bright colors, bold type, playful motion, candid photos, punchy copy |
+| Subtle | Minimal motion, restrained palette (2-3 colors), elegant transitions |
+| Bold | High contrast, oversized headlines, dramatic hero, strong CTA colors, more motion |
+| Traditional | Warm earth tones, serif type, classic layouts, trust-focused |
+| Modern | Cool palette, clean sans-serif, asymmetric layouts, tech-forward imagery |
+
+Two taco shops: one is a family-owned spot that's been there 30 years (Calm + Casual + Traditional) — warm browns, hand-drawn accents, family photos, vintage feel. The other is a trendy street taco bar with craft cocktails (Energetic + Bold + Modern) — dark mode, neon accent, bold condensed type, moody food photography. Same niche, completely different sites.
+
 #### Brand Alignment
 
 Look for signals of existing branding in the brief or business info — logo colors, social media presence, existing website, signage photos, brand voice. If the business already has a strong identity (specific colors, a recognizable logo style, an established aesthetic), build the site around their existing brand rather than imposing a new one. Use their colors as the palette foundation. Match their tone (casual vs. formal, playful vs. serious). The mockup should feel like a premium upgrade of what they already have, not a replacement.
@@ -52,20 +78,89 @@ If the business has no strong brand presence, you have creative freedom — buil
 
 #### Image Strategy
 
-Mockups shown on iPads MUST have images. A site without images feels like a wireframe, not a $3K+ custom build. Even stock/placeholder images make the prospect envision their business on the site.
+Mockups shown on iPads MUST have images. A site without images feels like a wireframe, not a $3K+ custom build. The images must be relevant to the actual business and niche — a dental practice with stock photos of mountains or random landscapes looks worse than no images at all. Every image should make the prospect say "that looks like my business."
 
-Use this priority order:
+**Image Discovery Pipeline (follow in order — use the cheapest tool that works):**
 
-1. **User-provided images** — if the brief includes image URLs or paths, use them.
-2. **Unsplash via picsum** — use `https://picsum.photos/seed/{descriptive-keyword}/{width}/{height}` for reliable placeholder images. The `seed` parameter generates a consistent image for each keyword. Examples:
-   - Hero: `https://picsum.photos/seed/restaurant-food/1600/900`
-   - Agent headshot: `https://picsum.photos/seed/professional-woman/600/800`
-   - Property: `https://picsum.photos/seed/luxury-home-1/800/600`
-   - Neighborhood: `https://picsum.photos/seed/downtown-cityscape/800/500`
-   Use different seed keywords for each image so they don't repeat. Always include `loading="lazy"` on below-fold images.
-3. **Styled photo placeholders (last resort)** — if image services are unavailable, create beautiful placeholder cards with gradient backgrounds, an icon, and text like "Your Photo Here." Make these look intentional and designed — not like missing images. But always prefer real photos over placeholders for demos.
+**Step 1 — Find the business online (WebSearch, free).**
+Before touching any code, run WebSearch queries to locate the business's web presence:
+- `"{business name}" {city} {state}` — find their website, Yelp, Google Business Profile
+- `"{business name}" {city} site:facebook.com` — find their Facebook page
+- `"{business name}" {city} site:instagram.com` — find their Instagram
+- `"{business name}" {city} site:yelp.com` — Yelp often has customer-uploaded photos
 
-Every mockup should have images in: the hero section (or agent photo for personal brands), the services/listings section, and at least one other section (about, neighborhoods, gallery). A minimum of 4-6 images per site.
+Collect URLs for: their main website, Facebook page, Instagram profile, Yelp listing, and Google Business Profile. These are your image sources.
+
+**Step 2 — Verify it's the same business.**
+Before using any images from a found website or social profile, cross-reference at least 2 of these identifiers against what the user provided:
+- Business name (exact or close match)
+- City/address
+- Phone number
+- Owner name
+- Services offered
+
+If you can't confirm at least 2 identifiers match, don't use those images — it might be a different business with a similar name.
+
+**Step 3 — Scrape images with WebFetch (free, no page limits).**
+Use WebFetch to grab the business's existing website pages. Check these pages in order (most likely to have good images):
+- Homepage
+- About / Our Team page
+- Gallery / Portfolio / Our Work page
+- Services page
+- Google Business Profile photos (often accessible via the GBP URL)
+- Yelp business photos page
+- Facebook page (cover photo and recent posts with images)
+
+For each image found, assess:
+- Is it a proper rectangular photo or a circular/cropped headshot?
+- What aspect ratio is it? (landscape, portrait, square)
+- Is it high enough quality for the target placement? (at least 600px wide)
+- Does it have baked-in text overlays that limit reuse?
+- What does it depict? (team photo, storefront, work sample, food, interior, etc.)
+- Where could it be used in the mockup? (hero, about section, gallery, service card)
+
+**Step 4 — Use Firecrawl ONLY when WebFetch can't parse the site.**
+Some websites are JavaScript-heavy SPAs that return empty content to WebFetch. If WebFetch returns no images or broken HTML from a site that clearly has photos (you can tell from the search results), THEN use Firecrawl to crawl that specific page. Limit Firecrawl to 1-3 pages per build maximum — every page costs against the free tier.
+
+**Step 5 — Use real business photos that fit the placement.**
+Only use images from the source site that match the target dimensions. NEVER use a circular-cropped headshot in a rectangular image slot — it will look broken. NEVER stretch or force an image into an aspect ratio it wasn't designed for. A landscape blog photo belongs in a landscape slot, a portrait headshot belongs in a portrait slot.
+
+**Step 6 — Use brief-provided image URLs** — if the brief includes image URLs, verify each one before using it. Check if it's circular, has text overlays, or is too low-resolution. Don't blindly trust URLs from the brief.
+
+**Step 7 — Search for niche-relevant stock photos (for gaps only).**
+If you still have image gaps after Steps 1-6, search for actual niche-relevant stock photos — NOT random picsum. Use WebSearch to find real, relevant images:
+
+| Niche | Search queries to find stock images |
+|-------|-------------------------------------|
+| Dental | `"unsplash.com" dental office modern`, `"pexels.com" dentist smile patient` |
+| Restaurant | `"unsplash.com" restaurant interior food plating`, `"pexels.com" chef cooking kitchen` |
+| Auto Repair | `"unsplash.com" auto mechanic garage`, `"pexels.com" car repair shop` |
+| Med Spa | `"unsplash.com" spa treatment room`, `"pexels.com" aesthetic clinic facial` |
+| Attorney | `"unsplash.com" law office conference room`, `"pexels.com" lawyer professional` |
+| Barber | `"unsplash.com" barbershop haircut`, `"pexels.com" barber chair shop` |
+| Detailing | `"unsplash.com" car detailing ceramic coating`, `"pexels.com" car wash detail` |
+| Pressure Washing | `"unsplash.com" pressure washing house`, `"pexels.com" power washing driveway` |
+| Realtor | `"unsplash.com" luxury home interior`, `"pexels.com" real estate house exterior` |
+| Home Builder | `"unsplash.com" custom home construction`, `"pexels.com" new house build` |
+| Wedding Venue | `"unsplash.com" wedding venue reception`, `"pexels.com" wedding ballroom elegant` |
+| Home Services | `"unsplash.com" hvac technician`, `"pexels.com" plumber electrician working` |
+
+Grab the actual image URLs from Unsplash or Pexels results. These are free to use and will show images that actually match the niche. Use different images for each placement — don't reuse the same photo.
+
+**Step 8 — Styled photo placeholders (absolute last resort).**
+If image services are completely unavailable, create beautiful placeholder cards with gradient backgrounds matching the site's palette, a Lucide icon relevant to the niche, and text like "Your Photo Here." These should look intentional and designed, not broken.
+
+**Image quality rules:**
+- NEVER use a circular-cropped image in a rectangular container. The transparent corners will show and it looks broken.
+- NEVER use a landscape image forced into a portrait slot or vice versa.
+- NEVER use a generic stock photo that doesn't match the niche. A photo of trees on a dental site is worse than a styled placeholder.
+- Prefer fewer high-quality real images over many irrelevant placeholders. Three real photos of the actual business > six stock photos of unrelated content.
+- Blog feature images often have text baked in — only use them if the text is small/unobtrusive or can be covered by a gradient overlay.
+- Gallery photos, team photos, and professional headshots from a business's website are almost always usable.
+- When in doubt, search for niche-relevant stock over using a bad real image. A clean, niche-appropriate stock photo is better than a grainy, circular, or wrong-dimension photo.
+
+**Image placement requirements:**
+Every mockup should have images in: the hero section (or agent photo for personal brands), the services/listings section, and at least one other section (about, neighborhoods, gallery). A minimum of 4-6 images per site, and every single image must be visually relevant to the business's niche.
 
 ### Stage 2 — Design Vision & Selection
 
@@ -110,9 +205,13 @@ Read `references/style-dna-system.md`. Choose one option per dimension (8 total)
 
 #### 2d. Resolve design tokens
 
-From the DNA code, determine:
-- Color palette (6 CSS variables: bg-primary, bg-secondary, accent-1, accent-2, text-primary, text-secondary)
-- Font pairing (display + body from Google Fonts)
+Read `references/color-palettes.md` and select a curated palette that matches the Business Personality Profile. Using a tested palette instead of picking individual hex values is the single biggest quality lever — it guarantees color harmony, readable contrast ratios, and cohesive atmosphere. If the business has strong existing brand colors, use their colors as accent-1 and build the rest of the palette around them using the closest curated palette as a starting point.
+
+Read `references/font-pairings.md` and select a curated font pairing that matches the Business Personality Profile mood. If the previous build in the same niche used the same font pairing, pick a different one from the same mood category. The display font is the personality — it must feel right for the business at 80pt on an iPad.
+
+From the DNA code + selected palette + selected font pairing, determine:
+- Color palette (6 CSS variables: bg-primary, bg-secondary, accent-1, accent-2, text-primary, text-secondary) — use exact hex values from `references/color-palettes.md`
+- Font pairing (display + body) — use exact values from `references/font-pairings.md`, including the Google Fonts `<link>` tag
 - Border-radius approach (sharp / subtle / rounded / pill)
 - The specific hero pattern, section layout, animation level, and nav style
 
@@ -143,6 +242,26 @@ Every site must feel structurally different from other OakWind builds. The bigge
 
 The combination of showcase + narrative + hero + CTA style creates the structural fingerprint of the site. Each build should have a unique fingerprint.
 
+#### 2e-bis. Same-niche differentiation system
+
+OakWind serves local businesses — which means you might build 10 restaurant sites, 8 dental sites, or 5 barber sites. If all the restaurant sites look the same with different logos, clients will notice (and competitors will too). This section is specifically about making same-niche builds feel genuinely different.
+
+**The personality profile (from Stage 1) is the primary driver of differentiation.** Two dental practices in the same city: one is a family practice run by a husband-and-wife team who post goofy TikToks (Energetic + Casual + Modern) and the other is a cosmetic specialist with 30 years of experience who does high-end veneer work (Calm + Formal + Subtle). These businesses should produce fundamentally different sites — different color families, different typography, different hero patterns, different motion levels, different section structures.
+
+**Same-niche rotation checklist (verify before building):**
+
+| Element | Rule |
+|---------|------|
+| Color family | If the last restaurant was warm/earth tones, this one gets cool/dark or bright/vibrant. Never two same-niche builds in a row with the same color family. |
+| Hero type | Rotate through: full-screen image, split-screen, text-centric, gradient animated, left-aligned storytelling. No repeats within 3 same-niche builds. |
+| Typography mood | Rotate between: elegant serif, bold condensed, warm rounded, modern geometric, editorial mixed. |
+| Section order | Rearrange section order based on what matters most for THIS specific business. A BBQ joint leads with food photos; a fine dining restaurant leads with atmosphere and chef credentials. |
+| Showcase pattern | If the last same-niche build used horizontal scroll, this one uses bento grid or zigzag. |
+| Signature detail | The one memorable visual detail (from 2f) must be completely different per build. No two same-niche sites get the same signature element. |
+| Library choices | Rotate which special libraries to feature. If the last restaurant used Swiper heavily, this one leans on GSAP or rough-notation or auto-animate instead. |
+
+**The "studio consistency" question:** All OakWind sites should share certain quality markers that signal they came from a good studio: generous whitespace, strong typography hierarchy, smooth scroll behavior, professional-grade motion, mobile-first responsive design, and conversion-focused CTAs. These are the studio's signature. What changes between builds is the *personality* — the colors, the structure, the mood, the motion style, the section patterns. Think of it like an architecture firm that builds both modern minimalist homes and rustic farmhouses — the craftsmanship is consistent, the aesthetic is not.
+
 #### 2f. Commit to a signature vision
 
 Before writing any code, answer these three questions:
@@ -159,6 +278,33 @@ Write your answers as a brief comment at the top of App.jsx alongside the DNA co
 
 Read `references/anti-convergence.md`. Verify the selections don't fall into AI-default patterns. If they do, rotate dimensions until at least 2 differ from the AI Default DNA.
 
+#### 2h. Write the copy before touching code
+
+Read `references/copy-craft.md`. Write all copy — hero headline, hero subtitle, section labels, service descriptions, CTA button text, and about section narrative — BEFORE opening App.jsx. Copy written during coding tends to be generic filler. Copy written as a deliberate creative step sounds like a human wrote it for this specific business.
+
+**Pre-build copy checklist (write all of these first):**
+- Hero headline (7 words max, uses a formula from copy-craft.md)
+- Hero subtitle (one sentence, includes a specific proof point)
+- 6 section labels (not "Our Services" — something with personality)
+- Service descriptions (2 sentences each: what you GET + what's DIFFERENT)
+- CTA button text (action-specific, not "Contact Us")
+- About section narrative (origin + philosophy + proof, 3 paragraphs)
+- 3-5 review quotes (selected for specificity and voice, not generic praise)
+
+Write these as constants at the top of App.jsx alongside the business data. The copy quality is what makes a business owner look at the iPad and say "that's exactly what I'd want it to say."
+
+#### 2i. Plan iPad demo "wow moments"
+
+The site will be shown on an iPad in a face-to-face sales meeting. Engineer 3 specific moments where the prospect will visibly react during the scroll:
+
+1. **The hero reveal** (0-3 seconds) — the first viewport must make them say "whoa." Orchestrated entrance animation, oversized typography, trust indicators visible without scrolling. This is the money shot.
+
+2. **The scroll surprise** (30-50% scroll) — one section that does something unexpected: a horizontal scroll showcase, a sticky scroll narrative, a before/after slider, or a parallax depth effect. Something they haven't seen on competitor websites.
+
+3. **The personal touch** (60-80% scroll) — their reviews displayed beautifully with real names and specific services, their address with a "Get Directions" link, their phone number as a prominent CTA. This is where they see their identity reflected in the design and start to emotionally commit.
+
+Write these three moments as a comment in App.jsx alongside the DNA code and signature vision. Then build toward them intentionally.
+
 ### Stage 3 — Build
 
 #### 3a. Scaffold the project
@@ -171,23 +317,79 @@ bash <skill-path>/scripts/scaffold.sh <project-slug>
 
 This creates the project with Tailwind v4 configured, CSS custom properties ready for your design tokens, and `motion` + `lucide-react` pre-installed.
 
-#### 3b. Install Google Fonts
+#### 3b. Polish the HTML head
 
-Add the font `<link>` tag to `index.html` inside `<head>`. Use the Google Fonts API with display=swap:
+The `index.html` `<head>` is what shows in the browser tab and social previews. Make it professional:
+
+```html
+<title>{Business Name} | {City, ST}</title>
+<meta name="description" content="{One-line pitch — what they do + where}">
+<meta property="og:title" content="{Business Name}">
+<meta property="og:description" content="{Same pitch line}">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{EMOJI}</text></svg>">
+```
+
+Pick an emoji favicon that matches the niche: `🦷` dental, `🌮` taco, `🚗` detailing, `💈` barber, `⚖️` attorney, `🏡` realtor, `🏠` home builder, `💉` med spa, `🌿` landscaping, `🔧` auto repair, `💒` wedding venue. It's one line but the browser tab looks instantly professional instead of showing the Vite default.
+
+Add the Google Fonts `<link>` tag using the exact URL from `references/font-pairings.md`:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DISPLAY_FONT:wght@400;700&family=BODY_FONT:wght@400;600&display=swap" rel="stylesheet">
+<link href="{GOOGLE_FONTS_URL_FROM_FONT_PAIRINGS_MD}" rel="stylesheet">
 ```
 
-Replace `DISPLAY_FONT` and `BODY_FONT` with the selected fonts from Stage 2d. This step is critical — without it, fonts fall back to system defaults and the site loses its visual identity.
+#### 3b-bis. Add a page entrance curtain
 
-#### 3c. Apply design tokens and build atmosphere
+When the prospect opens the URL on the iPad, the site should reveal itself elegantly — not pop in all at once. Add a simple CSS-only page entrance that fades out after 0.6s:
+
+```css
+/* Page entrance curtain */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-primary);
+  z-index: 9999;
+  pointer-events: none;
+  animation: curtainLift 0.6s ease-out 0.2s forwards;
+}
+@keyframes curtainLift {
+  to { opacity: 0; visibility: hidden; }
+}
+```
+
+```jsx
+{/* First element inside App */}
+<div className="page-curtain" />
+```
+
+This creates a smooth "curtain lift" — the page loads behind a solid color, then the curtain fades away to reveal the content. Combined with the hero's orchestrated stagger animation, this creates a theatrical first impression. The 0.2s delay ensures fonts and images have a moment to load before the reveal.
+
+#### 3c. Apply design tokens, build atmosphere, and set spacing rhythm
 
 Update the CSS custom properties in `src/index.css` with the resolved values from Stage 2d. But don't stop at tokens — **read `references/atmosphere-recipes.md`** and add at minimum 4 CSS atmosphere recipes to index.css. These recipes (noise textures, shimmer effects, gradient meshes, pattern overlays, custom scrollbar, stagger animations) are what transform a flat token-driven page into something that feels hand-crafted. Pick recipes that match your signature vision from Step 2e.
 
-The index.css file should contain: design tokens, Tailwind theme extensions, atmosphere recipe CSS classes, keyframe animations, and the custom scrollbar. A good index.css for an OakWind build is 80-160 lines — not 20.
+**Read `references/image-presentation.md`** for premium image treatment techniques — gradient overlays, floating frames, reveal-on-scroll, blur-up loading, and before/after comparisons. Every image container should use at least one technique from this file. Raw `<img>` tags in bare `<div>`s look template-generated.
+
+**Spacing rhythm system (non-negotiable):** Premium sites have intentional, escalating section padding — not uniform `py-16` on every section. Use this escalating scale:
+
+```css
+/* Section spacing scale — escalates for breathing room */
+.section-tight   { padding-top: 4rem; padding-bottom: 4rem; }     /* 64px — trust strips, CTA bars */
+.section-default  { padding-top: 5rem; padding-bottom: 5rem; }     /* 80px — services, reviews */
+.section-generous { padding-top: 7rem; padding-bottom: 7rem; }     /* 112px — about, featured sections */
+.section-hero     { padding-top: 8rem; padding-bottom: 8rem; }     /* 128px — hero, final CTA */
+@media (min-width: 768px) {
+  .section-default  { padding-top: 6rem; padding-bottom: 6rem; }
+  .section-generous { padding-top: 9rem; padding-bottom: 9rem; }
+  .section-hero     { padding-top: 0; padding-bottom: 0; min-height: 100vh; }
+}
+```
+
+Vary the padding per section. The alternating rhythm of tight → generous → default → generous creates visual breathing that feels designed, not generated. Never use the same padding on 3 consecutive sections.
+
+The index.css file should contain: design tokens, Tailwind theme extensions, spacing scale, atmosphere recipe CSS classes, keyframe animations, image presentation utilities, and the custom scrollbar. A good index.css for an OakWind build is 100-200 lines — not 20.
 
 #### Styling approach: Tailwind utilities + CSS variables
 
@@ -204,7 +406,7 @@ Read `references/component-patterns.md` for section patterns that match the sele
 | Header | Logo text, nav links, phone CTA (sticky, 56-64px, solid bg) |
 | Hero | Selected hero pattern, headline, subtext, CTA, trust strip |
 | Services | 4-8 services with icons or images |
-| About | Business story, team/owner photo placeholder, years in business |
+| About | Business story, owner/doctor PORTRAIT photo (use the actual person photo, not a building), years in business |
 | Reviews | 3-5 testimonials with names and star ratings |
 | Hours & Location | Address, map link, hours table |
 | Contact | Phone, email, form placeholder or booking link |
@@ -300,7 +502,15 @@ Then manually verify these items the script can't check:
 **Data accuracy:**
 - [ ] Business name, address, and phone are correct and match the brief
 - [ ] Phone number appears as `tel:` link in 6+ locations (header, hero, mid-page CTA, contact, footer, floating mobile bar)
-- [ ] Google Fonts are loading (check the `<link>` tag in index.html)
+- [ ] Google Fonts are loading (check the `<link>` tag in index.html — should match exact URL from `references/font-pairings.md`)
+- [ ] Font pairing is different from the last build in the same niche
+- [ ] About section uses the owner/doctor PORTRAIT image, not a building or office photo
+
+**Head polish:**
+- [ ] `<title>` shows business name + city (not "Vite + React")
+- [ ] `<meta name="description">` has a one-line pitch
+- [ ] Emoji favicon via SVG data URI (niche-appropriate emoji)
+- [ ] Page entrance curtain (`<div className="page-curtain" />`) is first element in App
 
 **Hero quality (most important visual check):**
 - [ ] Hero has 3+ background layers (base color + ambient glows + texture)
@@ -321,6 +531,22 @@ Then manually verify these items the script can't check:
 - [ ] Style DNA code and signature vision documented in a comment at the top of App.jsx
 - [ ] Site looks like it cost $3K+ and could NOT be made in 5 minutes on Wix
 - [ ] CSS includes 4+ atmosphere recipes (noise, shimmer, scrollbar, etc.)
+- [ ] Color palette uses exact hex values from `references/color-palettes.md` (not ad-hoc picks)
+- [ ] Section padding varies (not all `py-16`) — uses escalating rhythm from spacing scale
+- [ ] Images use presentation techniques (gradient overlays, frames, blur-up) not raw `<img>` tags
+
+**Copy quality (scan for AI tells):**
+- [ ] Hero headline is 7 words or fewer and doesn't start with "Welcome to"
+- [ ] No zombie phrases: "committed to excellence", "state-of-the-art", "your satisfaction"
+- [ ] Section labels have personality (not "Our Services", "About Us", "Testimonials")
+- [ ] CTA buttons are specific ("Call Dr. Maria", not "Contact Us")
+- [ ] About section tells the owner's story with origin + philosophy + proof
+- [ ] Reviews include first name + last initial + specific service mentioned
+
+**iPad demo moments (verify 3 wow points exist):**
+- [ ] Hero reveal: orchestrated entrance animation that makes the prospect say "whoa"
+- [ ] Scroll surprise: one section does something unexpected (horizontal scroll, parallax, before/after)
+- [ ] Personal touch: their reviews, their address, their phone number — beautifully presented
 
 Deploy command: `npx wrangler pages deploy dist --project-name={slug}`
 
@@ -363,6 +589,7 @@ Over 50% of all website traffic is mobile. Every site must be built mobile-first
 - Text sizes: minimum 16px body, 36px+ headlines on mobile
 - No horizontal overflow — add `overflow-x: hidden` on body
 - Sticky scroll sections should unstick on mobile (use `md:sticky` not `sticky`)
+- Gallery grids with `col-span-2 row-span-2` featured items: use `md:col-span-2 md:row-span-2` so they don't blow up on mobile. On a 2-column mobile grid, `col-span-2` takes the full width AND double height — making the image insanely large. Always scope span utilities to `md:` breakpoint or higher.
 
 **Mobile-specific patterns:**
 - Hamburger menu with full-screen overlay (not a dropdown)
@@ -399,8 +626,12 @@ Read these when the build needs deeper direction. They cost zero tokens until op
 | File | When to read |
 |------|-------------|
 | `references/style-dna-system.md` | **Every build** — select the 8-dimension DNA code |
+| `references/color-palettes.md` | **Every build** — select a curated, tested color palette by mood |
+| `references/font-pairings.md` | **Every build** — select a curated font pairing by mood, enforce rotation |
+| `references/copy-craft.md` | **Every build** — write headlines, CTAs, and microcopy that sound human |
 | `references/anti-convergence.md` | **Every build** — verify selections aren't AI-default |
 | `references/atmosphere-recipes.md` | **Every build** — pick 4+ CSS recipes for texture, motion, and atmosphere |
+| `references/image-presentation.md` | **Every build** — gradient overlays, floating frames, blur-up loading, before/after |
 | `references/component-patterns.md` | When selecting section components and animations |
 | `references/premium-patterns.md` | **Tier 3-4 builds** — sticky scroll, horizontal showcase, bento grids, parallax, Lenis |
 | `references/micro-details.md` | **Tier 3-4 builds** — text reveals, magnetic buttons, cursor dot, parallax cards, image-on-hover |
