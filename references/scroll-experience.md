@@ -703,6 +703,43 @@ Scroll-driven animations that depend on precise scroll position can feel janky o
 
 ---
 
+## Easing & Timing (The Taste Differentiator)
+
+Two sites can use the exact same animation type and feel completely different based on easing and duration. Easing is where taste lives — it's the difference between "smooth" and "cheap."
+
+**Easing by business personality:**
+
+| Personality | Easing curve | Duration | Stagger gap | Feeling |
+|---|---|---|---|---|
+| Premium/luxury (med spa, wedding venue, cosmetic dental) | `cubic-bezier(0.16, 1, 0.3, 1)` | 0.5s-0.8s | 0.12s-0.15s | Graceful arrival, unhurried elegance |
+| Bold/energetic (taqueria, barber, pressure washing) | Spring: `stiffness: 300, damping: 25` | 0.3s-0.5s | 0.05s-0.08s | Confident snap, alive |
+| Calm/formal (attorney, law firm, financial) | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | 0.6s-1.0s | 0.10s-0.12s | Measured, authoritative |
+| Warm/casual (family restaurant, home services) | Spring: `stiffness: 200, damping: 20` | 0.4s-0.6s | 0.08s-0.10s | Friendly, approachable |
+
+**Hard rules:**
+- Never use `linear` easing on scroll reveals — it feels robotic and is the #1 tell of generated animation
+- Never use the same duration on every animation — vary by 0.1s-0.2s between sections to avoid mechanical rhythm
+- Stagger gap IS personality: tight gaps (0.05s) feel energetic, wide gaps (0.15s) feel curated and deliberate
+
+**Motion `transition` examples:**
+```jsx
+// Premium/luxury
+transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+
+// Bold/energetic
+transition={{ type: "spring", stiffness: 300, damping: 25 }}
+
+// Calm/formal
+transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+
+// Stagger children (luxury pace)
+transition={{ staggerChildren: 0.12, delayChildren: 0.1 }}
+```
+
+Match the easing to the Business Personality Profile from Stage 1. A bold barber with luxury easing feels sluggish. A luxury med spa with snappy springs feels cheap. The animation timing should feel like the business *moves* — fast businesses move fast, premium businesses move deliberately.
+
+---
+
 ## Performance Notes
 
 - Prefer `transform` and `opacity` animations (GPU-composited) over `width`, `height`, `margin` (layout-triggering)

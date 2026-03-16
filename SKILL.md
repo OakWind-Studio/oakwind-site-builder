@@ -390,6 +390,23 @@ Read `references/scroll-experience.md`. Before writing any component code, plan 
 
 Notice the rhythm: HERO → whisper → standard → whisper → standard → whisper → standard → HERO → standard → whisper. The page breathes.
 
+#### 2k. Restraint check
+
+Before writing any code, audit the plan you just made. The best sites feel inevitable — every element earns its place. An effect that doesn't serve the business's personality is noise, and noise makes sites look AI-generated faster than anything else.
+
+**Tier-based motion budget:**
+
+| Tier | Max scroll-driven animations | Max atmosphere recipes | Max wow moments |
+|------|-----|-----|-----|
+| Tier 1 (blue-collar) | 2 | 3 | 2 |
+| Tier 2 (professional) | 3 | 4 | 3 |
+| Tier 3 (brand-driven) | 4 | 5 | 4 |
+| Tier 4 (luxury) | 5+ | 6+ | 4 |
+
+A plumber site with 6 effects looks like AI showing off. A plumber site with 2 well-chosen effects looks like a designer who understood the business. More is not better — *right* is better.
+
+**The subtraction test:** Look at your animation map and atmosphere recipe selections. Pick the weakest one — the effect that serves the brand least. Remove it. Does the plan feel tighter? If yes, look for the next weakest. Stop when removing anything would leave a gap. This is how you find the right amount.
+
 ### Stage 3 — Build
 
 #### 3a. Scaffold the project
@@ -640,6 +657,7 @@ Then manually verify these items the script can't check:
 - [ ] Bottom half of the page (sections 5+) contains at least 1 scroll-driven wow moment — not just fade-ups
 - [ ] Visual weight alternates: no two hero-weight sections back-to-back, at least 2 whisper-weight sections exist (breathing room)
 - [ ] After every dense section (card grid, service list), the next section is spacious (image break, big quote, single stat)
+- [ ] Restraint test: motion budget from Step 2k is respected — Tier 1-2 sites don't exceed their caps. Name one effect you could remove that would make the site better. If you find one, remove it.
 
 **Copy specificity (verify it doesn't sound AI-generated):**
 - [ ] Copy includes at least 3 hyper-specific details that could ONLY apply to this business (not swappable with a competitor)
