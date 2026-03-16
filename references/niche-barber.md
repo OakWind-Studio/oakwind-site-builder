@@ -136,3 +136,21 @@ Barbershops are personal brands. The website should feel like walking into the s
 - Hiding prices — barbershop customers expect transparent, simple pricing
 - Over-designed — barbershops are approachable. Don't make the site feel like a luxury fashion brand unless that's the actual vibe
 - No personality — the barber IS the brand. Feature them prominently
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 barbershop sites and they should all look different. Pick the variant that matches the barber's personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Dark Vintage / Barber-Stripe** | **Variant B: Modern Minimalist / Clean** | **Variant C: Bold Street / Urban Edge** |
+|---|---|---|---|
+| Hero | Dark hero with warm gold accents, vintage barber pole stripe animation on side border, classic typography with "Est. XXXX" badge, old-school elegance | Clean split-screen — barber portrait or shop interior on one side, bold name + services + "Book Now" on white background, modern and sharp | Dark hero with high-contrast bold condensed type, neon or electric accent color, street-art energy, Instagram grid preview strip |
+| Palette | Palette A (Dark & Gold — near black + barbershop gold + silver) or Obsidian from color-palettes.md | Monochrome + Red from color-palettes.md adapted (white base + single red or accent pop + black text) or custom light palette | Palette C (Forest & Leather — deep forest + dark green + leather gold) or Noir Rouge adapted |
+| Texture | Warm noise grain on dark sections, gold pinstripe dividers, vintage leather texture accents on cards | None — ultra-clean with strong shadows and bold typography as the only visual interest | Graffiti-inspired geometric accent shapes, bold diagonal line dividers, gritty grain overlay on hero |
+| Cards | Dark rounded cards with gold border, vintage-style service listing with decorative price dots, warm amber shadows | Flat white cards with bold black type, clean price alignment, single accent-color highlight on featured service | Dark cards with bold neon accent stripe, condensed uppercase service names, high-energy layout |
+| CTA style | Gold button on dark background with warm glow, classic copy ("Book Your Chair") | Minimal black button with red or accent hover state, clean copy ("Walk In or Book") | Bold full-width accent-colored banner CTA, aggressive copy ("Get Faded") |
+| Special | Animated barber pole stripe accent, vintage "Since XXXX" heritage badge, classic shop interior photo break section | Instagram-style cut gallery with clean grid, interactive service + price list with smooth transitions | Social media feed integration strip, bold owner personality section with street-style portrait, cut gallery as horizontal filmstrip |
+| Font mood | Classic barbershop slab (Bebas Neue or Arvo + Lato) | Modern clean bold (Montserrat or Outfit + Source Sans 3) | Street-bold condensed (Oswald or Barlow Condensed + DM Sans) |
+
+**How to pick:** Match variant to barber personality. A traditional barbershop with vintage chairs, classic décor, and old-school craft pride → Variant A. A modern grooming studio or upscale men's salon with clean, professional branding → Variant B. A hip, urban shop with street culture, bold personality, and strong social media presence → Variant C. Document which variant in App.jsx header comment.

@@ -277,3 +277,21 @@ Full-width sections that tell the patient's story: before photo, the patient's c
 - If the site includes a patient portal link, it must be clearly marked and link to a HIPAA-compliant platform (not a custom-built form).
 - "Results may vary" disclaimer is required near any before/after imagery showing treatment outcomes.
 - Avoid making treatment guarantees or absolute claims ("guaranteed results," "painless procedures," "best dentist in [city]"). Use factual, qualified language.
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 dental sites and they should all look different. Pick the variant that matches the practice personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Elegant Editorial / Luxury Cosmetic** | **Variant B: Friendly Modern / Family Practice** | **Variant C: Clinical Precision / Tech-Forward** |
+|---|---|---|---|
+| Hero | Aspirational split-screen — close-up confident smile on one side, doctor name + credentials + "Book Your Smile Assessment" on the other, editorial magazine feel | Warm full-width hero with bright office interior or family photo, rounded shapes, welcoming tagline front and center | Clean geometric hero with animated trust numbers counting up, tech icons subtly floating, precision-focused headline |
+| Palette | Palette C (Premium Clean — white + refined navy + muted gold) or Pearl from color-palettes.md | Palette B (Warm Welcoming — warm cream + terracotta/coral + sage green) or Toasted Almond | Palette A (Bright Modern — crisp white + confident teal + warm gold) or Arctic Blue |
+| Texture | Soft gradient washes between sections (cream to white), editorial whitespace, subtle parallax on smile gallery images | Warm linen noise texture on alternating sections, rounded section dividers, soft shadow depth | None — ultra-clean with strong grid lines, thin geometric borders between sections, precision spacing |
+| Cards | Elegant cards with serif treatment names, thin gold border, generous padding, editorial photo above | Rounded-corner cards with warm background tints, friendly icons, accessible descriptions with "Learn More" links | Sharp-cornered cards with tech-forward layout, treatment name in condensed type, subtle animated icon on hover |
+| CTA style | Gold-accented pill button with serif text ("Begin Your Transformation") | Warm coral or sage rounded button with friendly copy ("Schedule Your Family's Visit") | Teal solid button with micro-animation on hover, direct copy ("Book Online Now") |
+| Special | Before/after smile gallery in editorial lightbox format, doctor credentials displayed as elegant typographic feature | Comfort-focused "What to Expect" section with illustrated step-by-step, insurance partners logo strip with warm styling | Interactive technology showcase (iTero, CEREC, laser) with animated feature cards, digital smile preview CTA |
+| Font mood | Refined editorial serif (Playfair Display or Cormorant Garamond + DM Sans) | Warm approachable serif (Lora or Crimson Pro + Nunito) | Modern confident sans with serif accent (DM Serif Display + Source Sans 3) |
+
+**How to pick:** Match variant to practice personality. A cosmetic-focused practice with high-end veneer/implant work → Variant A. A family or general practice emphasizing comfort and community → Variant B. A tech-forward practice marketing digital scanning, same-day crowns, or laser dentistry → Variant C. Document which variant in App.jsx header comment.

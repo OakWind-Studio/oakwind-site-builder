@@ -341,3 +341,21 @@ A dedicated full-width section (use a contrasting background color) with: headli
 - FDA-cleared vs. FDA-approved — use correct terminology for devices
 - Scope of practice varies by state — do not imply services beyond the provider's license
 - Testimonials should be real or clearly marked as examples in mockups
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 med spa sites and they should all look different. Pick the variant that matches the practice personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Blush Luxury / Soft Editorial** | **Variant B: Dark Sophisticated / Clinical Luxury** | **Variant C: Bright Modern / Wellness-Forward** |
+|---|---|---|---|
+| Hero | Full-screen aspirational beauty image with soft blush overlay, practice name in elegant serif, "Book Your Consultation" in rose gold accent | Dark warm charcoal hero with champagne gold typography, dramatic provider portrait on split-screen, editorial magazine layout | Bright airy hero with generous whitespace, sage and cream tones, lifestyle wellness imagery, modern asymmetric text placement |
+| Palette | Palette A (Blush & Gold — warm white + blush cream + rose gold + sage) or Blush Cream from color-palettes.md | Palette D (Luxury Dark — warm charcoal + champagne gold + muted gold) or Midnight Velvet | Palette B (Sage & Cream — soft cream + sage tint + deep sage + gold) or Sage Linen |
+| Texture | Soft blush gradient washes between sections, subtle warm grain on hero, rose-gold thin divider lines | Dark textured sections with subtle noise grain, champagne metallic accents on borders and dividers, dramatic contrast between dark and light sections | None — ultra-clean with organic rounded shapes as section dividers, soft sage tinted alternating sections |
+| Cards | Elegant cream cards with thin rose-gold border, serif treatment names, generous whitespace, soft shadow | Dark glass cards with champagne border accent, treatment names in gold, dramatic before/after pairs on dark backgrounds | Rounded sage-tinted cards with clean sans typography, treatment icons in sage, airy spacing |
+| CTA style | Rose gold pill button with elegant serif text ("Begin Your Transformation") | Champagne gold button on dark background with subtle glow, authoritative copy ("Request a Private Consultation") | Sage green rounded button with friendly modern copy ("Book Your Visit"), clean and inviting |
+| Special | Horizontal scroll treatment showcase with editorial photography, provider bio as magazine-style feature spread | Full-screen before/after gallery with dark lightbox, luxury brand partner logos on dark strip, animated credential badges | Wellness journey sticky-scroll narrative, treatment category cards with hover-reveal descriptions, membership/package pricing display |
+| Font mood | Soft luxury serif (Cormorant Garamond or Playfair Display + DM Sans) | Bold editorial serif on dark (Bodoni Moda or Noto Serif Display + Outfit) | Modern clean serif (DM Serif Display or Lora + Nunito Sans) |
+
+**How to pick:** Match variant to practice personality. A blush-and-beauty focused injectable/filler practice with feminine branding → Variant A. An ultra-luxury anti-aging center or provider targeting affluent 40-65+ clients → Variant B. A wellness-forward practice emphasizing IV therapy, holistic treatments, or natural aesthetics → Variant C. Document which variant in App.jsx header comment.

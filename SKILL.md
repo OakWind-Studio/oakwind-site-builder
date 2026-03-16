@@ -31,7 +31,20 @@ Use `.jsx` file extensions. TypeScript (`.tsx`) has compatibility issues with Ta
 
 ## The Pipeline
 
-Every build follows four stages sequentially. Do not skip stages.
+Every build follows six stages sequentially. Do not skip stages.
+
+### Stage 0 — Recall (Learning Loop)
+
+Before starting any build, check for past learnings that could prevent repeated mistakes or surface proven patterns.
+
+**Search claude-mem** (if available) for past OakWind build experiences. Run these searches and read only the **top 3-5 most relevant results** from each — don't load everything:
+1. `oakwind bug` — find bugs encountered in previous builds
+2. `oakwind [niche]` — find niche-specific learnings (e.g., "oakwind dental" if building a dental site)
+3. `oakwind pattern` — find design patterns that worked well or poorly
+
+Spend no more than 30 seconds on this step. If results come back, scan them quickly and note any that apply to this build. If nothing comes back, move on. This step should add ~200 tokens to context, not thousands.
+
+**If claude-mem is not available,** skip this step. The skill still works without it — the learning loop is an enhancement, not a requirement.
 
 ### Stage 1 — Research
 
@@ -192,7 +205,7 @@ Read the context to classify the build:
 
 | Tier | Signal | Art direction |
 |------|--------|--------------|
-| **Tier 1** ($125-175/mo, blue-collar) | Small budget, simple business, "just need something up" | Direct layout, CSS or light Motion, one premium technique max, one accent color, minimal deps |
+| **Tier 1** ($125-175/mo, blue-collar) | Small budget, simple business, "just need something up" | Read `references/blue-collar-elevation.md`. Direct layout, CSS or light Motion, niche-specific hero (shop-at-night, transformation split, comfort gradient), industrial textures, animated process timeline, pulsing emergency CTA for emergency niches. Even Tier 1 sites should look like "a real company" — not a template |
 | **Tier 2** ($1.5K-2.5K upfront, professionals) | Medium budget, established business, wants to look professional | Editorial spacing, Motion for hierarchy, 1-2 premium techniques, more typographic personality |
 | **Tier 3** ($3.5K-5.5K upfront, brand-driven) | Premium budget, brand-conscious owner, wants to stand out | Distinctive hero architecture, 2-3 premium techniques, richer motion, layered surfaces. Still conversion-first |
 | **Tier 4** ($6K-10K upfront, luxury/personal brand) | High-value niche (realtors, luxury med spa, high-end attorney), agent/owner IS the brand, competing on perceived quality | Read `references/premium-patterns.md` AND `references/micro-details.md`. Use Lenis smooth scroll, sticky scroll narrative, horizontal showcase, bento grids, orchestrated page load, parallax depth, split-screen hero. Apply 4-6 micro-details: text reveal animations, scroll progress bar, magnetic CTA button, image-on-hover for neighborhoods, parallax inside cards, cursor dot follower. The site should feel like a luxury brand experience — every scroll, hover, and transition is intentional. Photography integration is structural, not decorative |
@@ -262,9 +275,9 @@ OakWind serves local businesses — which means you might build 10 restaurant si
 
 **The "studio consistency" question:** All OakWind sites should share certain quality markers that signal they came from a good studio: generous whitespace, strong typography hierarchy, smooth scroll behavior, professional-grade motion, mobile-first responsive design, and conversion-focused CTAs. These are the studio's signature. What changes between builds is the *personality* — the colors, the structure, the mood, the motion style, the section patterns. Think of it like an architecture firm that builds both modern minimalist homes and rustic farmhouses — the craftsmanship is consistent, the aesthetic is not.
 
-#### 2f. Commit to a signature vision
+#### 2f. Commit to a signature vision + emotional arc
 
-Before writing any code, answer these three questions:
+Before writing any code, answer these questions. The first three define the visual identity. The fourth defines the emotional journey — which is what separates a site that looks good from one that actually converts.
 
 1. **What's the one thing someone will remember about this site?** Not "it's a barbershop site" — something specific and visual. Examples: "the barber-stripe divider that runs across section breaks," "the oversized gold quote marks behind testimonials," "the gradient that shifts from warm chile red to deep chocolate as you scroll." Every site needs one unforgettable detail.
 
@@ -272,7 +285,17 @@ Before writing any code, answer these three questions:
 
 3. **What would make this look hand-designed rather than template-generated?** Identify 2-3 specific details that a $50/month template would never have. Examples: custom scrollbar matched to brand colors, a noise texture that adds organic warmth, a shimmer effect on the CTA button, decorative corner accents on the review cards, a gradient mesh hero instead of a flat color.
 
-Write your answers as a brief comment at the top of App.jsx alongside the DNA code. This anchors every design decision that follows.
+4. **What's the emotional arc of the scroll?** Real sites don't just present information — they guide the visitor through feelings. Map three emotional beats:
+
+   - **Arrival emotion** (hero, first viewport) — What does the visitor feel when they land? A skeptical car owner needs reassurance ("you're in good hands"). An excited bride-to-be needs aspiration ("this is where your dream becomes real"). A homeowner with a broken AC needs urgency met with calm ("we're already on our way"). The hero's design, copy, and animation should match this starting emotion.
+
+   - **Building emotion** (middle sections, 30-70%) — What should grow as they scroll? Trust (show proof: reviews, credentials, process transparency). Excitement (show results: gallery, transformations, happy clients). Connection (show people: the owner's story, the team, community roots). Pick ONE primary building emotion — don't try to do all three equally.
+
+   - **Decision emotion** (bottom sections, 70-100%) — What tips them from "this looks good" to picking up the phone? Confidence ("I trust these people with my car/teeth/home"). FOMO ("if I don't call now, they'll be booked"). Personal connection ("this feels like it was made for me"). The final CTA, reviews section, and contact area should all reinforce this closing emotion.
+
+   This arc shapes everything: a site for a skeptical audience front-loads proof and process transparency. A site for an excited audience front-loads results and aspiration. A site for an urgent audience front-loads speed and availability. The emotional arc determines section ORDER, not just section CONTENT.
+
+Write all four answers as a brief comment at the top of App.jsx alongside the DNA code. This anchors every design decision that follows.
 
 #### 2g. Anti-convergence check
 
@@ -291,19 +314,81 @@ Read `references/copy-craft.md`. Write all copy — hero headline, hero subtitle
 - About section narrative (origin + philosophy + proof, 3 paragraphs)
 - 3-5 review quotes (selected for specificity and voice, not generic praise)
 
-Write these as constants at the top of App.jsx alongside the business data. The copy quality is what makes a business owner look at the iPad and say "that's exactly what I'd want it to say."
+**Copy specificity test (non-negotiable):** After writing all copy, do this check: read each piece of copy and ask "could I swap in a competitor's name and this would still work?" If yes, it's too generic — rewrite it. The copy must include at least **3 hyper-specific details** that could ONLY apply to this business. These are the details that make a business owner's eyes light up because they see THEIR story, not a template.
+
+Examples of hyper-specific details:
+- "Mike still uses the diagnostic scanner he bought when he opened the shop in 2006 — it's been right 12,000 times"
+- "Dr. Maria's patients fly in from Houston for her veneer work"
+- "The birria recipe hasn't changed since Danny's grandmother taught him in her kitchen in Oaxaca"
+- "Bobby keeps a thermometer on his desk — if your house isn't at the temp he promised within 30 minutes of the install, he comes back personally"
+
+These details can be real (from the brief/research) or plausibly invented based on the business's personality. They're what separate "professional dental care" from a story someone wants to tell their friends about.
+
+Write all copy as constants at the top of App.jsx alongside the business data. The copy quality is what makes a business owner look at the iPad and say "that's exactly what I'd want it to say."
 
 #### 2i. Plan iPad demo "wow moments"
 
-The site will be shown on an iPad in a face-to-face sales meeting. Engineer 3 specific moments where the prospect will visibly react during the scroll:
+The site will be shown on an iPad in a face-to-face sales meeting. Engineer **4 specific moments** where the prospect will visibly react during the scroll — and critically, the wow moments must be distributed across the ENTIRE page, not front-loaded into the hero:
 
 1. **The hero reveal** (0-3 seconds) — the first viewport must make them say "whoa." Orchestrated entrance animation, oversized typography, trust indicators visible without scrolling. This is the money shot.
 
 2. **The scroll surprise** (30-50% scroll) — one section that does something unexpected: a horizontal scroll showcase, a sticky scroll narrative, a before/after slider, or a parallax depth effect. Something they haven't seen on competitor websites.
 
-3. **The personal touch** (60-80% scroll) — their reviews displayed beautifully with real names and specific services, their address with a "Get Directions" link, their phone number as a prominent CTA. This is where they see their identity reflected in the design and start to emotionally commit.
+3. **The deep impression** (50-75% scroll) — this is the moment most AI-generated sites completely miss. The bottom half of the page must NOT be a wasteland of basic fade-ups. Deploy one of these: a scroll-pinned storytelling section, a text-fill-on-scroll tagline, a scale-reveal featured testimonial, a clip-path image reveal, or a parallax image stack. This wow moment is what separates a site that "starts strong and fizzles" from one that feels relentlessly polished. Read `references/scroll-experience.md` for implementation patterns.
 
-Write these three moments as a comment in App.jsx alongside the DNA code and signature vision. Then build toward them intentionally.
+4. **The personal touch** (75-90% scroll) — their reviews displayed beautifully with real names and specific services, their address with a "Get Directions" link, their phone number as a prominent CTA. This is where they see their identity reflected in the design and start to emotionally commit.
+
+Write all four moments as a comment in App.jsx alongside the DNA code and signature vision. Then build toward them intentionally. If you can't name a specific scroll-driven technique for wow moment #3, go back and pick one from `references/scroll-experience.md` before writing any code.
+
+#### 2j. Build the Section Animation Map + Visual Weight Map
+
+Read `references/scroll-experience.md`. Before writing any component code, plan TWO things for each section: its **animation type** and its **visual weight**. Write both as a comment in App.jsx.
+
+**Why visual weight matters:** AI-generated sites give every section the same density and importance — same padding, same card grids, same content volume. Real designed sites create rhythm by alternating between "loud" sections (hero-weight: dramatic, dense, full-width, image-heavy) and "quiet" sections (whisper-weight: spacious, minimal, text-focused, breathing room). This contrast is the single biggest tell that separates a designed page from a generated one.
+
+**Visual weight vocabulary:**
+- **Hero-weight** (2-3 per page): Full visual impact. Oversized type, full-width imagery, dramatic color, dense content. These are the sections people screenshot.
+- **Standard-weight** (3-4 per page): Normal content sections. Card grids, text + image layouts, lists. The workhorses.
+- **Whisper-weight** (2-3 per page): Intentionally quiet. Generous whitespace, single centered element, minimal content, breathing room. A big quote. A single stat. An image with nothing else. These are what make the hero-weight sections feel dramatic by contrast.
+
+**The breathing rule:** After every hero-weight section, the next section must be standard or whisper. After two standard sections in a row, insert a whisper. Never stack two hero-weight sections back-to-back — it's exhausting. The rhythm of loud → quiet → loud is what makes a page feel designed.
+
+**Animation type vocabulary** (from scroll-experience.md):
+- Fade-up (basic — budget max 2 per page)
+- Stagger cascade (children appear sequentially)
+- Parallax drift (layers at different scroll speeds)
+- Scroll-pinned (section pins, content transforms)
+- Horizontal traverse (sideways scroll within vertical)
+- Scale reveal (elements grow from small to full)
+- Clip reveal (content reveals through expanding clip path)
+- Text progression (text fills, types, scrambles, cascades)
+- Slide-in lateral (elements enter from left or right)
+- Morph transition (background color shifts on scroll)
+- Perspective tilt (3D rotation that resolves to flat)
+- Varied stagger (each card uses a different entrance animation)
+
+**Animation rules:**
+- No two consecutive sections may use the same animation type
+- Maximum 2 sections may use basic fade-up (reserve it for low-priority sections like trust strip or contact info)
+- At least 1 section must use a scroll-linked pattern (scroll-pinned, horizontal traverse, scale reveal, text fill, or parallax drift)
+- The map must cover every section from hero to footer
+
+**Example combined map:**
+```
+// Section Map (Animation + Visual Weight):
+// 1. Hero → Orchestrated entrance (stagger + spring) — HERO-WEIGHT
+// 2. Trust Strip → Scroll-linked counters — WHISPER (just numbers, lots of space)
+// 3. Services → Varied stagger cascade — STANDARD
+// 4. Image Break → Clip-path reveal — WHISPER (single full-width image, no text)
+// 5. About → Slide-in lateral — STANDARD
+// 6. Big Quote → Scale reveal — WHISPER (one testimonial quote, massive type, generous padding)
+// 7. Reviews → Stagger cascade — STANDARD
+// 8. CTA Break → Text fill on scroll — HERO-WEIGHT (dramatic tagline moment)
+// 9. Contact → Fade-up — STANDARD
+// 10. Footer → No animation — WHISPER
+```
+
+Notice the rhythm: HERO → whisper → standard → whisper → standard → whisper → standard → HERO → standard → whisper. The page breathes.
 
 ### Stage 3 — Build
 
@@ -368,7 +453,7 @@ This creates a smooth "curtain lift" — the page loads behind a solid color, th
 
 #### 3c. Apply design tokens, build atmosphere, and set spacing rhythm
 
-Update the CSS custom properties in `src/index.css` with the resolved values from Stage 2d. But don't stop at tokens — **read `references/atmosphere-recipes.md`** and add at minimum 4 CSS atmosphere recipes to index.css. These recipes (noise textures, shimmer effects, gradient meshes, pattern overlays, custom scrollbar, stagger animations) are what transform a flat token-driven page into something that feels hand-crafted. Pick recipes that match your signature vision from Step 2e.
+Update the CSS custom properties in `src/index.css` with the resolved values from Stage 2d. **Critical CSS rule:** NEVER put `overflow-x: hidden` on `html` — it breaks `position: sticky` which is needed for scroll-pinned sections. Put `overflow-x: hidden` only on `body`. Then read `references/atmosphere-recipes.md` and add at minimum 4 CSS atmosphere recipes to index.css. These recipes (noise textures, shimmer effects, gradient meshes, pattern overlays, custom scrollbar, stagger animations) are what transform a flat token-driven page into something that feels hand-crafted. Pick recipes that match your signature vision from Step 2e.
 
 **Read `references/image-presentation.md`** for premium image treatment techniques — gradient overlays, floating frames, reveal-on-scroll, blur-up loading, and before/after comparisons. Every image container should use at least one technique from this file. Raw `<img>` tags in bare `<div>`s look template-generated.
 
@@ -513,6 +598,7 @@ Then manually verify these items the script can't check:
 - [ ] Page entrance curtain (`<div className="page-curtain" />`) is first element in App
 
 **Hero quality (most important visual check):**
+- [ ] Hero has `padding-top` at least equal to the header height (64px / `var(--header-height)`) so content isn't hidden behind the sticky nav. If using `min-h-screen`, add `pt-20` or `pt-24` to push content below the nav
 - [ ] Hero has 3+ background layers (base color + ambient glows + texture)
 - [ ] Headline is oversized (text-7xl+ on desktop) with color variation
 - [ ] Elements stagger in with choreographed animation delays
@@ -531,6 +617,9 @@ Then manually verify these items the script can't check:
 - [ ] Style DNA code and signature vision documented in a comment at the top of App.jsx
 - [ ] Site looks like it cost $3K+ and could NOT be made in 5 minutes on Wix
 - [ ] CSS includes 4+ atmosphere recipes (noise, shimmer, scrollbar, etc.)
+- [ ] `html` does NOT have `overflow-x: hidden` (only `body` should — html overflow breaks sticky positioning)
+- [ ] rough-notation uses static import, hex colors (NOT CSS variables), and `setTimeout(500)` before `annotation.show()`. Never place AnnotatedText inside a motion.div with entrance transforms
+- [ ] For blue-collar niches: variant (A/B/C) is documented in the App.jsx header comment and differs from the previous same-niche build
 - [ ] Color palette uses exact hex values from `references/color-palettes.md` (not ad-hoc picks)
 - [ ] Section padding varies (not all `py-16`) — uses escalating rhythm from spacing scale
 - [ ] Images use presentation techniques (gradient overlays, frames, blur-up) not raw `<img>` tags
@@ -543,14 +632,54 @@ Then manually verify these items the script can't check:
 - [ ] About section tells the owner's story with origin + philosophy + proof
 - [ ] Reviews include first name + last initial + specific service mentioned
 
-**iPad demo moments (verify 3 wow points exist):**
+**Scroll experience & visual rhythm (verify animation diversity + breathing):**
+- [ ] Section Animation Map AND Visual Weight Map are documented as a comment in App.jsx (from Step 2j)
+- [ ] No more than 2 sections use basic fade-up (`opacity: 0, y: 30`) animation
+- [ ] No two consecutive sections use the same animation type
+- [ ] At least 1 section uses a scroll-linked pattern (scroll-pinned, horizontal traverse, scale reveal, text fill, clip reveal, or parallax drift)
+- [ ] Bottom half of the page (sections 5+) contains at least 1 scroll-driven wow moment — not just fade-ups
+- [ ] Visual weight alternates: no two hero-weight sections back-to-back, at least 2 whisper-weight sections exist (breathing room)
+- [ ] After every dense section (card grid, service list), the next section is spacious (image break, big quote, single stat)
+
+**Copy specificity (verify it doesn't sound AI-generated):**
+- [ ] Copy includes at least 3 hyper-specific details that could ONLY apply to this business (not swappable with a competitor)
+- [ ] No zombie phrases: "committed to excellence", "state-of-the-art", "your satisfaction", "quality you can trust"
+- [ ] About section tells a real story with origin + philosophy + proof — not a generic "we provide quality services" paragraph
+
+**iPad demo moments (verify 4 wow points exist):**
 - [ ] Hero reveal: orchestrated entrance animation that makes the prospect say "whoa"
 - [ ] Scroll surprise: one section does something unexpected (horizontal scroll, parallax, before/after)
+- [ ] Deep impression: a scroll-driven moment in the bottom half (scroll-pinned, scale reveal, text fill, clip reveal, or perspective tilt)
 - [ ] Personal touch: their reviews, their address, their phone number — beautifully presented
 
 Deploy command: `npx wrangler pages deploy dist --project-name={slug}`
 
 **Post-build QA:** After building, run the `oakwind-verify` skill to automatically screenshot the site at 3 viewports, check for visual bugs, tel: link count, console errors, and responsive issues. Say "verify the site on localhost:PORT" to trigger it.
+
+### Stage 5 — Learn (Learning Loop)
+
+After the build is verified (or after the user reviews and gives feedback), save what you learned to **claude-mem** so future builds benefit. This is how the skill gets smarter with every use.
+
+**What to save (pick what applies — don't save everything every time):**
+
+1. **Bugs encountered and fixed** — If you hit a bug during this build (build error, visual glitch, broken animation, mispositioned element), save it with the fix. Tag: `oakwind bug [category]`
+   - Example: "oakwind bug rough-notation — annotations mispositioned when inside motion.div with whileInView transform. Fix: use setTimeout(500) and place AnnotatedText outside animated containers."
+
+2. **Niche-specific learnings** — If you discovered something about this niche that future builds should know. Tag: `oakwind [niche]`
+   - Example: "oakwind dental — Smile gallery with lightbox converts better when positioned before reviews, not after. Patients want to see results before reading what others say."
+
+3. **Pattern wins** — If a specific design pattern, animation, or layout got positive feedback from the user. Tag: `oakwind pattern`
+   - Example: "oakwind pattern — scroll-fill text on CTA sections consistently gets positive reactions. Use it for the 'deep impression' wow moment."
+
+4. **Pattern failures** — If something didn't work or looked bad. Tag: `oakwind anti-pattern`
+   - Example: "oakwind anti-pattern — perspective tilt on service card grids looks janky on mobile Safari. Avoid on sections with many cards."
+
+5. **User preferences** — If the user expressed a preference about design style, copy tone, or workflow. Tag: `oakwind preference`
+   - Example: "oakwind preference — user wants more visual depth in bottom-half sections, not just fade-ups. Always deploy a scroll-driven technique past 50% scroll."
+
+**How to save:** Use the claude-mem MCP's observation/save tools if available. If not, save a brief note to the project's memory system. Keep each learning to 1-2 sentences — concise and actionable. Future Stage 0 searches will find these and apply them automatically.
+
+**When to skip:** If the build went perfectly with no issues and no new learnings, skip this step. Don't save redundant observations — check if the learning already exists before creating a duplicate.
 
 ---
 
@@ -632,6 +761,8 @@ Read these when the build needs deeper direction. They cost zero tokens until op
 | `references/anti-convergence.md` | **Every build** — verify selections aren't AI-default |
 | `references/atmosphere-recipes.md` | **Every build** — pick 4+ CSS recipes for texture, motion, and atmosphere |
 | `references/image-presentation.md` | **Every build** — gradient overlays, floating frames, blur-up loading, before/after |
+| `references/scroll-experience.md` | **Every build** — plan the Section Animation Map, pick scroll-driven patterns for wow moments |
+| `references/blue-collar-elevation.md` | **Tier 1-2 trades builds** — auto repair, HVAC, plumbing, pressure washing, roofing, landscaping, electrician, handyman |
 | `references/component-patterns.md` | When selecting section components and animations |
 | `references/premium-patterns.md` | **Tier 3-4 builds** — sticky scroll, horizontal showcase, bento grids, parallax, Lenis |
 | `references/micro-details.md` | **Tier 3-4 builds** — text reveals, magnetic buttons, cursor dot, parallax cards, image-on-hover |

@@ -356,3 +356,21 @@ The inquiry form is the venue's primary conversion tool. It should feel warm and
 - **No clear next step** — every page should make it obvious what to do next: schedule a tour, check availability, view the gallery.
 - **PDF-only pricing or info packets** — couples want information on the website, not in a downloadable PDF they'll lose in their downloads folder.
 - **Venue name in a generic font with no visual identity** — the venue name is the brand. Give it typographic distinction.
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 wedding venue sites and they should all look different. Pick the variant that matches the venue personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Romantic Blush / Editorial** | **Variant B: Modern Elegant / Dark + Gold** | **Variant C: Garden / Outdoor / Natural** |
+|---|---|---|---|
+| Hero | Full-bleed golden hour ceremony photo with soft blush overlay, venue name in elegant serif with script accent flourish, "Schedule a Tour" in rose gold | Dark warm charcoal hero with gold venue name in oversized display type, dramatic reception hall photo with chandelier lighting, editorial magazine layout | Bright airy hero with lush garden photography, sage and cream tones, organic flowing layout, venue name nestled in natural whitespace |
+| Palette | Palette A (Romantic Blush — warm blush white + blush cream + rose gold + warm taupe) or Blush Cream from color-palettes.md | Palette C (Classic Ivory & Gold) adapted darker — deep warm charcoal sections + true gold accents + ivory light sections, or Golden Hour adapted | Palette B (Garden Sage — soft cream + sage tint + garden sage + warm gold) or Sage Linen from color-palettes.md |
+| Texture | Soft blush gradient washes, thin rose-gold divider lines, subtle warm grain on hero, romantic parallax on landscape photos | Dark noise grain on dramatic sections, gold metallic rules and borders, high-contrast light/dark section alternation for editorial rhythm | None on main sections — organic rounded section dividers, soft sage-tinted alternating backgrounds, natural light photography as the primary texture |
+| Cards | Cream cards with thin blush border, script accent on venue space names ("Ceremony" in script, details in serif), soft warm shadows | Dark glass cards with gold border for venue spaces, dramatic photo overlays with capacity stats in gold type, light ivory cards for FAQs/details | Sage-tinted rounded cards with botanical-style thin borders, warm serif space names, garden photography with natural framing |
+| CTA style | Rose gold pill button with elegant serif text ("Schedule Your Private Tour") | Gold button on dark background with subtle warm glow ("Request Availability") | Sage green rounded button with friendly serif text ("Visit Our Gardens") |
+| Special | Featured wedding story section as editorial spread (couple names, photographer credit, pull quotes in italic serif), masonry gallery with blush lightbox | Dramatic full-width photo breaks between sections with dark overlay and gold caption text, cinematic horizontal scroll gallery with dark rail | Seasonal gallery sections (Spring, Summer, Fall, Winter at the venue), outdoor ceremony setup visualizer, weather/rain plan section with illustrated icon |
+| Font mood | Romantic editorial serif + script accent (Cormorant Garamond + Great Vibes for accent + DM Sans body) | Bold elegant serif on dark (Bodoni Moda or Playfair Display + Outfit body) | Warm natural serif (Lora or Crimson Pro + Nunito body, Dancing Script for accents) |
+
+**How to pick:** Match variant to venue personality. A classic estate, mansion, or ballroom venue with romantic/bridal identity → Variant A. A modern industrial loft, luxury hotel ballroom, or venue with dramatic architectural features → Variant B. A garden, barn, winery, or outdoor venue where the natural setting is the star → Variant C. Document which variant in App.jsx header comment.

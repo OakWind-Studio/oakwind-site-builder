@@ -164,3 +164,21 @@ Law firm websites project **authority, competence, and trustworthiness**. The de
 - "Specialist" or "expert" claims require board certification in many states
 - "Free consultation" is generally permitted but check state rules
 - Never use language that creates an attorney-client relationship ("your lawyer")
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 attorney sites and they should all look different. Pick the variant that matches the attorney's personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Dark Authoritative / Typewriter** | **Variant B: Classic Navy / Traditional Trust** | **Variant C: Modern Minimal / Approachable** |
+|---|---|---|---|
+| Hero | Dark charcoal hero with oversized attorney name in all-caps serif, monospaced credential line typed out on load, single warm accent, dramatic gravitas | Navy and white split-screen — navy section with gold firm name and founding year, white section with attorney headshot and credentials, institutional feel | Clean white hero with bold oversized name, minimal headshot accent, key stats animated on load, generous whitespace, modern authority |
+| Palette | Palette B (Charcoal + Burgundy — warm white + charcoal + burgundy + muted gold) or Obsidian adapted warm | Palette A (Navy Authority — white + deep navy + blue + gold) or Navy Brass from color-palettes.md | Palette C (Modern Monochrome — light grey + black as accent + single blue pop) or Midnight Sage |
+| Texture | Subtle dark noise grain on hero, thin gold horizontal rules between sections, typewriter-style credential display | Navy dark sections alternating with clean white, gold border accents, subtle paper texture on light sections | None — ultra-clean with strong typographic hierarchy, sharp grid lines, minimal geometric accents |
+| Cards | Dark-background practice area cards with thin gold border, serif headings, authoritative descriptions | Navy-topped white cards with gold accent stripe, traditional layout, bar admission badges | Flat white cards with bold left border in accent color, clean sans headings, scannable format |
+| CTA style | Burgundy or gold button on dark background, formal copy ("Request a Confidential Consultation") | Navy button with gold hover state, traditional copy ("Schedule Your Free Case Evaluation") | Minimal outlined button with single accent color, direct copy ("Book a Consultation") |
+| Special | Animated typewriter effect for credentials or tagline, dark full-width case results section with oversized verdict numbers | Awards badge wall with gold-framed logos on navy background, "Established [Year]" heritage feature, formal attorney bio layout | Interactive practice area tabs with clean transitions, animated trust strip with modern counter, approachable "How It Works" process section |
+| Font mood | Heavy serif on dark (Bodoni Moda or Noto Serif Display + DM Sans) | Classic institutional serif (Playfair Display or Cormorant Garamond + Source Sans 3) | Modern minimal serif + clean sans (DM Serif Display or Libre Baskerville + Outfit) |
+
+**How to pick:** Match variant to attorney personality. A solo criminal defense or PI attorney who wants maximum authority and intensity → Variant A. A traditional practice emphasizing heritage, trust, and institutional credibility → Variant B. A younger or modern-leaning attorney who wants to feel approachable while maintaining professionalism → Variant C. Document which variant in App.jsx header comment.

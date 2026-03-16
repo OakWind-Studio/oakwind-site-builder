@@ -210,4 +210,22 @@ Property cards where the numbers dominate: `$425,000` in oversized type, address
 - IDX search as the hero — that's for portals like Zillow, not personal agent sites
 - Stock photos of couples holding keys — everyone uses these, they signal nothing
 - Too many colors — luxury is restraint. One accent color max.
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 realtor sites and they should all look different. Pick the variant that matches the agent's personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Dark Luxury / Split-Screen Agent** | **Variant B: Light Editorial / Property-Focused** | **Variant C: Modern Minimal / Data-Driven** |
+|---|---|---|---|
+| Hero | Dark warm charcoal hero with split-screen — agent professional headshot on one side, name in oversized gold display type + market stats + CTA on the other, brass/gold accents | Full-bleed luxury property photo hero with light overlay, agent name and tagline in elegant serif, warm cream/copper palette, editorial magazine feel | Clean white hero with bold oversized agent name as the dominant element, minimal property photo accent, key stats (homes sold, volume) animated on load |
+| Palette | Palette C (Luxury Dark — warm charcoal + brass gold + muted gold) or Navy Brass from color-palettes.md | Palette A (Warm Sophisticated — cream + warm linen + copper) or Ink & Gold | Palette B (Modern Neutral — warm white + light taupe + black + sage) or Pearl |
+| Texture | Dark sections with subtle noise grain, gold metallic divider lines, dramatic light-to-dark section transitions | Warm linen texture on alternating sections, thin copper rules between sections, soft parallax on property images | None — ultra-clean with strong grid structure, sharp lines, bold typographic hierarchy as the only visual texture |
+| Cards | Dark glass property cards with gold price overlay, elegant stats layout (bed/bath/sqft in spaced small caps) | Warm cream property cards with copper accent border, editorial photo treatment with soft shadow, neighborhood labels | Flat white cards with bold price in oversized type, minimal photo, stats-forward layout, thin border on hover |
+| CTA style | Gold button on dark background with subtle shimmer, "Schedule a Private Consultation" | Warm copper pill button with serif text, "Get Your Home Valuation" | Minimal black button with clean arrow icon, direct copy ("Let's Talk") |
+| Special | Cinematic property horizontal scroll on dark rail with gold price tags, animated market volume counter | Neighborhood spotlight sections with editorial photography, testimonials as pull-quote typography features | Interactive market data section (homes sold, avg days on market, price trends), property filter/sort showcase |
+| Font mood | Luxury serif on dark (Playfair Display or Bodoni Moda + DM Sans) | Warm editorial serif (Cormorant Garamond or Lora + Outfit) | Bold modern sans with serif accent (Montserrat or DM Serif Display + Source Sans 3) |
+
+**How to pick:** Match variant to agent personality. A luxury agent targeting $1M+ listings who wants maximum prestige → Variant A. A relationship-driven agent with warm personal brand and strong local roots → Variant B. A data-savvy, modern agent who leads with market expertise and volume → Variant C. Document which variant in App.jsx header comment.
 - Small agent photo buried in the About section — it should be in the hero or near-hero

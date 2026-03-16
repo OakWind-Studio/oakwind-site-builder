@@ -240,3 +240,21 @@ A cinematic horizontal scroll row within the vertical page showing 4-8 project h
 - **Jargon-heavy copy** — "We utilize best-in-class construction methodologies" reads like a government RFP. Write like a human who builds beautiful homes.
 - **No pricing context whatsoever** — you don't need exact prices, but "Custom homes starting in the $400Ks" or "Remodels from $50K-$250K" helps qualify leads and shows transparency.
 - **Ignoring mobile** — many prospective clients browse on phones. Portfolio grids must be responsive and images must load fast.
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 home builder sites and they should all look different. Pick the variant that matches the builder personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Luxury Dark / Architectural** | **Variant B: Warm Craftsman / Heritage** | **Variant C: Modern Clean / Minimalist Showcase** |
+|---|---|---|---|
+| Hero | Dark warm charcoal hero with signature twilight home exterior photo, builder name in oversized champagne gold serif, dramatic cinematic parallax, "Begin Your Custom Home Journey" | Warm cream hero with golden hour exterior photo, heritage "Building Since XXXX" badge, builder name in warm editorial serif, craftsman-quality feel | Clean white hero with bold oversized builder name as dominant element, single architectural interior photo accent, animated stats (homes built, years), minimal and confident |
+| Palette | Palette C (Luxury Dark — warm charcoal + champagne gold + muted brass) or Navy Brass from color-palettes.md | Palette A (Warm Architectural — warm cream + natural linen + warm bronze + dark walnut) or Toasted Almond | Palette B (Modern Minimal — bright warm white + light taupe + sage/evergreen + black) or Pearl from color-palettes.md |
+| Texture | Dark noise grain on hero sections, champagne gold thin rules between sections, dramatic light/dark section alternation, architectural shadow overlays on photos | Warm linen texture on alternating sections, thin bronze horizontal rules, wood-tone accents on section dividers, subtle parallax on exterior photography | None — ultra-clean with strong architectural grid structure, thin geometric lines, precision spacing, whitespace as the primary design element |
+| Cards | Dark glass project cards with gold overlay for project name and specs, dramatic hover reveal with additional interior photos | Warm cream project cards with bronze accent border, project name in editorial serif, room-by-room thumbnail strip below hero image | Flat white project cards with bold project name in oversized type, minimal specs, single large photo, thin border on hover |
+| CTA style | Champagne gold button on dark background with subtle metallic sheen ("Schedule a Private Consultation") | Warm bronze pill button with serif text ("Let's Build Your Dream Home") | Minimal black button with clean arrow icon, direct modern copy ("Start Your Project") |
+| Special | Cinematic horizontal scroll project gallery on dark rail with gold project labels, full-screen project spotlight with room-by-room navigation | Build process timeline with warm illustrated icons and progress narrative, heritage section with founder story and milestone year badges | Interactive project filter by style (Modern, Traditional, Farmhouse), animated floor plan feature, before/after remodel slider for renovation sub-niche |
+| Font mood | Luxury architectural serif on dark (Playfair Display or Cormorant Garamond + DM Sans) | Warm craftsman serif (Lora or Crimson Pro + Nunito) | Bold modern sans with serif accent (Montserrat or DM Serif Display + Source Sans 3) |
+
+**How to pick:** Match variant to builder personality. A luxury custom builder ($750K+ homes) who wants maximum prestige and exclusivity → Variant A. A heritage builder with multi-generational craftsmanship, family roots, and traditional values → Variant B. A modern design-build firm specializing in contemporary homes or clean architectural style → Variant C. Document which variant in App.jsx header comment.

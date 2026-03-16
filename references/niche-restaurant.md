@@ -132,3 +132,21 @@ Covers restaurants, taco shops, taquerias, BBQ joints, cafés, bakeries, food tr
 - accent-2: `#92815A` (gold/bamboo)
 - text-primary: `#111111`
 - text-secondary: `#666666`
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 restaurant sites and they should all look different. Pick the variant that matches the business personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Dark Moody / Neon Street** | **Variant B: Warm Rustic / Family Heritage** | **Variant C: Clean Modern / Farm-to-Table** |
+|---|---|---|---|
+| Hero | Dark full-screen with neon-glow accent text, food photo behind dark overlay, moody ambient lighting pools | Warm full-bleed food photography hero with rustic overlay, family crest or "Est. XXXX" badge | Clean split-screen — large food photo on one side, minimal white space + name + tagline on the other |
+| Palette | Noir Rouge or Campfire (dark bg, fiery accent, warm amber secondary) | Toasted Almond or Terracotta Garden (warm cream, terracotta, earthy greens) | Sushi Palette A style adapted (bright white, single bold accent, generous negative space) |
+| Texture | Neon glow halos behind headings, subtle grain/noise overlay on dark sections | Wood grain texture accents on section dividers, warm paper/linen noise | None — ultra-clean with strong typography and whitespace as the texture |
+| Cards | Dark glass cards with accent border glow, menu items on dark backgrounds | Rounded warm cards with cream backgrounds, hand-drawn-style icons, warm shadows | Flat white cards with thin border, single accent-color highlight on hover |
+| CTA style | Neon-glow button with pulsing border (electric accent color) | Warm filled button with rounded corners, "Order Now" in friendly weight | Minimal outlined button with arrow icon, clean and direct |
+| Special | Animated neon sign effect for restaurant name, horizontal-scroll dish showcase on dark rail | Owner/family story section with heritage timeline, hand-lettered menu headers | Instagram-style photo grid of dishes, ingredient sourcing section with farm partner cards |
+| Font mood | Condensed bold + neon energy (Bebas Neue / Oswald + DM Sans) | Warm handwritten display + friendly body (Pacifico or Lora + Nunito) | Refined minimal serif + clean sans (Cormorant Garamond + Source Sans 3) |
+
+**How to pick:** Match variant to restaurant personality. A late-night taco bar or trendy ramen shop → Variant A. A multi-generational family restaurant or heritage taqueria → Variant B. A farm-to-table café, sushi bar, or modern bistro → Variant C. Document which variant in App.jsx header comment.

@@ -173,3 +173,21 @@ Same slider mechanic as pressure washing, but with detailing-specific touches:
 - Cluttered service lists without packages — organize into clear tiers
 - Generic "auto care" language — lean into the craft and precision of detailing
 - Missing before/after — the transformation IS the marketing
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 detailing sites and they should all look different. Pick the variant that matches the business personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Dark Carbon / Neon Glow** | **Variant B: Clean Precision / White + Accent** | **Variant C: Industrial Bold / Garage Aesthetic** |
+|---|---|---|---|
+| Hero | Near-black hero with electric blue or green neon glow accents, car silhouette with reflection, futuristic tech-forward vibe | Clean dark-grey-to-white gradient hero with a single bold accent color, sharp vehicle photography on clean background, precision feel | Dark industrial hero with warm amber/gold lighting pools, metal grid texture overlay, garage-at-night atmosphere |
+| Palette | Carbon Fiber (near-black + electric blue + emerald green) from color-palettes.md or Palette A (Dark Premium) | Palette A adapted lighter — charcoal sections on white base, single strong accent (electric blue or racing red), chrome secondary | Obsidian (near-black + gold + warm tones) from color-palettes.md or Palette B (Dark Gold) |
+| Texture | Carbon fiber crosshatch pattern on dark sections, neon glow halos behind headings and prices, subtle digital scan lines | None on light sections — ultra-clean; dark accent sections use brushed metal texture, sharp geometric dividers | Metal grid overlay on hero, concrete/industrial texture on alternating sections, warm amber light pool gradients |
+| Cards | Dark glass cards with neon border glow, package tiers with glowing price highlight, tech-forward icons | Clean white cards with single bold accent-color top border, sharp typography, chrome/silver icon accents | Dark industrial cards with warm amber accent border, bold condensed package names, leather/metal icon style |
+| CTA style | Neon glow button with electric accent pulse animation ("Book Your Detail") | Sharp solid accent-color button with clean white text, minimal and direct ("Schedule Now") | Warm gold button on dark background with subtle metallic sheen ("Get Started") |
+| Special | Animated ceramic coating water-bead effect on hover, neon-lit before/after slider with glow divider | Interactive package comparison table with clean toggle, certification badges in precision grid layout | Animated shop-glow hero with warm ambient lighting, horizontal scroll gallery with dramatic dark-lit car photography |
+| Font mood | Tech futuristic condensed (Barlow Condensed or Saira Condensed + DM Sans) | Precision clean bold (Montserrat or Outfit + Source Sans 3) | Industrial authority (Bebas Neue or Teko + Open Sans) |
+
+**How to pick:** Match variant to business personality. A tech-forward ceramic coating specialist or PPF installer marketing cutting-edge products → Variant A. A precision-focused detailer emphasizing clean results, certifications, and professionalism → Variant B. A shop-based detailer with strong garage culture and enthusiast community roots → Variant C. Document which variant in App.jsx header comment.

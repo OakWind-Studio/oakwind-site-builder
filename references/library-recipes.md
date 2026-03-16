@@ -439,11 +439,18 @@ function Accordion({ items }) {
 
 ## Rough Notation — Hand-Drawn Annotations
 
+**Known gotchas:**
+- **Always use a static import** (`import { annotate } from 'rough-notation'`), NOT a dynamic import (`import('rough-notation').then(...)`). Dynamic imports cause timing issues — by the time the import resolves, the element's position has often shifted due to page entrance animations, scroll, or layout changes, and the annotation draws in the wrong place.
+- **Always use hex or rgba color values** (e.g., `'#B08D6E'`, `'rgba(176,141,110,0.25)'`), NOT CSS custom properties (`'var(--color-accent-1)'`). rough-notation renders inline SVG and CSS variables can cause inconsistent rendering across browsers.
+- **Use a 500ms setTimeout** before showing the annotation — NOT just `requestAnimationFrame`. The element needs time for all Motion entrance animations (whileInView, initial→animate transitions) to fully complete before rough-notation measures its position. A single rAF fires before CSS transitions finish, so the annotation draws in the wrong place.
+- **Never put AnnotatedText inside a `motion.div` that has `initial`/`whileInView` transforms** (like `y: 30` or `scale: 0.9`). The parent's transform shifts the element's bounding rect, and rough-notation draws the SVG at the wrong position. Instead, put the AnnotatedText in a non-animated wrapper, or use the annotation only on elements in sections that DON'T have entrance animations.
+- **Keep annotations simple** — use `underline` and `highlight` types. Avoid `circle` and `bracket` on inline text inside complex layouts — they're the most sensitive to positioning errors.
+
 ```jsx
 import { annotate, annotationGroup } from 'rough-notation';
 
-// Circle annotation on a keyword (triggered on scroll)
-function AnnotatedText({ children, type = 'circle', color = '#B08D6E' }) {
+// Annotation on a keyword (triggered on scroll)
+function AnnotatedText({ children, type = 'underline', color = '#B08D6E' }) {
   const ref = useRef(null);
   const hasFired = useRef(false);
 
@@ -454,8 +461,11 @@ function AnnotatedText({ children, type = 'circle', color = '#B08D6E' }) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !hasFired.current) {
         hasFired.current = true;
-        const annotation = annotate(el, { type, color, strokeWidth: 2, padding: 8, animationDuration: 800 });
-        annotation.show();
+        // Wait 500ms for all entrance animations to fully complete
+        setTimeout(() => {
+          const annotation = annotate(el, { type, color, strokeWidth: 2, padding: 8, animationDuration: 800 });
+          annotation.show();
+        }, 500);
         observer.disconnect();
       }
     }, { threshold: 0.4 });
