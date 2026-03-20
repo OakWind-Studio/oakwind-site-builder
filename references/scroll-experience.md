@@ -444,48 +444,39 @@ Best for: services grids, team members, treatment cards — any grid that curren
 
 ---
 
-## Scroll-Linked Counter Section
+## Animated Counter Section (InView Count-Up)
 
-Stats that don't just count up when in view — they're linked to scroll position so the number tracks with how far you've scrolled through the section. Creates a visceral "I'm controlling this" feeling.
+Stats that count up with a staggered ease-out animation when the section enters the viewport. Uses `useInView` to trigger once, then a `requestAnimationFrame` loop with cubic ease-out for a satisfying deceleration effect. Each counter starts with a slight stagger delay.
+
+**Important:** Do NOT use scroll-linked counters (tied to `scrollYProgress`) for trust strips placed directly below the hero. Scroll-linked counters show partial values (e.g., "1 Google Rating", "0+ Years") when first visible, which looks broken. The inView count-up pattern shows zeros briefly then animates to full values immediately — much cleaner.
+
+Scroll-linked counters are still appropriate for sections deep in the page where the user is actively scrolling (e.g., a mid-page stats callout or a CTA break), but never for the trust strip directly below the hero.
 
 ```jsx
-function ScrollLinkedStats({ stats }) {
+function AnimatedCounter({ target, suffix = '', label, delay = 0 }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-
-  return (
-    <section ref={ref} className="section-default" style={{ background: 'var(--color-bg-secondary)' }}>
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((stat, i) => (
-          <ScrollStat
-            key={i}
-            target={stat.value}
-            suffix={stat.suffix}
-            label={stat.label}
-            scrollProgress={scrollYProgress}
-            index={i}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ScrollStat({ target, suffix, label, scrollProgress, index }) {
-  // Each stat starts counting at a staggered scroll position
-  const startAt = 0.2 + index * 0.05;
-  const endAt = 0.6 + index * 0.05;
-
-  const value = useTransform(scrollProgress, [startAt, endAt], [0, target]);
+  const inView = useInView(ref, { once: true, margin: '-40px' });
   const [display, setDisplay] = useState(0);
 
-  useMotionValueEvent(value, 'change', (v) => setDisplay(Math.round(v)));
+  useEffect(() => {
+    if (!inView) return;
+    const duration = 1600;
+    const startTime = performance.now() + delay * 1000;
+    let raf;
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      if (elapsed < 0) { raf = requestAnimationFrame(tick); return; }
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // cubic ease-out
+      setDisplay(Math.round(eased * target));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, delay]);
 
   return (
-    <div className="text-center">
+    <div ref={ref} className="text-center">
       <span className="font-display text-5xl md:text-6xl" style={{ color: 'var(--color-accent-1)' }}>
         {display}{suffix}
       </span>
@@ -496,9 +487,28 @@ function ScrollStat({ target, suffix, label, scrollProgress, index }) {
     </div>
   );
 }
+
+// Usage in TrustStrip:
+function TrustStrip() {
+  return (
+    <section className="section-tight" style={{ background: 'var(--color-bg-secondary)' }}>
+      <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {TRUST_STATS.map((stat, i) => (
+          <AnimatedCounter
+            key={i}
+            target={stat.value}
+            suffix={stat.suffix}
+            label={stat.label}
+            delay={i * 0.12}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
 ```
 
-Best for: trust strips, stats sections — replaces the standard "count up once" pattern with something more engaging.
+Best for: trust strips below hero, stats sections, any counter display that needs to show complete values immediately upon visibility.
 
 ---
 
@@ -647,7 +657,7 @@ Use this table when planning the animation map in Stage 2j. Assign types so that
 | Section position | Good animation types | Avoid |
 |-----------------|---------------------|-------|
 | Hero (1st) | Orchestrated entrance, parallax drift | Fade-up (too weak) |
-| Trust strip (2nd) | Scroll-linked counters, stagger cascade | Scroll-pinned (overkill) |
+| Trust strip (2nd) | InView count-up (AnimatedCounter), stagger cascade | Scroll-linked counters (shows partial values), scroll-pinned (overkill) |
 | Services (3rd) | Varied stagger, horizontal traverse, perspective tilt | Fade-up (boring for key section) |
 | Image break (4th) | Clip reveal, parallax drift | Fade-up |
 | About (5th) | Slide-in lateral, parallax image stack, scroll-pinned | Same as services |

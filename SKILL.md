@@ -41,6 +41,7 @@ Before starting any build, check for past learnings that could prevent repeated 
 1. `oakwind bug` — find bugs encountered in previous builds
 2. `oakwind [niche]` — find niche-specific learnings (e.g., "oakwind dental" if building a dental site)
 3. `oakwind pattern` — find design patterns that worked well or poorly
+4. `oakwind:build-log [niche]` — find what DNA codes, palettes, and variants were used on previous same-niche builds (critical for differentiation)
 
 Spend no more than 30 seconds on this step. If results come back, scan them quickly and note any that apply to this build. If nothing comes back, move on. This step should add ~200 tokens to context, not thousands.
 
@@ -198,6 +199,25 @@ This is where the site earns its price tag. Two things happen here: you commit t
 | Wedding venue, event space, reception hall | `references/niche-wedding-venue.md` |
 
 **No matching file?** Use the closest niche file as a starting point, then adapt: adjust the color palette to match the business's industry associations (e.g., green for eco-businesses, warm earth tones for artisan/craft), choose typography that reflects the brand personality (playful vs. authoritative vs. refined), and apply the trust signal hierarchy from the closest service category.
+
+#### 2a-bis. Component inspiration (Magic MCP)
+
+If the `21st_magic_component_builder` MCP tool is available, use it during design and build stages for higher-quality UI components. The Magic MCP suite has three tools:
+
+| Tool | When to use | How it helps |
+|------|-------------|--------------|
+| `mcp__magic__21st_magic_component_inspiration` | **Stage 2 — Design Vision.** After selecting the niche and personality profile, search for component inspiration that matches the mood. | Returns real component examples from 21st.dev. Use search queries like "hero section dark", "testimonial cards glass", "pricing table minimal", "contact form modern". Helps you see what premium components look like before committing to a direction. |
+| `mcp__magic__21st_magic_component_builder` | **Stage 3 — Build.** When building individual sections (hero, services, reviews, contact, etc.). | Generates production-quality React component code. Feed it the business context and design direction. You still need to integrate the output with OakWind's design tokens (CSS variables, palette, fonts) and business data — don't use the raw output as-is. |
+| `mcp__magic__21st_magic_component_refiner` | **Stage 4 — Verify.** After building, if a specific component looks weak. | Takes an existing component file and returns an improved version. Great for polishing a hero section or card layout that isn't hitting the quality bar. |
+
+**How to use effectively:**
+- Search queries should be 2-4 words max: `"hero gradient dark"`, `"service card hover"`, `"testimonial carousel"`, `"footer modern minimal"`
+- Always pass the project directory and current file path to `component_builder` so it understands the codebase context
+- The returned snippets are starting points — you MUST adapt them to match the site's DNA code, color palette (CSS variables), font pairing, and business data. A Magic component with its default styling next to OakWind-themed sections will look jarring.
+- Use `component_inspiration` early (Stage 2) to inform your design direction, and `component_builder` during actual coding (Stage 3) when you want a higher-quality starting point for a specific section
+- Don't use Magic for every section — use it for the 1-2 sections that benefit most from premium component patterns (usually: hero, services showcase, or testimonial display). Build the rest with the proven OakWind patterns from `references/component-patterns.md`
+
+**If Magic MCP is not available**, skip this entirely. The skill works without it — the component patterns and library recipes provide everything needed.
 
 #### 2b. Determine the price tier
 
@@ -369,7 +389,8 @@ Read `references/scroll-experience.md`. Before writing any component code, plan 
 
 **Animation rules:**
 - No two consecutive sections may use the same animation type
-- Maximum 2 sections may use basic fade-up (reserve it for low-priority sections like trust strip or contact info)
+- Maximum 2 sections may use basic fade-up (reserve it for low-priority sections like contact info)
+- Trust strip counters must use inView count-up (AnimatedCounter), NOT scroll-linked counters (scroll-linked shows partial values like "1 Google Rating" when first visible)
 - At least 1 section must use a scroll-linked pattern (scroll-pinned, horizontal traverse, scale reveal, text fill, or parallax drift)
 - The map must cover every section from hero to footer
 
@@ -377,7 +398,7 @@ Read `references/scroll-experience.md`. Before writing any component code, plan 
 ```
 // Section Map (Animation + Visual Weight):
 // 1. Hero → Orchestrated entrance (stagger + spring) — HERO-WEIGHT
-// 2. Trust Strip → Scroll-linked counters — WHISPER (just numbers, lots of space)
+// 2. Trust Strip → InView count-up (AnimatedCounter) — WHISPER (just numbers, lots of space)
 // 3. Services → Varied stagger cascade — STANDARD
 // 4. Image Break → Clip-path reveal — WHISPER (single full-width image, no text)
 // 5. About → Slide-in lateral — STANDARD
@@ -530,7 +551,7 @@ This is not optional polish — it's what makes the difference between a site th
 
 **Layout:** intentional asymmetry (55/45 splits, not 50/50) · one element breaking the grid per page · varying max-width per section (not every section at 1200px) · generous hero padding (min-h-screen or min-h-[80vh]).
 
-**Motion (use Motion library):** staggered scroll reveals with `whileInView` · count-up numbers on trust strip stats · button hover translateY(-2px) + shadow lift · card hover lift 4-6px. Budget: 1 hero entrance sequence + 1 scroll reveal sequence + 2-3 hover interactions. Everything else: CSS transitions.
+**Motion (use Motion library):** staggered scroll reveals with `whileInView` · inView count-up numbers on trust strip stats (NOT scroll-linked — use `AnimatedCounter` with `useInView` + `requestAnimationFrame`, see scroll-experience.md) · button hover translateY(-2px) + shadow lift · card hover lift 4-6px. Budget: 1 hero entrance sequence + 1 scroll reveal sequence + 2-3 hover interactions. Everything else: CSS transitions.
 
 **Conversion micro-details:** phone CTA buttons must be visually dominant (bold background color, 56px+ height, impossible to miss) · add a floating mobile CTA bar that appears after scrolling past the hero · reviews should feel real (include dates, specific service mentions, first name + last initial).
 
@@ -695,6 +716,11 @@ After the build is verified (or after the user reviews and gives feedback), save
 5. **User preferences** — If the user expressed a preference about design style, copy tone, or workflow. Tag: `oakwind preference`
    - Example: "oakwind preference — user wants more visual depth in bottom-half sections, not just fade-ups. Always deploy a scroll-driven technique past 50% scroll."
 
+6. **Build log** — Save the build's design DNA for future same-niche differentiation. Tag: `oakwind:build-log:{slug}`
+   - Format: "DNA: {8-char code}, Variant: {variant}, Palette: {palette name}, Fonts: {display}+{body}, Niche: {niche}"
+   - Example: "oakwind:build-log:lion-of-judah — DNA: 1B-2B-3E-4A-5E-6B-7C-8B, Variant: Skyline, Palette: Obsidian, Fonts: Oswald+Lato, Niche: roofing"
+   - This is what enables the same-niche differentiation check in Stage 2e-bis. Without it, the rotation rules have no data to rotate against.
+
 **How to save:** Use the claude-mem MCP's observation/save tools if available. If not, save a brief note to the project's memory system. Keep each learning to 1-2 sentences — concise and actionable. Future Stage 0 searches will find these and apply them automatically.
 
 **When to skip:** If the build went perfectly with no issues and no new learnings, skip this step. Don't save redundant observations — check if the learning already exists before creating a duplicate.
@@ -798,3 +824,7 @@ Read these when the build needs deeper direction. They cost zero tokens until op
 | `references/niche-detailing.md` | Auto detailing, ceramic coating, PPF |
 | `references/niche-barber.md` | Barbershops, hair salons, grooming |
 | `references/niche-home-services.md` | HVAC, plumbing, roofing, landscaping, electrician, handyman |
+| `../oakwind-shared/constants.md` | Quick reference — footer HTML, phone rules, CSS variables, banned fonts |
+| `../oakwind-shared/niche-registry.md` | Niche-to-reference-file lookup table |
+| `../oakwind-shared/build-checklist.md` | Universal verification checklist for every build |
+| `../oakwind-shared/handoff-protocol.md` | What data to encode in App.jsx comments for the launch skill |
