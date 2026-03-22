@@ -1,0 +1,12 @@
+/* ── Noise Overlay ────────────────────────────────────────────────
+   Positioning and z-index for the SVG feTurbulence noise overlay.
+   The actual noise is rendered as an inline SVG in AtmosphereKit.jsx.
+   ─────────────────────────────────────────────────────────────── */
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+}

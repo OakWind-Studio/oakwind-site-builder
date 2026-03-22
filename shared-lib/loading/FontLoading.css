@@ -1,0 +1,9 @@
+/* ── Font Loading ─────────────────────────────────────────────────
+   Ensures text remains visible during web font loading by using
+   font-display: swap — shows fallback font immediately, swaps
+   to the web font once it's downloaded.
+   ─────────────────────────────────────────────────────────────── */
+
+body {
+  font-display: swap;
+}

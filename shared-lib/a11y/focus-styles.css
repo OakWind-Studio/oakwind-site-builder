@@ -1,0 +1,14 @@
+/* ── Focus Styles ─────────────────────────────────────────────────
+   Visible focus ring for keyboard navigation only.
+   Uses :focus-visible to avoid showing on mouse clicks.
+   ─────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-ring, var(--color-accent));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

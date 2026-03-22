@@ -1,0 +1,8 @@
+/* ── Scroll Padding ──────────────────────────────────────────────
+   Prevents anchor-linked sections from hiding behind the fixed
+   header when using in-page navigation.
+   ─────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-padding-top: var(--header-height, 80px);
+}
