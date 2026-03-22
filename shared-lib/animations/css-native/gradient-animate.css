@@ -1,0 +1,36 @@
+/* ── Animatable Gradient Properties ───────────────────────────────
+   Uses CSS @property to register custom properties that can be
+   smoothly animated — unlocks gradient rotation and shifting.
+   ─────────────────────────────────────────────────────────────── */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-pos {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
+
+.gradient-rotate {
+  animation: oakGradientRotate 8s linear infinite;
+}
+
+.gradient-shift {
+  animation: oakGradientShift 6s ease-in-out infinite alternate;
+}
+
+@keyframes oakGradientRotate {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes oakGradientShift {
+  to {
+    --gradient-pos: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+/* ── Scroll Progress Bar ──────────────────────────────────────────
+   Fixed thin bar at top of viewport that fills as user scrolls.
+   Pure CSS — uses animation-timeline: scroll().
+   ─────────────────────────────────────────────────────────────── */
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform-origin: left;
+  z-index: 9999;
+  animation: oakScrollProgress linear;
+  animation-timeline: scroll(root block);
+}
+
+@keyframes oakScrollProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
