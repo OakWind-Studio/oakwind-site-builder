@@ -21,7 +21,7 @@ export default function FloatingCTA({
       )}
     >
       <a
-        href={phone}
+        href={phone && phone.startsWith('tel:') ? phone : `tel:${phone || ''}`}
         className="flex items-center justify-center gap-2 w-full text-white font-semibold text-base"
         style={{
           height: 56,

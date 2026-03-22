@@ -60,10 +60,15 @@ export default function Section({
   as = 'section',
 }) {
   const personality = usePersonality();
+  // Use cardStagger timing for stagger animations (has staggerDelay),
+  // sectionReveal timing for everything else
   const timing =
-    presets[personality]?.sectionReveal || presets.calmFormal.sectionReveal;
+    animate === 'stagger'
+      ? presets[personality]?.cardStagger || presets.calmFormal.cardStagger
+      : presets[personality]?.sectionReveal || presets.calmFormal.sectionReveal;
 
-  const spacingCls = spacingMap[spacing] || spacingMap.default;
+  // When weight is 'whisper', it overrides spacing to provide extra breathing room
+  const spacingCls = weight === 'whisper' ? '' : (spacingMap[spacing] || spacingMap.default);
   const bgCls = bgMap[bg] || '';
 
   const weightCls =
