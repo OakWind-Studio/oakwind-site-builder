@@ -27,6 +27,6 @@ export const scaleUp = {
 };
 
 export const clipExpand = {
-  hidden: { clipPath: 'inset(0 50% 0 50%)' },
-  visible: { clipPath: 'inset(0 0% 0 0%)' },
+  hidden: { opacity: 0, clipPath: 'inset(0 50% 0 50%)' },
+  visible: { opacity: 1, clipPath: 'inset(0 0% 0 0%)' },
 };

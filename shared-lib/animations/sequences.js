@@ -35,8 +35,8 @@ function buildSequence(baseDelay, delayStep, timing) {
       };
     } else if (slot === 'separator') {
       sequence[slot] = {
-        initial: { scaleX: 0 },
-        animate: { scaleX: 1 },
+        initial: { opacity: 0, scaleX: 0 },
+        animate: { opacity: 1, scaleX: 1 },
         transition,
       };
     } else {

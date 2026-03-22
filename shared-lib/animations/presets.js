@@ -161,8 +161,9 @@ export function slideInVariant(timing, direction = 'left') {
 // Clip-path reveal (curtain open from center)
 export function clipRevealVariant(timing) {
   return {
-    hidden: { clipPath: 'inset(0 50% 0 50%)' },
+    hidden: { opacity: 0, clipPath: 'inset(0 50% 0 50%)' },
     visible: {
+      opacity: 1,
       clipPath: 'inset(0 0% 0 0%)',
       transition: buildTransition(timing),
     },

@@ -30,6 +30,7 @@ export function useScaleReveal(ref) {
 export function useSectionMorph(ref, fromColor, toColor) {
   const { scrollYProgress } = useScroll({
     target: ref,
+    offset: ['start end', 'end start'],
   });
 
   return useTransform(scrollYProgress, [0, 1], [fromColor, toColor]);
