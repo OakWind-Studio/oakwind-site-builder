@@ -1,61 +1,220 @@
 #!/usr/bin/env bash
-# OakWind Site Builder — Project Scaffold
-# Usage: bash scripts/scaffold.sh <project-name>
-# Creates a Vite + React 18 + Tailwind CSS project ready for OakWind mockups.
+# OakWind Site Builder v2 — Project Scaffold
+# Usage: bash scripts/scaffold.sh <project-slug> [light|dark]
+# Creates a Vite + React 18 + Tailwind CSS v4 project with shared-lib pre-wired.
 
 set -euo pipefail
 
-PROJECT_NAME="${1:?Usage: scaffold.sh <project-name>}"
-PROJECT_DIR="./${PROJECT_NAME}"
+PROJECT_NAME="${1:?Usage: scaffold.sh <project-slug> [light|dark]}"
+MODE="${2:-light}"
+SKILL_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
-if [ -d "$PROJECT_DIR" ]; then
-  echo "Error: Directory '$PROJECT_DIR' already exists."
+if [ -d "$PROJECT_NAME" ]; then
+  echo "Error: Directory '$PROJECT_NAME' already exists."
   exit 1
 fi
 
-echo "Scaffolding OakWind project: $PROJECT_NAME"
+echo "=== OakWind v2 Scaffold ==="
+echo "Project: $PROJECT_NAME"
+echo "Mode: $MODE"
+echo ""
 
-# Create Vite + React + TypeScript project
-npm create vite@latest "$PROJECT_NAME" -- --template react-ts 2>/dev/null
-cd "$PROJECT_DIR"
+# 1. Create Vite + React project
+npm create vite@latest "$PROJECT_NAME" -- --template react
+cd "$PROJECT_NAME"
 
-# Install core dependencies
-echo "Installing dependencies..."
-npm install
-npm install -D tailwindcss @tailwindcss/vite
+# 2. Overwrite package.json with pinned dependencies
+cat > package.json << EOF
+{
+  "name": "${PROJECT_NAME}",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "motion": "^12.0.0",
+    "lucide-react": "^0.468.0",
+    "lenis": "^1.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}
+EOF
 
-# Install default OakWind libraries
-npm install motion lucide-react
+# 3. Copy shared-lib into src/lib/
+cp -r "$SKILL_DIR/shared-lib/" src/lib/
 
-echo "Configuring Tailwind..."
-
-# Configure Vite with Tailwind plugin
+# 4. Write vite.config.js
 cat > vite.config.js << 'VITE_EOF'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 })
 VITE_EOF
 
-# Update index.html with Google Fonts placeholder
+# 5. Write src/index.css
+cat > src/index.css << 'CSS_EOF'
+@import "tailwindcss";
+
+/* === CSS-Native Animations === */
+@import "./lib/animations/css-native/view-reveals.css";
+@import "./lib/animations/css-native/stagger-children.css";
+@import "./lib/animations/css-native/spring-easings.css";
+@import "./lib/animations/css-native/scroll-progress.css";
+@import "./lib/animations/css-native/gradient-animate.css";
+
+/* === Atmosphere === */
+@import "./lib/atmosphere/curtain.css";
+@import "./lib/atmosphere/noise.css";
+@import "./lib/atmosphere/scrollbar.css";
+@import "./lib/atmosphere/shadows.css";
+@import "./lib/atmosphere/gradients.css";
+@import "./lib/atmosphere/recipes.css";
+
+/* === A11y === */
+@import "./lib/a11y/focus-styles.css";
+@import "./lib/a11y/reduced-motion.css";
+@import "./lib/a11y/scroll-padding.css";
+@import "./lib/a11y/sr-only.css";
+
+/* === Loading === */
+@import "./lib/loading/FontLoading.css";
+
+/* === Design Tokens === */
+@theme {
+  --color-accent: #6B7280;
+  --color-accent-hover: #4B5563;
+  --color-surface: #FAFAF9;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #78716C;
+  --color-border: #E7E5E4;
+  --color-border-subtle: #F5F5F4;
+  --color-muted: #A8A29E;
+  --color-ring: #6B7280;
+  --shadow-hue: 0;
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}
+
+/* === Global Styles === */
+body { overflow-x: hidden; font-family: var(--font-body); color: var(--color-text-primary); background: var(--color-surface); }
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+CSS_EOF
+
+# 6. Write src/data.js
+cat > src/data.js << 'DATA_EOF'
+export const BRIEF = {
+  business: { name: '', phone: '', phoneTel: '', address: '', city: '', state: '', zip: '', hours: {}, yearsInBusiness: null, ownerName: '', established: null },
+  personality: { energy: '', formality: '', boldness: '', era: '' },
+  competitors: [],
+  images: {},
+  reviews: [],
+  services: [],
+  differentiators: [],
+  copy: { heroHeadline: '', heroSubtitle: '', sectionLabels: {}, ctaText: '', aboutNarrative: '', tagline: '' },
+};
+
+export const DESIGN_SYSTEM = {
+  oracleRecommendation: {},
+  palette: '',
+  fonts: { display: '', body: '', url: '' },
+  architecture: '',
+  mode: 'light',
+  typeScale: '',
+  animationPersonality: 'calmFormal',
+  tier: 2,
+  fingerprint: '',
+};
+DATA_EOF
+
+# 7. Write src/App.jsx
+cat > src/App.jsx << 'APP_EOF'
+import { SkipLink, AtmosphereKit, FloatingCTA, OakWindFooter } from './lib';
+import { BRIEF } from './data';
+
+/*
+  === OAKWIND BUILD v2 ===
+  Slug:
+  Niche:
+  Personality: { energy, formality, boldness, era }
+  Architecture:
+  Palette:
+  Fonts:
+  Animation Personality:
+  Fingerprint:
+
+  === SECTION MAP ===
+  (Filled by Stage 3)
+
+  === WOW MOMENTS ===
+  1. Hero reveal:
+  2. Scroll surprise:
+  3. Deep impression:
+  4. Personal touch:
+*/
+
+export default function App() {
+  return (
+    <>
+      <SkipLink />
+      <AtmosphereKit />
+      <main id="main-content">
+        {/* Sections composed here during Stage 4 */}
+      </main>
+      <FloatingCTA phone={BRIEF.business.phoneTel} />
+      <OakWindFooter />
+    </>
+  );
+}
+APP_EOF
+
+# 8. Write src/main.jsx
+cat > src/main.jsx << 'MAIN_EOF'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { PersonalityProvider } from './lib';
+import { DESIGN_SYSTEM } from './data';
+import App from './App';
+import './index.css';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <PersonalityProvider personality={DESIGN_SYSTEM.animationPersonality}>
+      <App />
+    </PersonalityProvider>
+  </StrictMode>
+);
+MAIN_EOF
+
+# 9. Update index.html
 cat > index.html << 'HTML_EOF'
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Business Name</title>
-
-    <!-- Google Fonts — Replace DISPLAY_FONT and BODY_FONT with selected fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=DISPLAY_FONT:wght@400;700&family=BODY_FONT:wght@400;600&display=swap" rel="stylesheet"> -->
+    <title>Business Name | City, ST</title>
+    <meta name="description" content="Professional website for your local business" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>" />
   </head>
   <body>
     <div id="root"></div>
@@ -64,129 +223,23 @@ cat > index.html << 'HTML_EOF'
 </html>
 HTML_EOF
 
-# Set up main CSS with Tailwind + CSS variables
-cat > src/index.css << 'CSS_EOF'
-@import "tailwindcss";
+# 10. Create .oakwind-state
+echo '{"stage":0,"completed":[]}' > .oakwind-state
 
-/* ============================================
-   OakWind Design Tokens — Style DNA
-   Replace these values per build based on the
-   selected 8-dimension DNA code.
-   ============================================ */
+# 11. Create empty dirs
+mkdir -p src/components public/fonts
 
-:root {
-  /* Color Approach (Dimension 2) */
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F5F5F5;
-  --color-accent-1: #2563EB;
-  --color-accent-2: #F97316;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6B7280;
-
-  /* Typography (Dimension 3) */
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Source Sans 3', sans-serif;
-
-  /* Layout (Dimensions 1, 6) */
-  --container-max: 1200px;
-  --section-padding: 5rem;
-  --header-height: 64px;
-  --border-radius: 0.5rem;
-}
-
-/* ============================================
-   Base Styles
-   ============================================ */
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
-  margin: 0;
-}
-
-/* ============================================
-   Tailwind Theme Extensions
-   ============================================ */
-
-@theme {
-  --color-brand-bg: var(--color-bg-primary);
-  --color-brand-bg-alt: var(--color-bg-secondary);
-  --color-brand-accent: var(--color-accent-1);
-  --color-brand-accent-2: var(--color-accent-2);
-  --color-brand-text: var(--color-text-primary);
-  --color-brand-text-muted: var(--color-text-secondary);
-  --font-family-display: var(--font-display);
-  --font-family-body: var(--font-body);
-}
-CSS_EOF
-
-# Clean up default files
+# 12. Delete Vite defaults
 rm -f src/App.css
+rm -rf src/assets/
 
-# Create a minimal App.tsx placeholder
-cat > src/App.tsx << 'APP_EOF'
-// OakWind Site Builder — Style DNA: [REPLACE WITH YOUR DNA CODE]
-// e.g. 1B-2B-3E-4A-5E-6B-7A-8D
-
-export default function App() {
-  return (
-    <div className="min-h-screen bg-brand-bg text-brand-text">
-      {/* Replace this with generated components */}
-      <header className="sticky top-0 z-50 bg-brand-bg/95 backdrop-blur border-b border-brand-text/10"
-        style={{ height: 'var(--header-height)' }}>
-        <div className="max-w-[var(--container-max)] mx-auto px-6 h-full flex items-center justify-between">
-          <span className="font-display text-xl font-bold">Business Name</span>
-          <a href="tel:+18175551234"
-            className="bg-brand-accent text-white px-5 py-2.5 rounded font-semibold text-sm hover:-translate-y-0.5 transition-transform">
-            (817) 555-1234
-          </a>
-        </div>
-      </header>
-
-      <main>
-        <section className="min-h-[80vh] flex items-center justify-center px-6">
-          <div className="text-center max-w-2xl">
-            <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight">
-              Your Business Name
-            </h1>
-            <p className="text-brand-text-muted text-xl mt-6">
-              Tagline goes here — generated from business data.
-            </p>
-          </div>
-        </section>
-      </main>
-
-      <footer className="py-8 text-center text-sm text-brand-text-muted border-t border-brand-text/10">
-        <p>
-          Website by{' '}
-          <a href="https://oakwindstudio.com" className="hover:text-brand-accent transition-colors"
-            target="_blank" rel="noopener noreferrer">
-            OakWind Studio
-          </a>
-        </p>
-      </footer>
-    </div>
-  )
-}
-APP_EOF
+# 13. Install dependencies
+npm install
 
 echo ""
-echo "Project scaffolded: $PROJECT_DIR"
+echo "=== OakWind v2 project scaffolded: $PROJECT_NAME ==="
 echo ""
 echo "Next steps:"
 echo "  cd $PROJECT_NAME"
-echo "  1. Uncomment and update the Google Fonts link in index.html"
-echo "  2. Update CSS custom properties in src/index.css"
-echo "  3. Replace App.jsx with generated components"
-echo ""
-echo "Dev:    npm run dev"
-echo "Build:  npm run build"
-echo "Deploy: npx wrangler pages deploy dist --project-name=$PROJECT_NAME"
+echo "  npm run dev"
 echo ""
