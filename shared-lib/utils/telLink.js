@@ -1,5 +1,6 @@
 export function formatPhone(phone) {
-  const digits = phone.replace(/\D/g, '');
+  if (!phone) return '';
+  const digits = String(phone).replace(/\D/g, '');
   if (digits.length === 10) {
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   }
@@ -10,6 +11,8 @@ export function formatPhone(phone) {
 }
 
 export function telHref(phone) {
-  const digits = phone.replace(/\D/g, '');
+  if (!phone) return '#';
+  const digits = String(phone).replace(/\D/g, '');
+  if (digits.length < 10) return '#';
   return digits.length === 10 ? `tel:+1${digits}` : `tel:+${digits}`;
 }

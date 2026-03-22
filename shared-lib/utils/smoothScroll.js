@@ -1,9 +1,15 @@
 import Lenis from 'lenis';
 
 let lenisInstance = null;
+let rafId = null;
 
 export function initSmoothScroll() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+  if (lenisInstance) {
+    lenisInstance.destroy();
+    lenisInstance = null;
+  }
 
   lenisInstance = new Lenis({
     duration: 1.2,
@@ -13,14 +19,18 @@ export function initSmoothScroll() {
 
   function raf(time) {
     lenisInstance.raf(time);
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
   }
-  requestAnimationFrame(raf);
+  rafId = requestAnimationFrame(raf);
 
   return lenisInstance;
 }
 
 export function destroySmoothScroll() {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
   if (lenisInstance) {
     lenisInstance.destroy();
     lenisInstance = null;
