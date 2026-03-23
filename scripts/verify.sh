@@ -1,134 +1,182 @@
 #!/bin/bash
-# OakWind v2 Verify Script
-# Usage: bash verify.sh <project-dir>
-# Runs automated checks and reports results
+# ============================================================
+# OakWind v2 — Automated Verify Script
+# Usage: bash scripts/verify.sh [project-dir]
+# Default project-dir: "."
+# ============================================================
 
 PROJECT_DIR="${1:-.}"
 
 if [ ! -d "$PROJECT_DIR" ]; then
-  echo "ERROR: Directory $PROJECT_DIR does not exist"
+  echo "ERROR: Directory '$PROJECT_DIR' does not exist"
   exit 1
 fi
 
-cd "$PROJECT_DIR"
+cd "$PROJECT_DIR" || exit 1
 
 PASS=0
 FAIL=0
 WARN=0
 
-check() {
-  local name="$1"
-  local result="$2"
-  if [ "$result" = "pass" ]; then
-    echo "  ✅ $name"
-    PASS=$((PASS + 1))
-  elif [ "$result" = "warn" ]; then
-    echo "  ⚠️  $name"
-    WARN=$((WARN + 1))
-  else
-    echo "  ❌ $name"
-    FAIL=$((FAIL + 1))
-  fi
+pass() {
+  echo "  [PASS] $1"
+  PASS=$((PASS + 1))
 }
 
-echo "=== OakWind v2 Verify ==="
-echo ""
+fail() {
+  echo "  [FAIL] $1"
+  FAIL=$((FAIL + 1))
+}
 
-# Build check
-echo "📦 Build"
+warn() {
+  echo "  [WARN] $1"
+  WARN=$((WARN + 1))
+}
+
+divider() {
+  echo ""
+  echo "--- $1 ---"
+}
+
+# ============================================================
+divider "BUILD"
+# ============================================================
+
 if npm run build > /dev/null 2>&1; then
-  check "Build succeeds" "pass"
+  pass "Build succeeds"
 else
-  check "Build succeeds" "fail"
-  echo "  Build failed — fix errors before continuing"
+  fail "Build failed — fix errors before continuing"
+  echo ""
+  echo "=== RESULTS ==="
+  echo "  Passed:   $PASS"
+  echo "  Failed:   $FAIL"
+  echo "  Warnings: $WARN"
   exit 1
 fi
 
-# Bundle size
-echo ""
-echo "📊 Performance"
-BUNDLE_SIZE=$(du -sb dist/assets/*.js 2>/dev/null | awk '{sum+=$1} END {print sum}')
-if [ -z "$BUNDLE_SIZE" ] || [ "$BUNDLE_SIZE" -lt 500000 ]; then
-  check "JS bundle <500KB ($((BUNDLE_SIZE / 1024))KB)" "pass"
+# ============================================================
+divider "PERFORMANCE"
+# ============================================================
+
+# Bundle size: sum all JS files in dist/assets/
+if [ -d "dist/assets" ]; then
+  BUNDLE_BYTES=$(find dist/assets -name "*.js" -exec wc -c {} + 2>/dev/null | tail -1 | awk '{print $1}')
+  BUNDLE_BYTES=${BUNDLE_BYTES:-0}
+  BUNDLE_KB=$((BUNDLE_BYTES / 1024))
+  if [ "$BUNDLE_BYTES" -lt 512000 ]; then
+    pass "JS bundle < 500KB (${BUNDLE_KB}KB)"
+  else
+    fail "JS bundle >= 500KB (${BUNDLE_KB}KB) — trim dependencies"
+  fi
 else
-  check "JS bundle <500KB ($((BUNDLE_SIZE / 1024))KB)" "fail"
+  fail "dist/assets/ not found after build"
 fi
 
-# Title check
-echo ""
-echo "📄 HTML Head"
-if grep -q "Vite + React" index.html 2>/dev/null; then
-  check "Page title (not 'Vite + React')" "fail"
+# ============================================================
+divider "HTML HEAD"
+# ============================================================
+
+# Title check — must not be default Vite title
+if [ -f "index.html" ]; then
+  if grep -q "Vite + React" index.html 2>/dev/null; then
+    fail "Page title is still 'Vite + React' — set a real title"
+  else
+    TITLE=$(grep -oP '(?<=<title>).*?(?=</title>)' index.html 2>/dev/null)
+    if [ -n "$TITLE" ]; then
+      pass "Page title set: '$TITLE'"
+    else
+      fail "No <title> tag found in index.html"
+    fi
+  fi
 else
-  check "Page title customized" "pass"
+  fail "index.html not found in project root"
 fi
 
 # Meta description
 if grep -q 'name="description"' index.html 2>/dev/null; then
-  check "Meta description present" "pass"
+  pass "Meta description present"
 else
-  check "Meta description present" "fail"
+  fail "Meta description missing — add <meta name=\"description\" content=\"...\">"
 fi
 
-# Favicon
+# Emoji favicon (data:image/svg or emoji-based favicon)
 if grep -q "data:image/svg" index.html 2>/dev/null; then
-  check "Emoji favicon set" "pass"
+  pass "Emoji favicon set"
 else
-  check "Emoji favicon set" "warn"
+  warn "Emoji favicon not detected — consider adding one in <link rel=\"icon\">"
 fi
 
-# Tel links
-echo ""
-echo "📞 Conversion"
+# ============================================================
+divider "CONVERSION"
+# ============================================================
+
+# tel: link count across all JSX and JS source files
 TEL_COUNT=$(grep -r "tel:" src/ --include="*.jsx" --include="*.js" 2>/dev/null | wc -l)
+TEL_COUNT=$(echo "$TEL_COUNT" | tr -d '[:space:]')
 if [ "$TEL_COUNT" -ge 6 ]; then
-  check "tel: links ≥6 (found $TEL_COUNT)" "pass"
+  pass "tel: links >= 6 (found $TEL_COUNT)"
 else
-  check "tel: links ≥6 (found $TEL_COUNT)" "fail"
+  fail "tel: links < 6 (found $TEL_COUNT) — need header, hero, mid-CTA, contact, footer, floating bar"
 fi
 
-# OakWind footer
-if grep -r "oakwindstudio.com" src/ --include="*.jsx" --include="*.js" > /dev/null 2>&1; then
-  check "OakWind footer present" "pass"
+# OakWind footer attribution
+if grep -r "oakwindstudio\.com" src/ --include="*.jsx" --include="*.js" > /dev/null 2>&1; then
+  pass "OakWind footer present (oakwindstudio.com link found)"
 else
-  check "OakWind footer present" "fail"
+  fail "OakWind footer missing — add 'Website by OakWind Studio' linked to oakwindstudio.com"
 fi
 
-# Placeholder text
+# ============================================================
+divider "CONTENT"
+# ============================================================
+
+# Placeholder / lorem ipsum text
+PLACEHOLDER_HITS=$(grep -riE "lorem ipsum|placeholder text|your business name|your company|insert (name|text|logo)" src/ --include="*.jsx" --include="*.js" 2>/dev/null | wc -l)
+PLACEHOLDER_HITS=$(echo "$PLACEHOLDER_HITS" | tr -d '[:space:]')
+if [ "$PLACEHOLDER_HITS" -gt 0 ]; then
+  fail "Placeholder text found ($PLACEHOLDER_HITS occurrence(s)) — replace with real content"
+else
+  pass "No placeholder text detected"
+fi
+
+# ============================================================
+divider "CSS HYGIENE"
+# ============================================================
+
+# overflow-x: hidden on html (should only be on body, not html)
+if grep -rE "html.*overflow-x\s*:\s*hidden|overflow-x\s*:\s*hidden.*html" src/ --include="*.css" 2>/dev/null | grep -iv "body" > /dev/null 2>&1; then
+  fail "overflow-x: hidden found on html element — move to body only"
+else
+  pass "No overflow-x: hidden on html (correct)"
+fi
+
+# scroll-behavior: smooth conflict (Lenis or custom scroll handling should own this)
+if grep -rE "scroll-behavior\s*:\s*smooth" src/ --include="*.css" 2>/dev/null > /dev/null 2>&1; then
+  warn "scroll-behavior: smooth in CSS — may conflict with Lenis/custom scroll; remove if using JS scroll"
+else
+  pass "No scroll-behavior: smooth conflict"
+fi
+
+# ============================================================
+divider "SUMMARY"
+# ============================================================
+
+TOTAL=$((PASS + FAIL + WARN))
+
 echo ""
-echo "📝 Content"
-if grep -ri "lorem ipsum\|placeholder\|your business\|business name" src/ --include="*.jsx" --include="*.js" > /dev/null 2>&1; then
-  check "No placeholder text" "fail"
-else
-  check "No placeholder text" "pass"
-fi
-
-# overflow-x check
-echo ""
-echo "🎨 CSS"
-if grep -r "overflow-x.*hidden" src/index.css 2>/dev/null | grep -v "body" | grep "html" > /dev/null 2>&1; then
-  check "No overflow-x: hidden on html (only body)" "fail"
-else
-  check "overflow-x: hidden only on body" "pass"
-fi
-
-# Smooth scroll conflict
-if grep -r "scroll-behavior.*smooth" src/ --include="*.css" > /dev/null 2>&1; then
-  check "No scroll-behavior: smooth (Lenis handles it)" "warn"
-else
-  check "No scroll-behavior: smooth conflict" "pass"
-fi
-
-# Summary
-echo ""
-echo "=== Results ==="
-echo "  ✅ Passed: $PASS"
-echo "  ❌ Failed: $FAIL"
-echo "  ⚠️  Warnings: $WARN"
+echo "=== RESULTS ==="
+echo "  Passed:   $PASS"
+echo "  Failed:   $FAIL"
+echo "  Warnings: $WARN"
+echo "  Total:    $TOTAL checks"
 echo ""
 
-if [ "$FAIL" -eq 0 ]; then
-  echo "All automated checks passed. Run the 9-dimension manual check next."
+if [ "$FAIL" -eq 0 ] && [ "$WARN" -eq 0 ]; then
+  echo "All checks passed. Proceed to manual 9-dimension scoring."
+  exit 0
+elif [ "$FAIL" -eq 0 ]; then
+  echo "All hard checks passed ($WARN warning(s)). Review warnings, then proceed to manual scoring."
+  exit 0
 else
   echo "$FAIL check(s) failed. Fix before proceeding to Stage 5 verification."
   exit 1
