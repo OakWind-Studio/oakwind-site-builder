@@ -1,0 +1,69 @@
+/* Shadow System Reference
+   The actual CSS classes live in shared-lib/atmosphere/shadows.css (Phase 1).
+   This file documents the system and provides the palette-to-hue mapping. */
+
+/* === Shadow Formula ===
+   All shadows use: oklch(0.3 0.02 var(--shadow-hue) / opacity)
+   --shadow-hue is set per palette in the @theme block (degrees, 0-360)
+   Warm palette = warm shadows. Cool palette = cool shadows. */
+
+/* === Palette-to-Hue Mapping ===
+   | Palette          | --shadow-hue | Reason                    |
+   |------------------|-------------|---------------------------|
+   | toasted-almond   | 25          | Warm orange-brown         |
+   | terracotta-garden| 20          | Warm reddish-brown        |
+   | golden-hour      | 45          | Warm gold                 |
+   | campfire         | 15          | Warm red-orange           |
+   | midnight-sage    | 150         | Cool green                |
+   | steel-copper     | 20          | Warm copper tone          |
+   | navy-brass       | 220         | Cool blue                 |
+   | arctic-blue      | 200         | Cool cyan-blue            |
+   | obsidian         | 45          | Warm gold on dark         |
+   | carbon-fiber     | 220         | Cool blue on dark         |
+   | noir-rouge       | 0           | Neutral-warm red          |
+   | midnight-velvet  | 280         | Cool purple               |
+   | blush-cream      | 350         | Warm pink                 |
+   | sage-linen       | 130         | Cool-warm green           |
+   | electric-coral   | 10          | Warm red-orange           |
+   | teal-thunder     | 170         | Cool teal                 |
+*/
+
+/* === The 5 Elevation Levels ===
+   .shadow-xs  — Subtle: buttons resting state, input borders
+   .shadow-sm  — Light: cards, small elevated surfaces
+   .shadow-md  — Medium: dropdown menus, popovers, active cards
+   .shadow-lg  — Heavy: modals, drawers, floating elements
+   .shadow-xl  — Dramatic: hero overlays, featured cards on hover
+
+   .shadow-hover — Transition utility, add alongside any shadow class
+
+   See shared-lib/atmosphere/shadows.css for the actual CSS. */
+
+/* === Usage in Components ===
+
+   A card with a subtle shadow that lifts on hover:
+   <div class="shadow-sm shadow-hover hover:shadow-md">
+
+   A modal overlay:
+   <div class="shadow-lg">
+
+   A floating CTA button:
+   <button class="shadow-md shadow-hover hover:shadow-lg">
+
+   The shadow color automatically matches the palette because
+   --shadow-hue is defined in the @theme block alongside the
+   color tokens. No per-component shadow color configuration needed. */
+
+/* === How to Set --shadow-hue for a New Palette ===
+
+   1. Identify the dominant accent hue of the palette
+   2. Find its OKLCH hue angle (0-360 degrees):
+      - 0-30:    Red to orange
+      - 30-60:   Orange to yellow
+      - 60-120:  Yellow to green
+      - 120-180: Green to cyan
+      - 180-240: Cyan to blue
+      - 240-300: Blue to purple
+      - 300-360: Purple to red/pink
+   3. Set --shadow-hue to that value in the @theme block
+   4. Shadows will automatically pick up the correct tint */
