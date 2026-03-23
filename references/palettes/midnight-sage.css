@@ -1,0 +1,37 @@
+/* Midnight Sage
+   Mood: Cool & Professional
+   Best for: attorneys, law firms, financial services
+   Personality: calmFormal, subtleElegant
+   Mode: light
+   Shadow hue: 150
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.42 0.08 160) -> #2D5A3D (deep forest green) */
+
+@theme {
+  --color-accent: #2D5A3D;
+  --color-accent-hover: #224830;
+  --color-surface: #F8FAF9;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #0F1A14;
+  --color-text-secondary: #4A5F50;
+  --color-border: #C2D0C8;
+  --color-border-subtle: #DDE6E0;
+  --color-muted: #8A9C90;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 150;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

@@ -1,0 +1,37 @@
+/* Steel Copper
+   Mood: Cool & Professional
+   Best for: auto repair, trades, industrial services
+   Personality: boldConfident, traditionalWarm
+   Mode: light
+   Shadow hue: 20
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.60 0.10 50) -> #C47A5A (warm copper on cool base) */
+
+@theme {
+  --color-accent: #C47A5A;
+  --color-accent-hover: #A86648;
+  --color-surface: #F7F6F5;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1A1816;
+  --color-text-secondary: #5A5450;
+  --color-border: #D4CCC6;
+  --color-border-subtle: #E8E3DE;
+  --color-muted: #968E86;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 20;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

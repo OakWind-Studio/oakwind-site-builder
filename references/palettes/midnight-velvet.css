@@ -1,0 +1,37 @@
+/* Midnight Velvet
+   Mood: Dark & Premium
+   Best for: med spa, luxury wellness, aesthetic clinics
+   Personality: subtleElegant, calmFormal
+   Mode: dark
+   Shadow hue: 280
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.70 0.10 300) -> #B89FD4 (soft lavender on dark) */
+
+@theme {
+  --color-accent: #B89FD4;
+  --color-accent-hover: #C8B2E0;
+  --color-surface: #0E0B14;
+  --color-surface-elevated: #1A1520;
+  --color-text-primary: #EDE8F2;
+  --color-text-secondary: #9088A0;
+  --color-border: #28203A;
+  --color-border-subtle: #1C1628;
+  --color-muted: #584E6A;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 280;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

@@ -1,0 +1,37 @@
+/* Navy Brass
+   Mood: Cool & Professional
+   Best for: boutique law firms, wealth management, premium professional
+   Personality: calmFormal, subtleElegant
+   Mode: light
+   Shadow hue: 220
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.35 0.08 250) -> #1B3A5C (deep navy) */
+
+@theme {
+  --color-accent: #1B3A5C;
+  --color-accent-hover: #142D49;
+  --color-surface: #F9F8F6;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #0E1A28;
+  --color-text-secondary: #4A5568;
+  --color-border: #C8CDD6;
+  --color-border-subtle: #DFE2E8;
+  --color-muted: #8890A0;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 220;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

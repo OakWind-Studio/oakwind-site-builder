@@ -1,0 +1,37 @@
+/* Sage Linen
+   Mood: Soft & Elegant
+   Best for: wellness, organic businesses, yoga, natural products
+   Personality: calmCasual, subtleElegant
+   Mode: light
+   Shadow hue: 130
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.60 0.07 145) -> #6B8F6F (muted sage green) */
+
+@theme {
+  --color-accent: #6B8F6F;
+  --color-accent-hover: #587A5C;
+  --color-surface: #F9FAF5;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1A1E18;
+  --color-text-secondary: #5A6458;
+  --color-border: #C4CEC0;
+  --color-border-subtle: #DDE4D8;
+  --color-muted: #8C9888;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 130;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

@@ -1,0 +1,37 @@
+/* Golden Hour
+   Mood: Warm & Inviting
+   Best for: wedding venues, photography, luxury warm businesses
+   Personality: subtleElegant, calmFormal
+   Mode: light
+   Shadow hue: 45
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.62 0.13 85) -> #B8860B (warm gold) */
+
+@theme {
+  --color-accent: #B8860B;
+  --color-accent-hover: #9A7009;
+  --color-surface: #FDFBF5;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1A1608;
+  --color-text-secondary: #6B6040;
+  --color-border: #DDD4B8;
+  --color-border-subtle: #EEE9D8;
+  --color-muted: #9E9470;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 45;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

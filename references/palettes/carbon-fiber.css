@@ -1,0 +1,37 @@
+/* Carbon Fiber
+   Mood: Dark & Premium
+   Best for: detailing, performance auto, tech-forward
+   Personality: modernClean, energeticBold
+   Mode: dark
+   Shadow hue: 220
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.68 0.14 250) -> #3B9DFF (electric blue on dark) */
+
+@theme {
+  --color-accent: #3B9DFF;
+  --color-accent-hover: #5AAFFF;
+  --color-surface: #0C0C0C;
+  --color-surface-elevated: #161616;
+  --color-text-primary: #E8ECF0;
+  --color-text-secondary: #8A96A4;
+  --color-border: #252A30;
+  --color-border-subtle: #1A1E22;
+  --color-muted: #4E5868;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 220;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

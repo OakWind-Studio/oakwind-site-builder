@@ -1,0 +1,37 @@
+/* Noir Rouge
+   Mood: Dark & Premium
+   Best for: trendy restaurants, bars, nightlife
+   Personality: energeticBold, boldConfident
+   Mode: dark
+   Shadow hue: 0
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.52 0.14 20) -> #C74B4B (deep red on dark) */
+
+@theme {
+  --color-accent: #C74B4B;
+  --color-accent-hover: #D86060;
+  --color-surface: #0F0808;
+  --color-surface-elevated: #1A1010;
+  --color-text-primary: #F0E8E8;
+  --color-text-secondary: #9A8585;
+  --color-border: #302020;
+  --color-border-subtle: #1E1414;
+  --color-muted: #5E4848;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 0;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

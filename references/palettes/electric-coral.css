@@ -1,0 +1,37 @@
+/* Electric Coral
+   Mood: Bold & Energetic
+   Best for: pressure washing, active businesses, bold services
+   Personality: energeticBold, boldConfident
+   Mode: light
+   Shadow hue: 10
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.58 0.18 30) -> #E85D4A (vivid coral-red) */
+
+@theme {
+  --color-accent: #E85D4A;
+  --color-accent-hover: #CC4C3A;
+  --color-surface: #FAFAFA;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1A1010;
+  --color-text-secondary: #6B4A44;
+  --color-border: #D8C8C4;
+  --color-border-subtle: #EAE0DD;
+  --color-muted: #9A8480;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 10;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

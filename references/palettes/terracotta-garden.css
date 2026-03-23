@@ -1,0 +1,37 @@
+/* Terracotta Garden
+   Mood: Warm & Inviting
+   Best for: landscaping, restaurants with patios, artisan businesses
+   Personality: calmCasual, traditionalWarm
+   Mode: light
+   Shadow hue: 20
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.58 0.14 45) -> #CB6843 (earthy orange-red) */
+
+@theme {
+  --color-accent: #CB6843;
+  --color-accent-hover: #AD5636;
+  --color-surface: #FBF7F4;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1A1209;
+  --color-text-secondary: #705B4A;
+  --color-border: #DBC8B8;
+  --color-border-subtle: #EEE4DA;
+  --color-muted: #9A8878;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 20;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

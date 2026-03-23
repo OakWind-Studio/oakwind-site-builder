@@ -1,0 +1,37 @@
+/* Arctic Blue
+   Mood: Cool & Professional
+   Best for: dental, medical, tech, clean professional
+   Personality: modernClean, calmFormal
+   Mode: light
+   Shadow hue: 200
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.55 0.10 220) -> #2E7D9B (crisp teal-blue) */
+
+@theme {
+  --color-accent: #2E7D9B;
+  --color-accent-hover: #246882;
+  --color-surface: #F8FAFB;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #0F1820;
+  --color-text-secondary: #4A6070;
+  --color-border: #C0D0D8;
+  --color-border-subtle: #DAE4EA;
+  --color-muted: #839AA8;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 200;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

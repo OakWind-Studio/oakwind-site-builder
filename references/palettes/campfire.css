@@ -1,0 +1,37 @@
+/* Campfire
+   Mood: Warm & Inviting
+   Best for: BBQ, taco shops, food trucks, casual dining
+   Personality: energeticCasual, boldConfident
+   Mode: light
+   Shadow hue: 15
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.56 0.15 35) -> #C75B39 (smoky red-orange) */
+
+@theme {
+  --color-accent: #C75B39;
+  --color-accent-hover: #A94B2E;
+  --color-surface: #FAF5F2;
+  --color-surface-elevated: #FFFFFF;
+  --color-text-primary: #1C110D;
+  --color-text-secondary: #6B4F42;
+  --color-border: #DCC5B8;
+  --color-border-subtle: #EEE2D9;
+  --color-muted: #9C8474;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 15;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}

@@ -1,0 +1,37 @@
+/* Obsidian
+   Mood: Dark & Premium
+   Best for: auto detailing, barbers, luxury brands
+   Personality: boldConfident, subtleElegant
+   Mode: dark
+   Shadow hue: 45
+
+   Designed in OKLCH for perceptual uniformity, output as hex for compatibility.
+   Accent: oklch(0.74 0.10 80) -> #D4A853 (gold on dark) */
+
+@theme {
+  --color-accent: #D4A853;
+  --color-accent-hover: #E0BA6A;
+  --color-surface: #0A0A0A;
+  --color-surface-elevated: #151515;
+  --color-text-primary: #F0ECE4;
+  --color-text-secondary: #9A9080;
+  --color-border: #2A2520;
+  --color-border-subtle: #1C1A16;
+  --color-muted: #5E5648;
+  --color-ring: var(--color-accent);
+  --shadow-hue: 45;
+
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+}
