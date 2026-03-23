@@ -65,6 +65,23 @@ Image sits inside a frame with a subtle shadow and offset border, creating depth
 </div>
 ```
 
+### Warm Glow Shadow
+A soft radial gradient glow behind the image in the accent color, plus a heavy warm box-shadow. Creates a luxurious "lit from behind" effect without any visible border element. Best for provider portraits and about sections.
+```jsx
+<div className="relative">
+  <div
+    className="absolute -inset-6 rounded-3xl blur-2xl opacity-30"
+    style={{ background: 'radial-gradient(ellipse at center, var(--color-accent-1), transparent 70%)' }}
+  />
+  <img
+    src={img}
+    className="relative z-10 w-full rounded-2xl"
+    style={{ boxShadow: '0 25px 60px -12px rgba(139,115,85,0.25), 0 12px 28px -8px rgba(0,0,0,0.15)' }}
+    alt=""
+  />
+</div>
+```
+
 ### Accent Corner Frame
 Thin corner accents at diagonal corners, suggesting a custom picture frame.
 ```jsx
@@ -230,7 +247,7 @@ function BeforeAfter({ before, after }) {
 | Situation | Technique |
 |---|---|
 | Hero with full-screen photo | Cinematic Bottom Reveal |
-| About section with owner portrait | Floating Frame or Accent Corner Frame |
+| About section with owner portrait | Warm Glow Shadow, Floating Frame, or Accent Corner Frame (rotate — never use same frame on consecutive builds) |
 | Services with images | Side Fade in zigzag layouts |
 | Gallery/portfolio grid | Offset Grid or Featured + Supporting |
 | Transitional visual break | Horizontal Scroll Strip |
