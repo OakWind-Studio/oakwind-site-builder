@@ -1,0 +1,69 @@
+/* Dark Mode Semantic Token Template
+   Copy this structure into each dark palette file.
+   Replace placeholder values with palette-specific colors.
+
+   Design in OKLCH for perceptual uniformity, then convert to hex for @theme.
+   All placeholder values marked #____ must be replaced. */
+
+@theme {
+  /* --- Semantic Color Tokens --- */
+  --color-accent: #____;             /* Brand/primary action — slightly brighter than light mode for contrast on dark surfaces */
+  --color-accent-hover: #____;       /* 10-15% lighter than accent (opposite of light mode) */
+  --color-surface: #____;            /* Deep charcoal (#0A0A0A to #121212 range, never pure black #000000) */
+  --color-surface-elevated: #____;   /* Slightly lighter than surface (#1A1A1A to #222222 range) */
+  --color-text-primary: #____;       /* Near-white (#F0F0F0 to #FAFAFA, contrast >= 4.5:1 vs surface) */
+  --color-text-secondary: #____;     /* Medium gray (#9A9A9A to #B0B0B0, contrast >= 3:1 vs surface) */
+  --color-border: #____;             /* Subtle dark (#252525 to #333333) */
+  --color-border-subtle: #____;      /* Even subtler (#1A1A1A to #252525) */
+  --color-muted: #____;              /* Dark gray — disabled text, placeholders */
+  --color-ring: var(--color-accent); /* Focus ring color */
+  --shadow-hue: ___;                 /* Degrees (0-360) — same hue family as light mode counterpart */
+
+  /* --- Component Tokens (rarely need per-palette overrides) --- */
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  /* --- Typography --- */
+  --font-display: system-ui, sans-serif;  /* Replace with chosen display font */
+  --font-body: system-ui, sans-serif;     /* Replace with chosen body font */
+
+  /* --- Layout & Animation --- */
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+
+  /* --- Type Scale (copy from type-scales.css) --- */
+  /* --font-xs through --font-5xl go here */
+
+  /* --- Line Height & Tracking (copy from type-scales.css) --- */
+  /* --leading-* and --tracking-* go here */
+}
+
+/* === Dark Mode Design Notes ===
+
+   Surface hierarchy (darkest to lightest):
+     --color-surface          #0A0A0A – #121212   Page background
+     --color-border-subtle    #1A1A1A – #252525   Hairline separators
+     --color-surface-elevated #1A1A1A – #222222   Cards, modals
+     --color-border           #252525 – #333333   Visible borders
+
+   Text hierarchy (brightest to dimmest):
+     --color-text-primary     #F0F0F0 – #FAFAFA   Main content
+     --color-text-secondary   #9A9A9A – #B0B0B0   Supporting text
+     --color-muted            #555555 – #666666   Disabled, placeholders
+
+   Accent adjustments for dark mode:
+   - Increase lightness by 5-10% compared to light mode version
+   - May need to reduce chroma slightly to avoid neon appearance
+   - Hover state goes LIGHTER (opposite of light mode)
+   - Test accent on both surface and surface-elevated for contrast
+
+   Shadows on dark mode:
+   - Shadows are less visible on dark backgrounds
+   - The shadow system handles this via opacity — no token changes needed
+   - --shadow-hue should match the light mode counterpart palette */

@@ -1,0 +1,45 @@
+/* Light Mode Semantic Token Template
+   Copy this structure into each light palette file.
+   Replace placeholder values with palette-specific colors.
+
+   Design in OKLCH for perceptual uniformity, then convert to hex for @theme.
+   All placeholder values marked #____ must be replaced. */
+
+@theme {
+  /* --- Semantic Color Tokens --- */
+  --color-accent: #____;             /* Brand/primary action color — vibrant but not neon */
+  --color-accent-hover: #____;       /* 10-15% darker than accent */
+  --color-surface: #____;            /* Light background (warm off-white, never pure #FFFFFF) */
+  --color-surface-elevated: #FFFFFF; /* Cards, modals — pure white or near-white */
+  --color-text-primary: #____;       /* Dark text on light bg (contrast >= 4.5:1 vs surface) */
+  --color-text-secondary: #____;     /* Muted text (contrast >= 3:1 vs surface) */
+  --color-border: #____;             /* Visible borders, dividers */
+  --color-border-subtle: #____;      /* Barely-visible borders */
+  --color-muted: #____;              /* Placeholders, disabled text */
+  --color-ring: var(--color-accent); /* Focus ring color */
+  --shadow-hue: ___;                 /* Degrees (0-360) — match accent hue family */
+
+  /* --- Component Tokens (rarely need per-palette overrides) --- */
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-hover: var(--color-accent-hover);
+  --card-bg: var(--color-surface-elevated);
+  --card-border: var(--color-border);
+  --nav-bg: var(--color-surface);
+  --input-bg: var(--color-surface-elevated);
+  --input-border: var(--color-border);
+  --input-focus: var(--color-ring);
+
+  /* --- Typography --- */
+  --font-display: system-ui, sans-serif;  /* Replace with chosen display font */
+  --font-body: system-ui, sans-serif;     /* Replace with chosen body font */
+
+  /* --- Layout & Animation --- */
+  --header-height: 72px;
+  --curtain-duration: 600ms;
+
+  /* --- Type Scale (copy from type-scales.css) --- */
+  /* --font-xs through --font-5xl go here */
+
+  /* --- Line Height & Tracking (copy from type-scales.css) --- */
+  /* --leading-* and --tracking-* go here */
+}
