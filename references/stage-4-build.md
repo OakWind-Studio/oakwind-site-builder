@@ -116,6 +116,18 @@ import { RevealImage } from '../lib/primitives/RevealImage';
 <RevealImage src={img} alt="..." aspect="4/3" />
 ```
 
+**Gallery Grids** — ALWAYS use balanced grids. Never leave an odd image spanning awkwardly:
+```
+6 images → 3x2 grid (or 2x3 on mobile)
+8 images → 4x2 grid (or 2x4 on mobile)
+9 images → 3x3 grid
+5 images → DON'T. Add a 6th or remove one to make it 4.
+7 images → DON'T. Add an 8th or remove one to make it 6.
+```
+All gallery items should be `aspect-square` for consistency. No row-span or col-span tricks unless you have exactly 5 images (then use 1 large + 4 small in a 2x2+1 layout). When in doubt, equal grid wins.
+
+**Image Treatments** — Read `references/image-treatments.md` for about/profile section options. NEVER default to the accent-border-offset frame.
+
 **Animations** — Let PersonalityContext handle timing. Do NOT hardcode:
 ```jsx
 // WRONG: transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}

@@ -34,11 +34,13 @@ export default function Select({
         <option value="" disabled hidden>
           {' '}
         </option>
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
+        {options.map((opt) => {
+          const value = typeof opt === 'string' ? opt : opt.value;
+          const label = typeof opt === 'string' ? opt : opt.label;
+          return (
+            <option key={value} value={value}>{label}</option>
+          );
+        })}
       </select>
       {/* Dropdown arrow */}
       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">

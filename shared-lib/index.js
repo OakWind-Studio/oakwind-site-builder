@@ -17,6 +17,7 @@ export { useTabs } from './hooks/useTabs';
 export { useLightbox } from './hooks/useLightbox';
 export { useBeforeAfter } from './hooks/useBeforeAfter';
 export { usePinnedScroll } from './hooks/usePinnedScroll';
+export { useChapterScroll } from './hooks/useChapterScroll';
 export { useHover } from './hooks/useHover';
 export { useTypewriter } from './hooks/useTypewriter';
 
@@ -29,7 +30,7 @@ export { useParallaxY, useScaleReveal, useSectionMorph } from './animations/scro
 // Primitives
 export { default as Section } from './primitives/Section';
 export { default as Container } from './primitives/Container';
-export { Grid, BentoItem } from './primitives/Grid';
+export { default as Grid, BentoItem } from './primitives/Grid';
 export { default as OakImage } from './primitives/OakImage';
 export { default as FramedImage } from './primitives/FramedImage';
 export { default as RevealImage } from './primitives/RevealImage';
