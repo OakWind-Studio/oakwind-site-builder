@@ -3,31 +3,31 @@
 Reference during Stage 2 for quality benchmarks. Use Firecrawl to scrape 2-3 of these.
 
 ## 1. Historic Estate Wedding Venue
-**URL:** https://example-wedding-estate.com
-**What makes it premium:** Full-viewport cinematic hero with autoplay highlight reel, scroll-driven gallery that reveals ceremony → reception → send-off journey, soft parallax on floral detail shots, elegant serif typography throughout
+**URL:** https://crookedwillowevents.com
+**What makes it premium:** 90-acre Colorado property with multiple hand-crafted event spaces rich in history and breathtaking mountain views. Movement and warmth draw visitors in instantly. The personality of the property shines through, balancing emotion and efficiency.
 **Technique to borrow:** Scroll-driven ceremony-to-reception journey — each scroll step reveals the next chapter of a wedding day
 
 ## 2. Modern Industrial Loft Venue
-**URL:** https://example-wedding-industrial.com
-**What makes it premium:** Dark moody palette with warm accent lighting photography, bento-grid gallery mixing wide shots with intimate details, virtual 360° tour embed, vendor partnership section with curated recommendations
+**URL:** https://milestoneeventsgroup.com
+**What makes it premium:** Villa Chanticleer by Milestone Events — award-winning venue with numerous accolades prominently displayed. Great typography with two complementary typefaces creating clear hierarchy. Venue rates displayed prominently with customer testimonials on homepage.
 **Technique to borrow:** Bento-grid gallery mixing wide venue shots with close-up detail photos (flowers, table settings, lighting)
 
 ## 3. Garden & Outdoor Estate
-**URL:** https://example-wedding-garden.com
-**What makes it premium:** Seasonal gallery tabs (Spring/Summer/Fall/Winter), weather backup showcase, ceremony site options with aerial photography, capacity and layout visualizations
-**Technique to borrow:** Seasonal gallery tabs showing the same venue transformed across four seasons — proves year-round versatility
+**URL:** https://castlefarmweddings.com
+**What makes it premium:** 150-acre premier equestrian estate and luxury Maryland farm wedding venue. Website tells a story before you've even clicked — blending storytelling with strategy that makes you want to visit in person. Eastern Shore elegance throughout.
+**Technique to borrow:** Seasonal gallery tabs showing the same venue transformed across seasons — proves year-round versatility
 
 ## 4. Luxury Ballroom & Hotel Venue
-**URL:** https://example-wedding-ballroom.com
-**What makes it premium:** Package comparison with elegant tier cards, immersive photo gallery with lightbox, testimonial videos from real couples, availability calendar integration
+**URL:** https://www.castletonfarms.com
+**What makes it premium:** Castleton Farms luxury wedding venue with immersive photo galleries, package tier options with elegant visual hierarchy, and availability integration. Premium design matching the grandeur of the venue spaces.
 **Technique to borrow:** Package tier cards with elegant design — Bronze/Silver/Gold visual hierarchy communicates value without feeling salesy
 
 ## 5. Rustic Barn & Ranch Venue
-**URL:** https://example-wedding-barn.com
-**What makes it premium:** Warm earth-tone palette, hand-lettered accent typography, property map illustration, getting-ready suite showcase, sunset golden-hour photography featured prominently
+**URL:** https://www.crookedwillowmn.com
+**What makes it premium:** Minnesota farm wedding venue with both indoor and outdoor ceremony locations. Warm earth-tone palette, rustic-yet-refined design, and property showcase that helps couples visualize their day. Getting-ready suites featured prominently.
 **Technique to borrow:** Property map illustration showing ceremony site, reception barn, getting-ready suites, parking — helps couples visualize the day
 
 ## 6. Destination Vineyard Wedding
-**URL:** https://example-wedding-vineyard.com
-**What makes it premium:** Horizontal scroll gallery section, wine-country color palette (burgundy, sage, cream), chef/catering showcase, accommodation info, travel guide for guests
+**URL:** https://johnsonjonesgroup.com/best-wedding-venue-website-design/
+**What makes it premium:** Curated collection of 15 best wedding venue designs featuring horizontal scroll galleries, wine-country palettes (burgundy, sage, cream), chef/catering showcases, accommodation info, and guest travel guides.
 **Technique to borrow:** Horizontal scroll gallery that breaks the vertical rhythm — creates a cinematic widescreen moment mid-page

@@ -3,31 +3,31 @@
 Reference during Stage 2 for quality benchmarks. Use Firecrawl to scrape 2-3 of these.
 
 ## 1. Chef-Driven Fine Dining
-**URL:** https://example-restaurant-finedine.com
-**What makes it premium:** Full-viewport hero with slow Ken Burns effect on plated dish, dark atmospheric palette, scroll-triggered menu sections with ingredient photography, parallax between courses
-**Technique to borrow:** Dark atmospheric palette with food photography that pops against moody backgrounds
+**URL:** https://www.elevenmadisonpark.com
+**What makes it premium:** Three Michelin stars reflected in every pixel — refined minimalist layout, cinematic photography of plated dishes, dark atmospheric palette. The website feels like an extension of the dining experience itself.
+**Technique to borrow:** Dark atmospheric palette with food photography that pops against moody backgrounds — restraint signals luxury
 
 ## 2. Modern Farm-to-Table Bistro
-**URL:** https://example-restaurant-farmtable.com
-**What makes it premium:** Origin story told through sticky-scroll section with farm photos, seasonal menu with hand-drawn ingredient illustrations, earth tones with botanical accents, textured paper background
-**Technique to borrow:** Sticky-scroll origin story that weaves farm imagery with the chef's philosophy
+**URL:** https://www.pujol.com.mx/en
+**What makes it premium:** Embodies fine Mexican gastronomy through simple design, elegant typography, and perfectly structured content. The origin story is woven throughout — farm imagery with the chef's philosophy create an editorial feel.
+**Technique to borrow:** Sticky-scroll origin story that weaves farm/source imagery with the chef's philosophy — storytelling that sells
 
 ## 3. Upscale Mexican / Tex-Mex
-**URL:** https://example-restaurant-mexican.com
-**What makes it premium:** Bold color palette (terracotta, teal, cream), oversized food photography in bento grid, animated drink preparation video section, cultural story woven through design
-**Technique to borrow:** Bento-grid food gallery with mixed sizes — some dishes get hero treatment, others thumbnail
+**URL:** https://girlandthegoat.com
+**What makes it premium:** Seamlessly engages visitors and turns them into diners with beautiful images of signature dishes, accessible navigation, and smooth online bookings. Bold, confident design that matches the restaurant's creative energy.
+**Technique to borrow:** Food photography in bento grid with mixed sizes — some dishes get hero treatment, others thumbnail — creates visual rhythm
 
 ## 4. Cocktail Bar & Lounge
-**URL:** https://example-bar-lounge.com
-**What makes it premium:** Dark mode with neon accent glow effects, full-bleed atmospheric photography, drink menu with elegant card hover states, events section with calendar integration
-**Technique to borrow:** Atmospheric glow effects on dark backgrounds — subtle neon halo on text and borders
+**URL:** https://www.deathandcompany.com
+**What makes it premium:** Dark and inviting design sharing the story and origin of the famed East Village establishment. Multi-location brand with consistent dark-mode aesthetic, atmospheric photography, and elegant typography.
+**Technique to borrow:** Atmospheric glow effects on dark backgrounds — the dark palette makes cocktail photography luminous
 
 ## 5. Fast-Casual Elevated Concept
-**URL:** https://example-restaurant-fastcasual.com
-**What makes it premium:** Bold sans-serif typography, vibrant brand colors, order-online CTA prominent, ingredient sourcing transparency section, photo-heavy menu with calorie/allergen info
+**URL:** https://www.levainbakery.com
+**What makes it premium:** Bold typography, enticing visuals that create immediate craving, streamlined checkout for quick purchases. Different shades of blue for accents, simple thin lines as frames, graphics balancing images with white space.
 **Technique to borrow:** Bold typography system where the font choice alone communicates energy and freshness
 
 ## 6. Bakery & Cafe
-**URL:** https://example-bakery-cafe.com
-**What makes it premium:** Warm cream palette, hand-lettered logo treatment, daily specials section with clock icon, Instagram-style photo grid, cozy texture overlays
-**Technique to borrow:** Daily specials section that creates urgency and freshness — "today's feature" with timestamp
+**URL:** https://www.magnoliabakery.com
+**What makes it premium:** Rich photography, pastel tones, and easy ordering buttons. Textures, GIFs, and playful elements that feel sweet and authentic. Packed with information but easy to navigate thanks to well-organized layout.
+**Technique to borrow:** Warm nostalgic palette with playful micro-interactions — creates the cozy feeling of walking into the actual bakery

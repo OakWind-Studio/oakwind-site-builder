@@ -3,31 +3,31 @@
 Reference during Stage 2 for quality benchmarks. Use Firecrawl to scrape 2-3 of these.
 
 ## 1. Prestigious Trial Law Firm
-**URL:** https://example-attorney-trial.com
-**What makes it premium:** Dramatic dark palette with brass accents, case results counter with animated numbers ($500M+ recovered), editorial-style partner bios, landmark courthouse imagery
-**Technique to borrow:** Animated case results counter — numbers scroll up on viewport entry, instantly communicates credibility
+**URL:** https://www.forthepeople.com
+**What makes it premium:** Morgan & Morgan — America's largest personal injury firm. $30B+ recovered prominently displayed, bold CTAs, case results counter, strong trust signals. The sheer scale of social proof (1000+ attorneys, all 50 states) is built into every section.
+**Technique to borrow:** Animated case results counter — numbers scroll up on viewport entry, instantly communicates credibility at scale
 
 ## 2. Boutique Estate Planning Firm
-**URL:** https://example-attorney-estate.com
-**What makes it premium:** Warm navy and cream palette, serif-dominant typography, generational family imagery, trust and legacy language throughout, process timeline with elegant step indicators
-**Technique to borrow:** Process timeline that demystifies estate planning — numbered steps with icons reduce intimidation
+**URL:** https://www.groomlaw.com
+**What makes it premium:** Clean minimalist layout with strategic whitespace, elegant color scheme reinforcing professionalism. Balance between aesthetics and functionality with high-quality imagery and intuitive menu navigation.
+**Technique to borrow:** Process timeline that demystifies complex legal services — numbered steps with icons reduce intimidation for estate planning
 
 ## 3. Modern Personal Injury Practice
-**URL:** https://example-attorney-pi.com
-**What makes it premium:** Split-screen hero (attorney portrait / bold headline), verdict ticker, client video testimonials, "No Fee Unless We Win" badge, 24/7 availability emphasis
-**Technique to borrow:** Verdict/settlement ticker that auto-scrolls recent wins — social proof through results
+**URL:** https://bencrump.com
+**What makes it premium:** High-profile civil rights attorney's site combines bold confident design with prominent "Free Case Evaluation" CTA. Video testimonials, verdict highlights, and 24/7 availability emphasis. Strong personal brand as the centerpiece.
+**Technique to borrow:** Attorney-as-brand hero design — the lawyer IS the product, editorial portrait communicates authority and trustworthiness
 
 ## 4. Corporate Business Law Firm
-**URL:** https://example-attorney-corporate.com
-**What makes it premium:** Clean minimalist design, strategic whitespace, industry-specific practice area cards, team grid with credential overlays, client logo bar
-**Technique to borrow:** Industry-specific practice area cards that let prospects self-select their need
+**URL:** https://www.contra.agency/insights/best-law-firm-websites-2025
+**What makes it premium:** Curated showcase of 10 best law firm websites featuring clean minimalist designs, strategic whitespace, industry-specific practice area cards, team grids with credential overlays.
+**Technique to borrow:** Industry-specific practice area cards that let prospects self-select their legal need — reduces friction to engagement
 
 ## 5. Family Law & Mediation
-**URL:** https://example-attorney-family.com
-**What makes it premium:** Softer color palette (not the typical law firm navy), empathetic photography, FAQ accordion addressing emotional concerns, private consultation CTA
+**URL:** https://www.hudgellsolicitors.co.uk
+**What makes it premium:** Award-winning design that doubled conversions year-on-year. Friendly design with bright, contrasting colors strategically placed to add approachability while clearly distinguishing between service areas. Down-to-earth roots reflected in the design.
 **Technique to borrow:** Empathetic design language that breaks from cold "law firm blue" — approachable without sacrificing authority
 
 ## 6. Criminal Defense Attorney
-**URL:** https://example-attorney-criminal.com
-**What makes it premium:** Bold, confident design with dark palette, 24/7 hotline number massive in header, case type selector, courtroom experience stats, urgent CTA language
-**Technique to borrow:** Case type selector in hero — visitors immediately find their situation, reducing bounce
+**URL:** https://www.jaszczuk.com
+**What makes it premium:** Oversized headlines, animated elements, and striking visuals create instant impact. Engaging scrolling effects draw visitors in, with streamlined navigation for a smooth user experience. Bold, confident aesthetic.
+**Technique to borrow:** Oversized animated headlines that command attention — the typography itself communicates confidence and urgency

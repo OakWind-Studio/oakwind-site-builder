@@ -3,31 +3,31 @@
 Reference during Stage 2 for quality benchmarks. Use Firecrawl to scrape 2-3 of these.
 
 ## 1. Luxury Real Estate Team
-**URL:** https://example-realtor-luxury.com
-**What makes it premium:** Full-viewport property hero with Ken Burns effect, featured listing cards with hover-reveal details, neighborhood guide with interactive map, market stats dashboard
+**URL:** https://ogroup.com
+**What makes it premium:** The Oppenheim Group — #1 Real Estate Website by International Property Awards. Moving images of luxury homes, interactive map keeping visitors engaged, massive amounts of listing data. Achieved 5,000% leap in user traffic through stunning design and user-centric browsing.
 **Technique to borrow:** Featured listing cards that reveal price/beds/baths on hover — clean default, informative on interaction
 
 ## 2. Top-Producing Solo Agent
-**URL:** https://example-realtor-solo.com
-**What makes it premium:** Strong personal brand with professional editorial photography, sold properties counter, client video testimonials, area expertise section with local photography
-**Technique to borrow:** Personal brand hero — the agent IS the product, editorial portrait communicates trustworthiness
+**URL:** https://www.serhant.com
+**What makes it premium:** SERHANT. — bold all-caps branding with signature blue. Dynamic draggable globe showcasing worldwide properties. Universal search from homepage finds properties, agents, and teams. Digital-first approach redefining real estate web experiences.
+**Technique to borrow:** Personal brand hero — the agent IS the product, editorial portrait and bold branding communicate authority
 
 ## 3. New Construction Specialist
-**URL:** https://example-realtor-newbuild.com
-**What makes it premium:** Builder partnership showcase, floor plan preview section, construction timeline visualization, community amenity bento grid, virtual tour integration
+**URL:** https://www.luxurypresence.com/best-real-estate-agent-websites/
+**What makes it premium:** Portfolio showcase of luxury real estate websites featuring builder partnerships, floor plan previews, community amenity bento grids, virtual tour integrations. Multiple examples of premium new construction design patterns.
 **Technique to borrow:** Construction timeline section showing phase progression — builds excitement for future homeowners
 
 ## 4. Neighborhood-Focused Boutique Brokerage
-**URL:** https://example-realtor-neighborhood.com
-**What makes it premium:** Neighborhood-first design with area photography, local business spotlight, school ratings integration, walkability scores, community event calendar
-**Technique to borrow:** Neighborhood-first approach — sell the area before selling the house
+**URL:** https://www.compass.com
+**What makes it premium:** Clean, modern design with subtle symbolism. Neighborhood-first approach — area photography, local market data, school ratings integration. Agent pages with strong personal branding. Tech-forward identity with understated elegance.
+**Technique to borrow:** Neighborhood-first approach — sell the area before selling the house, with local data and photography
 
 ## 5. Investment Property Specialist
-**URL:** https://example-realtor-investment.com
-**What makes it premium:** Data-forward design with market trend charts, ROI calculators, portfolio showcase with returns data, investor testimonials with specific numbers
-**Technique to borrow:** Market trend data visualization that establishes expertise through numbers
+**URL:** https://www.altastreet.com
+**What makes it premium:** Data-forward real estate design focused on what actually sells homes. Market trend analysis, ROI-focused presentation, property comparisons with specific numbers. Design built for serious buyers, not just browsers.
+**Technique to borrow:** Market trend data visualization that establishes expertise through numbers — charts and stats that build investor confidence
 
 ## 6. First-Time Homebuyer Guide
-**URL:** https://example-realtor-firsttime.com
-**What makes it premium:** Approachable design with step-by-step buying process, mortgage calculator widget, FAQ section addressing fears, success stories with timeline
+**URL:** https://placester.com/real-estate-marketing-academy/real-estate-website-design-24-best-examples
+**What makes it premium:** Curated collection of 24 best real estate website examples featuring approachable designs with step-by-step buying processes, mortgage calculator widgets, FAQ sections addressing fears, and success stories.
 **Technique to borrow:** Step-by-step buying process visualization that demystifies homebuying for first-timers
