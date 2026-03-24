@@ -47,7 +47,8 @@ export default function TimelineFaq({ faqs }) {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
               >
                 {/* Node marker */}
-                <div className="absolute -left-10 top-0 w-8 h-8 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+                <div className="absolute -left-10 top-0 flex items-center gap-1.5">
+                  <div className="w-0.5 h-5 rounded-full bg-[var(--color-accent)]" />
                   <HelpCircle className="w-4 h-4 text-[var(--color-accent)]" />
                 </div>
 

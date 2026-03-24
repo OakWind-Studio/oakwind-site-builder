@@ -109,3 +109,21 @@ Covers auto repair shops, mechanics, tire shops, oil change services, transmissi
 - Listing services without descriptions — each service needs at least one line of why-it-matters
 - Hiding the phone number — it should be impossible to miss
 - Overly technical jargon — customers want trust, not specs
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 auto repair sites and they should all look different. Pick the variant that matches the shop personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Heritage Garage / Hometown Trust** | **Variant B: Dark Industrial / Performance Edge** | **Variant C: Clean Professional / Modern Shop** |
+|---|---|---|---|
+| Hero | Warm cream hero with heritage slab-serif shop name, "Since [Year]" badge, real shop exterior or bay photo, owner portrait visible, community-rooted tagline ("Keeping [City] on the Road Since [Year]") | Dark charcoal hero with bold red or amber accent, dramatic shop interior or lift-bay action shot, industrial energy, condensed uppercase headline, ASE badge prominent | Bright white hero with strong blue accent, clean split-screen with shop photo and trust stats, professional feel, animated rating counter, "Schedule Service" prominent |
+| Palette | Palette C (Heritage Blue — warm white + navy + bright blue + orange) adapted warmer — warm cream base + heritage navy sections + warm amber accent | Palette B (Dark Industrial — dark grey + charcoal + bold red + amber) or Obsidian from color-palettes.md with racing red accent | Palette A (Classic Trust — clean white + cool grey + deep blue + red) or custom bright white + professional blue + green accent |
+| Texture | Warm subtle grain on alternating sections, thin vintage-style horizontal rules, heritage badge treatments on trust signals, warm shadow on service cards | Dark noise grain on hero and accent sections, metal grid texture accents, bold geometric dividers, high-contrast dark/light section transitions | None — ultra-clean with strong grid structure, thin blue borders, certification badges in precision layout, sharp modern spacing |
+| Cards | Warm cream service cards with heritage slab headings, vintage-style price dots, warm navy accent border, "honest work" feel | Dark charcoal service cards with red accent stripe, condensed uppercase service names, bold pricing, performance-oriented descriptions | Clean white service cards with blue left border, professional iconography, clear descriptions with time estimates, "Book Now" per card |
+| CTA style | Warm amber or navy button with heritage serif text, honest copy ("Give Us a Call — Honest Estimates, Always") | Bold red button on dark background with subtle glow, direct aggressive copy ("Get Your Car Fixed Right — Call Now") | Clean blue solid button, professional copy ("Schedule Your Appointment Online") |
+| Special | Heritage timeline showing shop milestones (founded, expanded, certified), owner story section with real shop photos, "Our Promise" guarantee section with vintage-style badge | Full-width dark service bay photo break sections, equipment/certification showcase on dark rail, animated warranty badge, specialty service highlight (performance, diesel, imports) | Interactive service menu with category tabs and clean filtering, online scheduling preview section, brand partnership logo grid (NAPA, ASE, AAA), customer portal CTA |
+| Font mood | Heritage trust slab (Arvo or Bitter + Merriweather Sans) | Industrial bold (Bebas Neue or Barlow Condensed + Open Sans) | Professional modern (Montserrat or Outfit + DM Sans) |
+
+**How to pick:** Match variant to shop personality. A multi-generational family shop with deep community roots, heritage pride, and "honest mechanic" identity → Variant A. A performance-oriented shop, specialty repair facility, or shop with strong industrial/garage culture → Variant B. A modern, tech-forward shop emphasizing online booking, transparency, and professional operations → Variant C. Document which variant in App.jsx header comment.

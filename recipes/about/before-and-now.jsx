@@ -59,9 +59,7 @@ export default function BeforeAndNow({ business, copy, images }) {
 
           {/* Arrow divider (desktop) */}
           <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="w-12 h-12 rounded-full bg-[var(--color-accent)] flex items-center justify-center">
-              <ArrowRight className="w-6 h-6 text-white" />
-            </div>
+            <ArrowRight className="w-8 h-8 text-[var(--color-accent)] drop-shadow-md" />
           </div>
 
           {/* Now */}

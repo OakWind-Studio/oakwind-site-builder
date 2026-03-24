@@ -62,8 +62,9 @@ export default function IconGridVariedStagger({ services, business }) {
                   delay: delays[i % delays.length] + Math.floor(i / 4) * 0.2,
                 }}
               >
-                <div className="w-14 h-14 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
+                <div className="flex flex-col items-center mb-4">
                   <Icon className="w-7 h-7 text-[var(--color-accent)]" />
+                  <div className="w-6 h-0.5 rounded-full bg-[var(--color-accent)]/40 mt-2" />
                 </div>
                 <h3 className="font-display text-lg font-bold text-text-primary mb-2">
                   {service.title}

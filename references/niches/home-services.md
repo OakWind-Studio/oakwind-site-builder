@@ -166,3 +166,21 @@ Covers HVAC, plumbing, electrical, roofing, landscaping, handyman, pest control,
 - Corporate/enterprise feel — these are local, personal businesses
 - No emergency messaging for HVAC/plumbing/electrical — missing the highest-intent customers
 - Listing services without descriptions — "Plumbing" tells them nothing, "24/7 drain cleaning, water heater replacement, and leak repair" tells them everything
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 home services sites and they should all look different. Pick the variant that matches the business personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Trusted Pro / Clean Authority** | **Variant B: Dark Industrial / Emergency Power** | **Variant C: Warm Family / Community Roots** |
+|---|---|---|---|
+| Hero | Bright white hero with professional blue accent, split-screen with technician photo on one side and trust stats (years, rating, "Licensed & Insured") on the other, clean authoritative feel | Dark slate hero with bold red or amber accent, full-screen action shot with dark overlay, emergency messaging prominent ("24/7 Service — Call Now"), industrial urgency | Warm cream hero with earth-tone palette, family-owned messaging front and center, owner/team photo, "Keeping [City] Homes Comfortable Since [Year]" tagline, approachable and personal |
+| Palette | Palette A (Professional Blue — white + cool grey + trust blue + action orange) or custom clean white + deep blue + green accent | Palette C (Dark Industrial — dark slate + charcoal + bold red + amber) or Obsidian adapted with red/amber accents | Custom warm palette — warm cream bg + sage or warm brown accent + soft orange secondary, or Toasted Almond from color-palettes.md |
+| Texture | None — ultra-clean with strong grid structure, thin blue horizontal rules between sections, certification badges in precision layout | Dark noise grain on hero and emergency sections, bold diagonal stripe accents, industrial metal texture on dark cards, high-contrast section transitions | Warm linen noise on alternating sections, rounded section dividers, soft warm shadows, hand-drawn-style service icons |
+| Cards | Clean white service cards with blue left border, professional iconography, clear service descriptions, "Schedule Service" CTA per card | Dark charcoal service cards with red/amber accent top border, condensed uppercase service category names, emergency vs. scheduled service tags | Rounded warm cards with sage or earth accent border, friendly service descriptions with "What to Expect" blurbs, warm iconography |
+| CTA style | Solid blue button with clean white text, professional copy ("Schedule Your Free Estimate") | Bold red emergency button with pulse animation for urgent CTAs, amber button for standard ("Call Now — Available 24/7") | Warm rounded button in earth tone or sage, friendly copy ("Let's Fix That — Free Estimate") |
+| Special | Interactive service category tabs with clean transitions, certification and brand partner logo grid, animated trust counter (homes served, years, rating) | Emergency service banner sticky at top with phone number and red pulse, dark full-width "Why Call Us at 3AM" section, equipment/brand showcase on dark rail | Owner story section with real family/team photos, neighborhood service area map with warm markers, seasonal maintenance tips section, community involvement callout |
+| Font mood | Professional clean (Montserrat or Outfit + DM Sans) | Industrial bold (Bebas Neue or Oswald + Open Sans) | Friendly approachable (Nunito or Rubik + Lato) |
+
+**How to pick:** Match variant to business personality. A professional, certification-focused operation emphasizing reliability and clean work → Variant A. An emergency-driven service (HVAC breakdown, burst pipe, electrical emergency) with 24/7 availability and industrial capability → Variant B. A family-owned, community-rooted business emphasizing personal relationships and neighborhood trust → Variant C. Document which variant in App.jsx header comment.

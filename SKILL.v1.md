@@ -1,3 +1,5 @@
+<!-- ARCHIVED: This is the v1 pipeline. The current pipeline is in SKILL.md (v2). Do NOT use this file for builds. Kept for historical reference only. -->
+
 ---
 name: oakwind-site-builder
 description: >-

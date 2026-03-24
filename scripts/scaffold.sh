@@ -8,9 +8,27 @@ set -euo pipefail
 PROJECT_NAME="${1:?Usage: scaffold.sh <project-slug> [light|dark]}"
 MODE="${2:-light}"
 SKILL_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+SHARED_LIB_DIR="$SKILL_DIR/shared-lib"
+
+# --- Pre-flight checks ---
 
 if [ -d "$PROJECT_NAME" ]; then
-  echo "Error: Directory '$PROJECT_NAME' already exists."
+  echo "Error: Directory '$PROJECT_NAME' already exists. Remove it or choose a different slug."
+  exit 1
+fi
+
+if [ ! -d "$SHARED_LIB_DIR" ]; then
+  echo "Error: shared-lib not found at '$SHARED_LIB_DIR'. Ensure the skill directory is intact."
+  exit 1
+fi
+
+if ! command -v node &> /dev/null; then
+  echo "Error: 'node' is not installed or not in PATH."
+  exit 1
+fi
+
+if ! command -v npm &> /dev/null; then
+  echo "Error: 'npm' is not installed or not in PATH."
   exit 1
 fi
 
@@ -20,9 +38,11 @@ echo "Mode: $MODE"
 echo ""
 
 # 1. Create Vite + React project
+echo "[1/13] Creating Vite + React project..."
 npm create vite@latest "$PROJECT_NAME" -- --template react
 cd "$PROJECT_NAME"
 
+echo "[2/13] Writing pinned package.json..."
 # 2. Overwrite package.json with pinned dependencies
 cat > package.json << EOF
 {
@@ -51,9 +71,11 @@ cat > package.json << EOF
 }
 EOF
 
+echo "[3/13] Copying shared-lib into src/lib/..."
 # 3. Copy shared-lib into src/lib/
-cp -r "$SKILL_DIR/shared-lib/" src/lib/
+cp -r "$SHARED_LIB_DIR/" src/lib/
 
+echo "[4/13] Writing vite.config.js..."
 # 4. Write vite.config.js
 cat > vite.config.js << 'VITE_EOF'
 import { defineConfig } from 'vite'
@@ -65,6 +87,7 @@ export default defineConfig({
 })
 VITE_EOF
 
+echo "[5/13] Writing src/index.css with design tokens..."
 # 5. Write src/index.css
 cat > src/index.css << 'CSS_EOF'
 @import "tailwindcss";
@@ -118,6 +141,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 CSS_EOF
 
+echo "[6/13] Writing src/data.js..."
 # 6. Write src/data.js
 cat > src/data.js << 'DATA_EOF'
 export const BRIEF = {
@@ -144,6 +168,7 @@ export const DESIGN_SYSTEM = {
 };
 DATA_EOF
 
+echo "[7/13] Writing src/App.jsx..."
 # 7. Write src/App.jsx
 cat > src/App.jsx << 'APP_EOF'
 import { SkipLink, AtmosphereKit, FloatingCTA, OakWindFooter } from './lib';
@@ -185,6 +210,7 @@ export default function App() {
 }
 APP_EOF
 
+echo "[8/13] Writing src/main.jsx..."
 # 8. Write src/main.jsx
 cat > src/main.jsx << 'MAIN_EOF'
 import { StrictMode } from 'react';
@@ -203,6 +229,7 @@ createRoot(document.getElementById('root')).render(
 );
 MAIN_EOF
 
+echo "[9/13] Writing index.html..."
 # 9. Update index.html
 cat > index.html << 'HTML_EOF'
 <!doctype html>
@@ -223,16 +250,20 @@ cat > index.html << 'HTML_EOF'
 </html>
 HTML_EOF
 
+echo "[10/13] Creating .oakwind-state..."
 # 10. Create .oakwind-state
 echo '{"stage":0,"completed":[]}' > .oakwind-state
 
+echo "[11/13] Creating component and font directories..."
 # 11. Create empty dirs
 mkdir -p src/components public/fonts
 
+echo "[12/13] Cleaning up Vite defaults..."
 # 12. Delete Vite defaults
 rm -f src/App.css
 rm -rf src/assets/
 
+echo "[13/13] Installing dependencies..."
 # 13. Install dependencies
 npm install
 

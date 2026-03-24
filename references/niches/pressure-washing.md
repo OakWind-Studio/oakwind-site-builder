@@ -154,3 +154,21 @@ Each service should ideally have its own before/after pair:
 - Overly technical language about PSI and equipment — customers care about results, not specs
 - No before/after photos — wastes the niche's strongest conversion tool
 - Generic "home services" feel — be specific to pressure washing
+
+---
+
+## Same-Niche Rotation System
+
+Build 10 pressure washing sites and they should all look different. Pick the variant that matches the business personality, and rotate so consecutive same-niche builds use different variants.
+
+| | **Variant A: Clean Machine / Bright Authority** | **Variant B: Industrial Power / Bold Direct** | **Variant C: Neighborhood Pro / Friendly Trust** |
+|---|---|---|---|
+| Hero | Bright white hero with strong blue accent, dramatic before/after split visible in hero, bold "We Make It Look New" headline, animated water-spray particle effect on hover | Dark slate hero with bold orange or red power accent, full-screen action shot of technician with pressure washer, industrial energy, oversized condensed headline | Warm friendly hero with real property transformation photo, green and earth-tone palette, owner photo or truck branding visible, community-rooted tagline |
+| Palette | Palette A (Clean Blue — white + sky blue tint + strong blue + fresh green) or custom bright white + electric blue | Palette B (Power Orange — warm cream + bold orange + deep blue) adapted darker — charcoal sections + orange accent + amber secondary | Palette C (Fresh Green — mint tint + emerald + sky blue) or custom warm white + sage green + earth brown |
+| Texture | None — ultra-clean with crisp geometric before/after frames, blue gradient washes on section backgrounds, water-droplet subtle pattern on hero | Industrial concrete texture on dark sections, bold diagonal stripe dividers, gritty grain overlay on hero, power-line geometric accents | Warm subtle noise on alternating sections, rounded section dividers, soft shadow depth on cards, friendly organic feel |
+| Cards | Clean white service cards with strong blue top border, before/after thumbnail pair per service, crisp pricing in bold blue, "Get Estimate" per card | Dark charcoal service cards with bold orange accent stripe, condensed uppercase service names, dramatic before/after photos with high contrast | Rounded warm cards with sage or green accent border, friendly service descriptions, small before/after thumbnails, approachable pricing display |
+| CTA style | Bright blue solid button with white text, clean and authoritative ("Get Your Free Estimate") | Bold orange full-width banner CTA with industrial energy, aggressive copy ("Blast Away the Grime — Call Now") | Soft green rounded button with friendly weight, community copy ("See What We Can Do For Your Home") |
+| Special | Animated before/after slider as hero centerpiece with water-wipe transition effect, service area map with clean blue markers, certification badges in crisp grid | Horizontal scroll before/after gallery on dark rail with orange labels, equipment/technique showcase section with industrial photography, "Same-Day Service" urgency banner | Owner story section with real photos and community roots, neighborhood testimonial cards with street names, seasonal service reminder section with friendly icons |
+| Font mood | Clean authority (Montserrat or Raleway + DM Sans) | Industrial power (Bebas Neue or Barlow Condensed + Barlow) | Friendly professional (Nunito or Poppins + Lato) |
+
+**How to pick:** Match variant to business personality. A professional operation emphasizing cleanliness, precision, and certification → Variant A. A power-forward business with industrial equipment, commercial clients, and aggressive marketing → Variant B. A neighborhood-focused owner-operator with community roots and personal touch → Variant C. Document which variant in App.jsx header comment.

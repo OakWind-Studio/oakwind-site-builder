@@ -1,16 +1,20 @@
 /**
- * OakWind Oracle Mapping — Translation Layer
+ * OakWind Design Mapping — Niche Defaults & Style Recipes
  *
- * This file is READ BY THE AI, not executed. It provides the translation
- * logic between ui-ux-pro-max oracle output and OakWind's design system.
+ * This file is READ BY THE AI, not executed. It provides two data structures:
  *
- * The spec's placeholder palette names (warm-earth, cool-professional, etc.)
- * have been replaced with the specific palette filenames in references/palettes/.
+ * PRIMARY: nicheDefaults — curated design recommendations per niche.
+ *   Look up the business niche to get palette suggestions, font mood,
+ *   tier, personality presets, and design notes. This is the standard
+ *   path for every build.
  *
- * When the oracle returns a style recommendation, look up the style name in
- * styleToDesign to get OakWind-compatible palette, font mood, architecture,
- * and atmosphere recipe. When the oracle is unavailable (FALLBACK), use
- * nicheDefaults instead.
+ * SUPPLEMENTAL: styleToDesign — atmosphere recipes keyed by visual style.
+ *   Useful for inspiration when you want a specific aesthetic (e.g.,
+ *   glassmorphism, brutalism). The `architecture` field in styleToDesign
+ *   uses descriptive mood names, NOT literal filenames from
+ *   references/architectures/ (which use the-*.md naming).
+ *   Actual architectures: the-converter, the-editorial, the-immersive,
+ *   the-magazine, the-minimalist, the-one-pager, the-showcase, the-storyteller.
  */
 
 const styleToDesign = {
@@ -212,17 +216,16 @@ const nicheDefaults = {
 /**
  * Usage flow:
  *
- * 1. Run oracle.sh with niche + personality keywords
- * 2. If oracle returns a style name → look up in styleToDesign
- * 3. If oracle returns FALLBACK → look up niche in nicheDefaults
- * 4. Use the returned palette filenames to load from references/palettes/
- * 5. Use fontMood to select from references/font-pairings.md
- * 6. Use architecture + atmosphereRecipe to guide layout decisions
+ * 1. Look up the business niche in nicheDefaults (primary path)
+ * 2. Use the returned palette filenames to load from references/palettes/
+ * 3. Use fontMood to select from references/font-pairings.md
+ * 4. Use tier and personality to guide architecture + animation decisions
+ * 5. (Optional) If oracle.sh is available, run it for atmosphere inspiration
+ *    and look up the style in styleToDesign for supplemental guidance
  *
  * Example:
- *   oracle.sh "dental calm formal modern" → returns "minimalism"
- *   styleToDesign.minimalism → palettes: ["sage-linen", "toasted-almond", "arctic-blue"]
- *   Load references/palettes/sage-linen.css
+ *   nicheDefaults.dental → palettes: ["arctic-blue", "sage-linen", "blush-cream"]
+ *   Load references/palettes/arctic-blue.css
  *   Select font from "Modern & Clean" category in font-pairings.md
- *   Apply "open-canvas" architecture with generous whitespace
+ *   Tier 3 + calmFormal personality → the-minimalist or the-editorial architecture
  */

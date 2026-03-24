@@ -15,11 +15,33 @@ The final quality gate. Every item must pass before a build ships. If any item f
 | 3 | Card grids not all identical dimensions | Every card in a grid has the same height, width, padding, and border-radius |
 | 4 | Background not pure #FFFFFF or #000000 | Any section using exact `#FFFFFF` or `#000000` as background |
 | 5 | Hero stats not a generic 3-column template | Three evenly-spaced stat boxes with icon + number + label |
+| 11 | No icon-in-circle badges | Any icon wrapped in a rounded-full colored background circle (bg-accent/10, bg-surface-elevated, etc). This is the #1 AI design tell. Icons are fine — colored circle wrappers are not. Render icons naked: small, muted, inline with text. Use `text-muted` or `text-text-secondary/50` opacity, not accent color. |
+| 12 | Icons must earn their spot | Every icon must serve a functional purpose: aiding scan speed in dense sections (contact info, navigation), differentiating identical card structures, or providing a universally recognized affordance (phone, map, calendar). Remove any icon that restates what adjacent text already says (star icon above "5-Star Reviews"). When in doubt, remove it — if the section reads worse without the icon, add it back. |
 | 6 | No bounce/elastic easing on scroll reveals | Scroll-triggered animations using bounce or elastic curves |
 | 7 | Not all sections center-aligned | Every section uses `text-center` and `mx-auto` with no asymmetry anywhere |
 | 8 | Font-weight range spans >=300-800 | Page uses fewer than 3 distinct font weights, or range is narrower than 300-800 |
 | 9 | Heading size jumps >=2x between levels | h2 is 24px and h1 is 32px (1.33x) — needs h2 48px → h1 80px+ (1.67x+) |
 | 10 | Copy not swappable with competitor | Replace the business name with a competitor's — if the copy still works perfectly, it's too generic |
+
+### Slop Gate #11 — No Icon-in-Circle Badges
+
+This is the **#1 AI design tell** in modern web output. Any Lucide icon wrapped in a `rounded-full` colored background circle (`bg-accent/10`, `bg-surface-elevated`, solid accent, etc.) immediately reads as AI-generated.
+
+**Fail condition:** Any icon wrapped in a rounded-full colored background container (the "icon badge" pattern).
+
+**What to use instead:**
+- **Raw colored icon** — just the icon with `text-accent` or `text-muted`, no background wrapper at all
+- **Icon + accent underline** — icon above a short horizontal bar (`w-6 h-0.5 bg-accent/40`)
+- **Icon + side stripe** — thin vertical accent bar to the left of the icon (`w-0.5 h-5 bg-accent`)
+- **Naked small icon inline with text** — `text-muted` or `text-text-secondary/50` opacity, not accent color
+
+**Exceptions (NOT violations):**
+- Video play buttons (white circle over video overlay) — these are universal UI affordances
+- Slider drag handles — functional UI controls
+- Navigation arrows in carousels — functional UI controls
+- Pill badges / tags (`rounded-full` with `px-4 py-1`) — these are text containers, not icon wrappers
+- Decorative background blobs — abstract shapes, not icon badges
+- Tiny timeline dots (`w-2 h-2`) — too small to be "icon badges"
 
 ---
 

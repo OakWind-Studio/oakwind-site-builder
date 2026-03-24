@@ -37,3 +37,51 @@ Hero (personality) → About/Owner Story → Services → Reviews → Community 
 ### Urgency-First Arc (problem-solving audience)
 Hero (solution) → Availability/Speed → Services → Reviews → Contact → CTA
 **Use for:** Pressure Washing, Home Services, HVAC (emergency)
+
+---
+
+## Recipe Cross-Reference
+
+Maps each emotional arc to specific recipe categories from `recipes/_metadata.json`. Use these as the default recipe shortlist during Stage 3 composition — personality and fingerprint filtering still apply on top.
+
+### Trust-First Arc
+| Section | Recommended Recipe Categories | Example Recipes |
+|---------|------------------------------|-----------------|
+| Hero | heroes | Split Agent Portrait, Gradient Editorial, Asymmetric Storytelling |
+| Credentials/Process | trust-proof, awards | credential-badges, certification-wall, process-steps |
+| Reviews | testimonials | editorial-quotes, video-testimonials, stat-highlights |
+| Services | services | card-grid, accordion-detail, icon-grid |
+| About | about | team-story, founder-narrative, timeline |
+| CTA | cta-breaks, booking | consultation-form, phone-cta, appointment-scheduler |
+
+### Excitement-First Arc
+| Section | Recommended Recipe Categories | Example Recipes |
+|---------|------------------------------|-----------------|
+| Hero | heroes | Cinematic Fullbleed, Video Ambient, Scroll Reveal Layers |
+| Gallery/Portfolio | galleries, video | masonry-grid, lightbox-carousel, before-after |
+| Services | services, menu-pricing | card-grid, tiered-pricing, menu-columns |
+| Reviews | testimonials | photo-testimonials, social-proof-wall, star-highlights |
+| About | about | owner-portrait, brand-story, craftsmanship-detail |
+| CTA | cta-breaks, booking | reservation-form, urgency-banner, fomo-counter |
+
+### Connection-First Arc
+| Section | Recommended Recipe Categories | Example Recipes |
+|---------|------------------------------|-----------------|
+| Hero | heroes | Cinematic Fullbleed, Minimal Statement, Video Ambient |
+| About/Owner Story | about | founder-narrative, team-culture, community-roots |
+| Services | services, niche-specialty | card-grid, experience-showcase, signature-service |
+| Reviews | testimonials | editorial-quotes, community-voices, social-proof-wall |
+| Community | location, area-map | neighborhood-guide, community-involvement, local-roots |
+| CTA | cta-breaks, booking | personal-invite, walk-in-welcome, appointment-scheduler |
+
+### Urgency-First Arc
+| Section | Recommended Recipe Categories | Example Recipes |
+|---------|------------------------------|-----------------|
+| Hero | heroes | Asymmetric Storytelling, Parallax Depth Stack, Minimal Statement |
+| Availability/Speed | feature-highlight, trust-proof | response-time-badge, availability-banner, same-day-guarantee |
+| Services | services, comparison | card-grid, pricing-tiers, service-comparison |
+| Reviews | testimonials | star-highlights, speed-testimonials, results-proof |
+| Contact | location, booking | multi-channel-contact, click-to-call, emergency-form |
+| CTA | cta-breaks | urgency-banner, phone-cta, instant-quote |
+
+> **Stage 3 usage:** Filter these recommendations by niche, personality, tier, and fingerprint exclusion as described in `references/stage-3-compose.md`. This table provides the starting pool — not the final selection.

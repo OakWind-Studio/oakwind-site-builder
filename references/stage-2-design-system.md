@@ -4,41 +4,25 @@
 
 ---
 
-## 1. Oracle Call (Optional)
+## 1. Niche Defaults (Primary Path)
 
-```bash
-bash <skill-path>/scripts/oracle.sh "{niche} {personality keywords}"
-# Example: bash scripts/oracle.sh "dental calm formal modern"
-```
+Look up the niche in `references/oracle-mapping.js` → `nicheDefaults[niche]`. This is the **primary design selection path** and provides curated recommendations for every supported niche:
 
-If the oracle returns a style name (e.g., "minimalism", "glassmorphism"), proceed to step 2.
-If it returns `FALLBACK`, skip to step 3 and use curated defaults from `references/oracle-mapping.js` → `nicheDefaults`.
-
----
-
-## 2. Oracle Translation
-
-Read `references/oracle-mapping.js`. Look up the oracle's returned style in `styleToDesign`:
-
-```
-styleToDesign[styleName] → { palettes[], fontMood, architecture, atmosphereRecipe, notes }
-```
-
-This gives you:
-- **palettes** — filenames to load from `references/palettes/`
+- **palettes** — ranked filenames to load from `references/palettes/`
 - **fontMood** — category to match in `references/font-pairings.md`
-- **architecture** — layout template name from `references/architectures/`
-- **atmosphereRecipe** — descriptive guidance for visual atmosphere
+- **tier** — default pricing/complexity tier
+- **personality** — ranked personality presets
+- **notes** — niche-specific design guidance
 
-If oracle was unavailable, use `nicheDefaults[niche]` from the same file — it provides the same structure.
+If the niche isn't listed in `nicheDefaults`, find the closest match using `references/niche-fallback.md` and use that niche's defaults.
 
 ---
 
-## 3. Palette Selection
+## 2. Palette Selection
 
 Pick ONE palette from `references/palettes/`. Selection priority:
 
-1. Oracle/niche-default recommended palettes (try first in list)
+1. Niche-default recommended palettes (try first in list)
 2. Mood match — read the palette file's header comments for personality/niche fit
 3. Differentiation — if a recent same-niche build used this palette, pick next in list
 
@@ -48,7 +32,7 @@ Read the chosen palette `.css` file. It contains a complete `@theme` block with 
 
 ---
 
-## 4. Font Pairing Selection
+## 3. Font Pairing Selection
 
 Pick ONE pairing from `references/font-pairings.md`. Match by mood category:
 
@@ -67,9 +51,11 @@ Pick ONE pairing from `references/font-pairings.md`. Match by mood category:
 
 ---
 
-## 5. Architecture Selection
+## 4. Architecture Selection
 
 Pick ONE architecture from `references/architectures/`. Match to niche + personality + tier.
+
+Available architectures (8): the-converter, the-editorial, the-immersive, the-magazine, the-minimalist, the-one-pager, the-showcase, the-storyteller.
 
 The architecture template defines:
 - Required section categories (which recipe slots to fill)
@@ -77,11 +63,11 @@ The architecture template defines:
 - Max-width variations per section
 - Responsive behavior patterns
 
-Architecture is selected based on oracle recommendation, niche fit, and personality alignment. If no architecture file exists yet, use a standard single-page layout with 6-8 sections.
+Architecture is selected based on niche fit, personality alignment, and tier. If no architecture template matches well, use `the-one-pager` as a safe default.
 
 ---
 
-## 6. Tier Determination
+## 5. Tier Determination
 
 | Tier | Price Range | Client Type | Visual Treatment |
 |------|-----------|-------------|-----------------|
@@ -100,7 +86,7 @@ Default to Tier 2 when unsure. Adjust up/down based on the business's actual pos
 
 ---
 
-## 7. Type Scale Selection
+## 6. Type Scale Selection
 
 Pick ONE scale from `references/design-tokens/type-scales.css`:
 
@@ -114,7 +100,7 @@ Copy the chosen scale's `clamp()` values into the @theme block.
 
 ---
 
-## 8. Animation Personality
+## 7. Animation Personality
 
 Map the BRIEF's 4-axis personality profile to a preset name for the `PersonalityProvider`:
 
@@ -133,7 +119,7 @@ Pick the closest match. This preset controls all animation timing, easing, and i
 
 ---
 
-## 9. Dark / Light Mode
+## 8. Dark / Light Mode
 
 **Dark mode** for: detailing, barber, nightlife, auto repair, moody restaurants, carbon-fiber/obsidian/noir-rouge/midnight-velvet palettes.
 
@@ -143,7 +129,7 @@ The palette file itself is designed for one mode. Pick the palette that matches 
 
 ---
 
-## 10. Fingerprint Generation
+## 9. Fingerprint Generation
 
 Generate a build fingerprint to prevent same-niche convergence:
 
@@ -155,7 +141,7 @@ hero:{recipe}|svc:{recipe}|test:{recipe}|cta:{recipe}|arch:{arch}|palette:{palet
 
 ---
 
-## 11. Inspiration Harvest
+## 10. Inspiration Harvest
 
 If `references/inspiration/{niche}.md` exists, read it for curated design references.
 
@@ -169,7 +155,7 @@ Use as inspiration for adaptation, never for direct copying.
 
 ---
 
-## 12. Output
+## 11. Output
 
 ### index.css @theme block
 Copy the selected palette's `@theme { }` block into `index.css`. Add to it:
@@ -195,3 +181,7 @@ export const DESIGN_SYSTEM = {
   fingerprint: "hero:cinematic-fullbleed|svc:bento-mixed-grid|..."
 };
 ```
+
+---
+
+> **Optional Enhancement: Oracle.** If `scripts/oracle.sh` is available, you can run `bash scripts/oracle.sh "{niche} {personality keywords}"` to get a style recommendation (e.g., "minimalism", "glassmorphism"). Look up the returned style in `oracle-mapping.js` → `styleToDesign` for atmosphere guidance and palette suggestions. The oracle's `architecture` field uses descriptive names (e.g., "open-canvas", "scroll-narrative") that do not map directly to files in `references/architectures/` -- treat them as mood guidance, not literal file references. If the oracle returns `FALLBACK` or is unavailable, this changes nothing -- `nicheDefaults` is the primary path regardless. The `styleToDesign` entries are useful as atmosphere recipes even without the oracle script; read them for inspiration when the niche defaults feel too generic.

@@ -54,7 +54,18 @@ The AI writes ONLY `data.js`, `App.jsx`, `index.css` tokens, and `components/*.j
 
 READ: `intelligence/builds.json`, `intelligence/anti-patterns.json`, `intelligence/recipe-scores.json`
 
-Search for past builds in this niche. Note what worked, what failed, what recipes were used recently. If no data exists (first builds), skip and move on. Spend <30 seconds here.
+Search for past builds in this niche. If no intelligence files exist (first builds), skip and move on. Spend <30 seconds here.
+
+**What to do with the data:**
+
+1. **`builds.json`** — Filter to same-niche builds. Note which recipes, palettes, and font pairings were used. These feed into Stage 2 (fingerprint similarity) and Stage 3 (recipe freshness).
+2. **`recipe-scores.json`** — Check avgScore for recipes you might use:
+   - **avgScore < 5/9 in this niche** → deprioritize in Stage 3 (select only if no better option)
+   - **avgScore < 3/9 in this niche** → exclude entirely (soft anti-pattern)
+   - **avgScore > 8/9** → preferred candidate, boost in Stage 3
+3. **`anti-patterns.json`** — If any anti-pattern matches this niche AND the same recipe+section combo, **hard-exclude** that recipe from Stage 3 selection. No exceptions.
+
+Carry forward a mental shortlist: recipes to prefer, recipes to avoid, palettes already used in this niche. This shortlist constrains Stage 3 — it is not advisory, it is binding.
 
 ### Stage 1 — Research
 

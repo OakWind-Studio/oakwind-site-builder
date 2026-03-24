@@ -117,14 +117,27 @@ Every section has a weight classification:
 
 ## 7. Wow Moments
 
-Plan exactly 4 wow moments distributed across the scroll journey:
+A wow moment is a specific, engineered interaction that would make a prospect watching the iPad demo visibly react. It must be:
+- Technically distinct from a standard fade-up entrance
+- Tied to a specific scroll position (use viewport-relative percentages, not time)
+- One of these 8 concrete types:
 
-| Moment | Scroll Position | Purpose | Examples |
-|--------|----------------|---------|----------|
-| **Hero Reveal** | 0-3 seconds | Immediate impact, "this is different" | Curtain lift, parallax reveal, animated headline |
-| **Scroll Surprise** | 30-50% | Reward for scrolling, maintain engagement | Counter animation, before/after slider, card flip |
-| **Deep Impression** | 50-75% | Build emotional connection | Owner story reveal, portfolio showcase, video autoplay |
-| **Personal Touch** | 75-90% | Humanize the business, prompt action | Review highlight, team photo, handwritten element |
+| Type | What it is | Implementation | Best for |
+|---|---|---|---|
+| **Orchestrated Entrance** | Hero elements animate in sequence (logo → headline → subtext → CTA) with staggered timing | Motion stagger children, 0.1-0.15s gaps | Hero (0-5vh) |
+| **Scroll-Pinned Reveal** | Section stays fixed while content transforms (images swap, text changes, progress bar fills) | GSAP ScrollTrigger pin | Process, How-it-works (30-50vh) |
+| **Horizontal Traverse** | Content scrolls horizontally while page scrolls vertically | GSAP horizontal scroll container | Portfolio, Gallery (40-60vh) |
+| **Parallax Depth** | Foreground and background layers move at different speeds creating 3D illusion | Motion useScroll + useTransform with different rates | Image breaks, About (30-50vh) |
+| **Scale Counter** | Numbers animate from 0 to value when section enters viewport | Motion useInView + animate count | Stats, Trust proof (20-40vh) |
+| **Before/After Reveal** | Draggable slider reveals transformation | Custom slider with clip-path | Detailing, Pressure washing (40-60vh) |
+| **Image Sequence** | Multiple images crossfade or swap on scroll progress | Scroll-linked opacity/transform | About, Story sections (50-70vh) |
+| **Magnetic CTA** | Button subtly follows cursor on hover, snaps back on leave | Motion useMotionValue + spring | Contact, Final CTA (75-90vh) |
+
+**Distribution Rule:** Pick exactly 4 from the table. They must be distributed:
+- **Position 1: 0-10vh (Hero zone)** — Orchestrated Entrance required
+- **Position 2: 25-50vh (Discovery zone)** — Pick from Scroll-Pinned, Horizontal, Parallax, or Before/After
+- **Position 3: 50-75vh (Depth zone)** — Pick from Scale Counter, Image Sequence, or Parallax
+- **Position 4: 75-95vh (Decision zone)** — Magnetic CTA or a second Scroll-Pinned
 
 Assign each wow moment to a specific section in the section map. Note it in the map's Animation column.
 

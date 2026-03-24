@@ -4,6 +4,19 @@
 
 ---
 
+## 0. Save Triggers & Timing
+
+**When to save — non-negotiable:**
+
+1. **`builds.json` + `recipe-scores.json`** — Save IMMEDIATELY after Stage 5 completes, before entering Stage 6. Record the raw pass/fail results as-is, even if every dimension failed. Refinement (Stage 6) does not retroactively update these scores — Stage 5 results are the ground truth.
+2. **`fingerprints.json`** — Save AFTER Stage 5, not after Stage 6 refinement. The fingerprint captures what was built, not what was patched. If Stage 6 swaps a recipe entirely (not just CSS tweaks), append a second fingerprint entry with a `refined: true` flag.
+3. **`anti-patterns.json`** — Save AFTER Stage 6 refinement, only when a dimension failed AND the fix involved swapping out a recipe (not just CSS/copy adjustments). Record the original recipe, not the replacement.
+4. **`claude-mem`** — Save after all intelligence files are written (end of Stage 7).
+
+**Why before refinement:** Scores must reflect how recipes perform out-of-the-box. If we scored post-refinement, every recipe would trend toward passing and the data would be useless for predicting which recipes need help.
+
+---
+
 ## 1. Build Record Format
 
 Create or append to `intelligence/builds.json`:
@@ -79,9 +92,19 @@ For each recipe used in this build, update `intelligence/recipe-scores.json`:
 Scoring rules:
 - **passed** increments if the recipe's section passed all relevant dimensions in Stage 5
 - **failed** increments if the recipe's section was flagged as a problem in any dimension
-- **avgScore** is the average dimension pass count (out of 9) across all builds using this recipe
+- **avgScore** — computed using a running weighted average:
 
-Low-scoring recipes (avgScore < 6) should be deprioritized in future Stage 3 recipe selection. High-scoring recipes (avgScore > 8) are preferred candidates.
+```
+recipeScore = dimensionsPassedCount / 9
+newAvgScore = (existingAvgScore * existingUsedCount + recipeScore) / (existingUsedCount + 1)
+```
+
+Example: recipe "gradient-editorial" has `used: 4, avgScore: 7.5`. New build passes 6/9 dimensions → `recipeScore = 6/9 = 0.667` (scaled to 6.0 out of 9). New avgScore = `(7.5 * 4 + 6.0) / 5 = 7.2`.
+
+**Stage 0 consumption thresholds:**
+- **avgScore < 5** (out of 9) in this niche → deprioritize during Stage 3 filtering (still selectable, but only if no better option exists)
+- **avgScore < 3** in this niche → exclude entirely (treat as soft anti-pattern)
+- **avgScore > 8** → preferred candidate, boost during Stage 3 filtering
 
 ---
 
@@ -98,20 +121,30 @@ Do not record:
 
 ## 5. Anti-Pattern Recording
 
-If a specific pattern caused problems during the build, add it to `intelligence/anti-patterns.json`:
+If a specific pattern caused problems during the build, add it to `intelligence/anti-patterns.json`.
+
+**Recording rules — all three conditions must be true:**
+1. A dimension FAILED in Stage 5
+2. The Stage 6 fix involved SWAPPING the recipe (not just tweaking CSS, copy, or spacing)
+3. The failure is reproducible (niche-specific content mismatch, not a one-off coding error)
+
+Record the ORIGINAL recipe (the one that failed), not the replacement:
 
 ```json
 {
-  "pattern": "Using video-ambient hero on a business with no video content",
+  "recipe": "video-ambient",
+  "section": "hero",
   "niche": "dental",
-  "issue": "Fell back to static image with video container, looked broken",
   "dimension": "polish",
-  "date": "2026-03-22",
-  "fix": "Check for actual video content before selecting video-dependent recipes"
+  "issue": "Fell back to static image with video container, looked broken",
+  "fix": "Swapped to gradient-editorial. Check for actual video content before selecting video-dependent recipes.",
+  "date": "2026-03-22"
 }
 ```
 
-These anti-patterns are checked during Stage 3 recipe selection to avoid repeating mistakes.
+**Stage 0 consumption:** During Stage 0, if an anti-pattern matches the current niche AND the same recipe+section combination, EXCLUDE that recipe from Stage 3 selection entirely. No exceptions — anti-patterns are hard blocks, not soft suggestions.
+
+Anti-patterns do NOT expire. They can only be removed by `/oakwind-evolve` after manual review.
 
 ---
 

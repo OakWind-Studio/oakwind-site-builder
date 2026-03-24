@@ -52,8 +52,9 @@ export default function TimelineNarrative({ business, copy }) {
                 transition={{ duration: 0.5, delay: i * 0.15 }}
               >
                 {/* Year node */}
-                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[var(--color-accent)] flex items-center justify-center z-10 shrink-0">
-                  <span className="text-xs font-bold text-white">{item.year}</span>
+                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-10 shrink-0 flex flex-col items-center">
+                  <span className="text-xs font-bold text-[var(--color-accent)]">{item.year}</span>
+                  <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] mt-1" />
                 </div>
 
                 {/* Content */}

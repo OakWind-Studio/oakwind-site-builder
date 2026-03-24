@@ -45,7 +45,8 @@ export default function RecognitionTimeline({ business, copy }) {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
               >
                 {/* Year node */}
-                <div className="absolute -left-12 w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+                <div className="absolute -left-12 flex items-center gap-1.5">
+                  <div className="w-0.5 h-6 rounded-full bg-[var(--color-accent)]" />
                   <Award className="w-5 h-5 text-[var(--color-accent)]" />
                 </div>
 
